@@ -1,0 +1,285 @@
+
+/**
+* @Class Name :  modifystyles.css
+* @Description : modifystyles css
+* @Modification Information
+* @
+* @  수정일      수정자              수정내용
+* @ ---------   ---------   -------------------------------
+* @ 2019.07.04     한유진      최초생성
+*
+* @author BIT 116기 2조
+* @since 2019. 07.01
+* @version 1.0
+* @see
+*
+*  Copyright (C) by bit 2조 All right reserved.
+*/
+
+.card2 {
+	width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.card2:hover {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.02);
+}
+
+.card-body2 {
+	width: 100%;
+    padding: 25.6px;
+    padding: 1.6rem;
+}
+.card-memberinfo2 {
+	width: 100%;
+    padding: 25.6px;
+    padding: 1.6rem;
+}
+/*
+yj : start | manageMemberInfo
+*/
+.card-memberinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.info-left{
+    width: 200px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info-mid{
+    width:45%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    margin-right:5%;
+}
+.info-mid-table{
+    text-align: center;
+    width: 100%;
+}
+.info-mid-table span{
+    font-weight: bold;
+    font-size: 25px;
+}
+.info-mid-table input{
+    font-weight: bold;
+    font-size: 25px;
+    color: #5359ff;
+    text-align: center;
+}
+.info-right{
+    width:20%;
+    padding-top: 30px;
+    height:500px;
+    
+}
+.info-right button{
+    width:80%;
+    font-weight: bold;
+}
+.btn-memberlist{
+    margin-top: 150px;
+}
+#phone1, #phone2, #phone3{
+    width: 130px;
+}
+@media (max-width: 700px) {
+    .card-memberinfo{
+        display: block;
+    }
+    .info-left{
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: auto;
+    }
+    .info-mid{
+        display: block;
+        margin: auto;
+        min-width: 320px;
+        height: 400px;
+    }
+    .info-mid-table{
+        text-align: center;
+    }
+    .info-mid-table span{
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .info-right{
+        display: block;
+        margin: auto;
+        min-width: 320px;
+    }
+    .info-right button{
+        width:80%;
+        font-weight: bold;
+    }
+    .btn-memberlist{
+        margin-top: 0px;
+    }
+}
+/*
+yj : start | manageMemberPost, manageSpamPost
+*/
+.btn-light-purple{
+    background-color: #f3eeff;
+    color: #b1a7a7;
+}
+.post-search-box{
+    width: 700px;
+}
+.post-search-box form {
+    position: relative;
+}
+
+.post-search-box input {
+    width: 350px;
+    border-radius: 33px;
+    border: none;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 40px;
+    letter-spacing: 0;
+    background: #f3eeff;
+}
+
+.post-search-box input::-webkit-input-placeholder {
+    color: #b1a7a7;
+}
+
+.post-search-box input::-moz-placeholder {
+    color: #b1a7a7;
+}
+
+.post-search-box input:-ms-input-placeholder {
+    color: #b1a7a7;
+}
+
+.post-search-box form i {
+    position: absolute;
+    right: 21px;
+    top: 14px;
+    font-size: 14px;
+    color: #b1a7a7;
+}
+
+.single-table .table{
+	margin-bottom: 50px;
+}
+
+/*
+yj : start | managePostGet, ReviewGet, MmlGet
+*/
+
+/*-------------manageReviewGet.html--------------------*/
+/**
+* @Class Name : EgovSampleService.java
+* @Description : EgovSampleService Class
+* @Modification Information
+* @
+* @  수정일      수정자              수정내용
+* @ ---------   ---------   -------------------------------
+* @ 2019.07.08   김광희      @media 처리
+*
+* @author BIT 116기 2조
+* @since 2019. 07.01
+* @version 1.0
+* @see
+*
+*  Copyright (C) by bit 2조 All right reserved.
+*/
+.admin_review_button div{
+    position: relative; 
+    left: 70%;
+}
+.admin_review_button div p{
+    width: 200px;
+    line-height: 40px; 
+    background-color: #333; 
+    vertical-align: middle; 
+    text-align: center; 
+    margin: 5px;
+}
+@media(max-width: 720px){
+    .admin_review_button div{
+    position: relative; 
+    left: 0%;
+}
+  .admin_review_button div p {
+    width: 100%;
+  }
+}
+/*-------------manageReviewGet.html--------------------*/
+/**
+* @Class Name : EgovSampleService.java
+* @Description : EgovSampleService Class
+* @Modification Information
+* @
+* @  ������      ������              ��������
+* @ ---------   ---------   -------------------------------
+* @ 2019.07.08   Ȳ����       ���ʻ���
+*
+* @author BIT 116�� 2��
+* @since 2019. 07.01
+* @version 1.0
+* @see
+*
+*  Copyright (C) by bit 2�� All right reserved.
+*/
+.col-12 > h1 {
+    text-align: center; 
+    margin-bottom: 30px;
+}
+
+.col-12 .card {
+    width:80%; 
+    margin:auto;
+}
+
+.ct{
+    display: inline-block;
+}
+.content-body textarea {
+    resize: none; 
+    width:90%; 
+    height:400px;
+}
+.btns {
+    vertical-align: top;
+    display: inline-block;
+}
+.btns button {
+    width:100%;
+}
+.abc {
+    width:70%;
+    display: inline-block;
+}
+@media (max-width: 850px) {
+    .abc {
+        width:100%;
+    }
+    .content-body textarea {
+        width:100%;
+    }
+    
+    .btns {
+        margin-top:20px;
+        display:block;
+    }
+  }
+
+  
+  
+  
