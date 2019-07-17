@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!--
 /**
-* @Class Name :  manageBlackList.jsp
-* @Description : 관리자 - 블랙리스트 관리 페이지
+* @Class Name :  adminNoticeList.jsp
+* @Description : 관리자 - 공지사항 페이지
 * @Modification Information
 * @
 * @  수정일      수정자              수정내용
