@@ -42,7 +42,7 @@
 			<div class="card2">
 				<div class="card-body2">
 					<!-- post-search-box start -->
-					<div class="post-search-box drop-buttons row">
+					<!-- <div class="post-search-box drop-buttons row">
 						<div class="dropdown col-md-2 col-sm-6">
 							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
 								type="button" data-toggle="dropdown">검색조건</button>
@@ -55,7 +55,7 @@
 							<input class="post-search-box" type="text" name="search"
 								placeholder="Search..." required> <i class="ti-search"></i>
 						</form>
-					</div>
+					</div> -->
 					<!-- post-search-box end -->
 					<div class="single-table">
 						<div class="table-responsive">
