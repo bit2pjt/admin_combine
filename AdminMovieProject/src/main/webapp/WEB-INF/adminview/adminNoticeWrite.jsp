@@ -168,22 +168,27 @@
 							<div class="card-body2">
 								<div class="content-body">
 									<form method="post">
-										<ul>
-											<!-- 1. 제목 -->
-											<li></li>
-											<!-- 2. 썸머노트 -->
-											<li><textarea id="summernote" name="editordata"></textarea>
+										<!-- 1. 제목 -->
+										<div class="form-group">
+											<label for="example-text-input" class="col-form-label">제목</label>
+											<input class="form-control" type="text" value="제목을 입력하세요."
+												id="">
+										</div>
 
-											</li>
-											<!-- 3. 글쓰기 버튼 -->
-											<li style="text-align:right">
-												<button type="submit" class="btn btn-dark mb-3"
-													onclick="location.href=''"> 작성하기 </button>
-													
-												<button type="submit" class="btn btn-dark mb-3"
-													onclick="location.href='adminNoticeList.do'"> 취소 </button>
-											</li>
-										</ul>
+										<label for="example-text-input" class="col-form-label">내용</label>
+										<!-- 2. 썸머노트 -->
+										<textarea id="summernote" name="editordata"
+											style="resize: none;"></textarea>
+
+
+										<!-- 3. 글쓰기 버튼 -->
+										<div style="text-align: right">
+											<button type="submit" class="btn btn-dark mb-3"
+												onclick="location.href=''">작성하기</button>
+
+											<button type="button" class="btn btn-dark mb-3"
+												onclick="location.href='adminNoticeList.do'">취소</button>
+										</div>
 									</form>
 								</div>
 							</div>
