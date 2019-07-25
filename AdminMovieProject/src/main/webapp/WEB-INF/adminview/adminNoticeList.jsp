@@ -57,6 +57,8 @@
 						</form>
 					</div> -->
 					<!-- post-search-box end -->
+					<button type="button" class="btn btn-dark mb-3" style="float: right;"
+										onclick="location.href='adminNoticeWrite.do'"> > 공지사항 작성하기</button>
 					<div class="single-table">
 						<div class="table-responsive">
 							<table class="table table-striped text-center">
