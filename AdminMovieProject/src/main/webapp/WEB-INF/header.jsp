@@ -78,20 +78,20 @@
 								aria-expanded="true"> <i class="ti-dashboard"></i><span>회원
 										관리</span></a>
 								<ul class="collapse">
-									<li><a href="manageMemberList.do">전체 회원</a></li>
-									<li><a href="manageBlackList.do">블랙리스트 회원</a></li>
+									<li><a href="manageMemberList">전체 회원</a></li>
+									<li><a href="manageBlackList">블랙리스트 회원</a></li>
 								</ul></li>
 							<li><a href="javascript:void(0)" aria-expanded="true"> <i
 									class="ti-layout-sidebar-left"></i><span>게시글 관리</span></a>
 								<ul class="collapse">
-									<li><a href="manageMemberPost.do">회원 게시글</a></li>
-									<li><a href="manageSpamPost.do">신고 게시글</a></li>
+									<li><a href="manageMemberPost">회원 게시글</a></li>
+									<li><a href="manageSpamPost">신고 게시글</a></li>
 								</ul></li>
 							<li><a href="javascript:void(0)" aria-expanded="true"><i
 									class="ti-pie-chart"></i><span>공지 및 QnA 관리</span></a>
 								<ul class="collapse">
-									<li><a href="adminNoticeList.do">공지사항</a></li>
-									<li><a href="adminQnaList.do">QnA</a></li>
+									<li><a href="adminNoticeList">공지사항</a></li>
+									<li><a href="adminQnaList">QnA</a></li>
 								</ul></li>
 						</ul>
 					</nav>
