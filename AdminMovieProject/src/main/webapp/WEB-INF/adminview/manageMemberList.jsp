@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--
 /**
 * @Class Name :  manageMemberList.jsp
@@ -9,7 +11,7 @@
 * @  수정일      수정자              수정내용
 * @ ---------   ---------   -------------------------------
 * @ 2019.07.13     한유진      최초생성
-*
+* @ 2019.08.04
 * @author BIT 116기 2조
 * @since 2019. 07.01
 * @version 1.0
@@ -58,6 +60,8 @@
 						</form>
 					</div>
 					<!-- post-search-box end -->
+					
+					<!-- 메인 테이블 시작 -->
 					<div class="single-table">
 						<div class="table-responsive">
 							<table class="table table-striped text-center">
@@ -71,20 +75,20 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (int i = 0; i < 10; i++) {
-									%>
+								<c:forEach items="${member }" var="member" varStatus="status">
 									<tr>
-										<th scope="row"><%=i + 1%></th>
-										<td>bit0hyjbit0hyj@gmail.com</td>
-										<td>유우진</td>
-										<td>2019/07/13</td>
-										<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo.do'"></i></td>
+									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+									 -->
+									 
+									 <td>${member.m_email }</td>
+									
 									</tr>
-									<%
-										}
-									%>
+								
+								</c:forEach>
+								
+								
+								
+									
 								</tbody>
 							</table>
 						</div>

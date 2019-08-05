@@ -17,15 +17,8 @@ public class MemberController {
 	MemberService memberService;
 	
 	@RequestMapping(value="/manageMemberList", method=RequestMethod.GET)
-	public String manageMemberList(Model model,@ModelAttribute("searchCriteria") 
-	SearchCriteria searchCriteria) {
-			PageMaker pageMaker = new PageMaker();
-	        pageMaker.setCriteria(searchCriteria);
-//	        pageMaker.setTotalCount(memberService.countSearchedArticles(searchCriteria));
-	        
-//	        model.addAttribute("boardfree", memberService.listSearch(searchCriteria));
-	        model.addAttribute("pageMaker", pageMaker);	
-	        
+	public String manageMemberList(Model model) {
+		model.addAttribute("member", memberService.listAll());
 		return "adminview/manageMemberList";
 	}
 	

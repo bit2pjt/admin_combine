@@ -1,12 +1,21 @@
 package com.spring.member;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.spring.paging.Criteria;
 
 public interface MemberDAO {
 	
 	// MemberList - 멤버 리스트
+	List<MemberVO> listAll();
 	
+	List<MemberVO> listCriteria(Criteria criteria);
 	
+//	List<MemberVO> listSearch(SearchCriteria searchCriteria);
+	
+		
 	public int insertMember(MemberVO vo);
 	
 	public MemberVO userCheck(String email);

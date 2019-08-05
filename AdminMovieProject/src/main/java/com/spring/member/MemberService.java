@@ -1,6 +1,19 @@
 package com.spring.member;
 
+import java.util.List;
+
+import com.spring.paging.Criteria;
+
 public interface MemberService {
+	
+	// MemberList - 멤버 리스트
+		List<MemberVO> listAll();
+		
+		List<MemberVO> listCritria(Criteria criteria);
+		
+//		List<MemberVO> listSearch(SearchCriteria searchCriteria);
+	
+	
 	public int insertMember(MemberVO vo);
 	
 	public int userCheck(String email, String pw);

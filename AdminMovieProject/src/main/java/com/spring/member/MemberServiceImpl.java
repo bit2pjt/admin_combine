@@ -1,8 +1,13 @@
 package com.spring.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.spring.paging.Criteria;
+
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
@@ -149,6 +154,19 @@ public class MemberServiceImpl implements MemberService {
 	public int getId(String m_email, String m_password) {
 
 		return memberDAOglobal.getId(m_email, m_password);
+	}
+
+	@Override
+	public List<MemberVO> listAll() {
+		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
+		
+		return memberDAO.listAll();
+	}
+
+	@Override
+	public List<MemberVO> listCritria(Criteria criteria) {
+		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
+		return memberDAO.listCriteria(criteria);
 	}
 
 }
