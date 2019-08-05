@@ -21,9 +21,9 @@ public class MemberController {
 	SearchCriteria searchCriteria) {
 			PageMaker pageMaker = new PageMaker();
 	        pageMaker.setCriteria(searchCriteria);
-	        pageMaker.setTotalCount(memberService.countSearchedArticles(searchCriteria));
+//	        pageMaker.setTotalCount(memberService.countSearchedArticles(searchCriteria));
 	        
-	        model.addAttribute("boardfree", memberService.listSearch(searchCriteria));
+//	        model.addAttribute("boardfree", memberService.listSearch(searchCriteria));
 	        model.addAttribute("pageMaker", pageMaker);	
 	        
 		return "adminview/manageMemberList";

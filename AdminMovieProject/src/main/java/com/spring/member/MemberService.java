@@ -27,6 +27,6 @@ public interface MemberService {
 	public int getId(String m_email, String m_password);
 	
 	
-	int countSearchedArticles(SearchCriteria searchCriteria);
+//	int countSearchedArticles(SearchCriteria searchCriteria);
 
 }
