@@ -18,7 +18,8 @@ public class MemberController {
 	
 	@RequestMapping(value="/manageMemberList", method=RequestMethod.GET)
 	public String manageMemberList(Model model) {
-		model.addAttribute("member", memberService.listAll());
+		model.addAttribute("member", memberService.getList());
+		
 		return "adminview/manageMemberList";
 	}
 	

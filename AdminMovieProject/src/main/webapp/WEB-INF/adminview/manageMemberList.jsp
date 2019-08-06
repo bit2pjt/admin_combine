@@ -75,12 +75,12 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${member }" var="member" varStatus="status">
+								<c:forEach items="${member}" var="member" varStatus="status">
 									<tr>
 									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 									 -->
 									 
-									 <td>${member.m_email }</td>
+									 <td><c:out value="${member.id }" /></td>
 									
 									</tr>
 								

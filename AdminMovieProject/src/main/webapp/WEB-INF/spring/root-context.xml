@@ -15,7 +15,7 @@
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
 		<property name="url"
-			value="jdbc:oracle:thin:@localhost:1522:orcl"></property>
+			value="jdbc:oracle:thin:@192.168.0.8:1522:orcl"></property>
 		<property name="username" value="blockbuster"></property>
 		<property name="password" value="1234"></property>
 	</bean>
