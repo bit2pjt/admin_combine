@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--
 /**
 * @Class Name :  adminNoticeList.jsp
@@ -72,20 +74,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (int i = 0; i < 10; i++) {
-									%>
+									<c:forEach items="${getAllNoticeList}" var="getAllNoticeList" varStatus="status">
 									<tr>
-										<th scope="row"><%= i+1 %></th>
-										<td>테스트제목 <%=i+1 %></td>
-										<td>2019/07/17</td>
-										<td>2019/07/18</td>
-										<td><i class="ti-search"
-											onclick="location.href='adminNoticeGet.do'"></i></td>
+									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+									 -->
+									  <td><c:out value="${getAllNoticeList.an_code }" /></td>
+									 <td><c:out value="${getAllNoticeList.an_title }" /></td>
+									 <td><c:out value="${getAllNoticeList.an_reg_date }" /></td>
+									 <td><c:out value="${getAllNoticeList.an_update_date }" /></td>
+									<td><i class="ti-search"
+											onclick="location.href=''"></i></td>
 									</tr>
-									<%
-										}
-									%>
+								
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>

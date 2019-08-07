@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--
 /**
 * @Class Name :  manageMemberPost.jsp
@@ -47,8 +49,8 @@
 							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
 								type="button" data-toggle="dropdown">검색조건</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">제목</a>
-								<a class="dropdown-item" href="#">작성자</a>
+								<a class="dropdown-item" href="#">제목</a> <a
+									class="dropdown-item" href="#">작성자</a>
 							</div>
 						</div>
 						<form action="#">
@@ -88,7 +90,7 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">글번호</th>
+												<th scope="col" style="width: 120px;">글번호</th>
 												<th scope="col">글제목</th>
 												<th scope="col">작성자</th>
 												<th scope="col">글등록일</th>
@@ -96,20 +98,21 @@
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
-											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">게시글 제목입니당</td>
-												<td>유디닝</td>
-												<td>2019/07/14</td>
-												<td><i class="ti-search"
-													onclick="location.href='managePostGet.do'"></i></td>
-											</tr>
-										<%
-											}
-										%>
+											<!--4.  자유게시판 게시글의 나열 시작 -->
+											<c:forEach items="${boardfree}" var="board"
+												varStatus="status">
+												<tr class="post">
+													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+													<td>${board.bf_category}</td>
+													<td><a
+														href="boardFreeGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bf_bno}">${board.bf_title}</a></td>
+													<td>${board.nickname}</td>
+													<td><fmt:formatDate value="${board.bf_update_date}"
+															pattern="yyyy-MM-dd" /></td>
+													<td>${board.bf_view_counter}</td>
+													<td>${board.bf_title}</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -137,7 +140,7 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">글번호</th>
+												<th scope="col" style="width: 120px;">글번호</th>
 												<th scope="col">글제목</th>
 												<th scope="col">작성자</th>
 												<th scope="col">글등록일</th>
@@ -145,20 +148,20 @@
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
+											<%
+												for (int i = 0; i < 10; i++) {
+											%>
 											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">게시글 제목입니당</td>
+												<th scope="row"><%=i%></th>
+												<td style="text-align: left;">게시글 제목입니당</td>
 												<td>유디닝</td>
 												<td>2019/07/14</td>
 												<td><i class="ti-search"
 													onclick="location.href='managePostGet.do'"></i></td>
 											</tr>
-										<%
-											}
-										%>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>
@@ -186,7 +189,7 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">리뷰번호</th>
+												<th scope="col" style="width: 120px;">리뷰번호</th>
 												<th scope="col">리뷰내용</th>
 												<th scope="col">작성자</th>
 												<th scope="col">리뷰등록일</th>
@@ -194,20 +197,20 @@
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
+											<%
+												for (int i = 0; i < 10; i++) {
+											%>
 											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">리뷰 내용 입니당</td>
+												<th scope="row"><%=i%></th>
+												<td style="text-align: left;">리뷰 내용 입니당</td>
 												<td>유디닝</td>
 												<td>2019/07/14</td>
 												<td><i class="ti-search"
 													onclick="location.href='manageReviewGet.do'"></i></td>
 											</tr>
-										<%
-											}
-										%>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>
@@ -235,7 +238,7 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">리뷰번호</th>
+												<th scope="col" style="width: 120px;">리뷰번호</th>
 												<th scope="col">리뷰내용</th>
 												<th scope="col">작성자</th>
 												<th scope="col">리뷰등록일</th>
@@ -243,20 +246,20 @@
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
+											<%
+												for (int i = 0; i < 10; i++) {
+											%>
 											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">리뷰 내용 입니당</td>
+												<th scope="row"><%=i%></th>
+												<td style="text-align: left;">리뷰 내용 입니당</td>
 												<td>유디닝</td>
 												<td>2019/07/14</td>
 												<td><i class="ti-search"
 													onclick="location.href='manageReviewGet.do'"></i></td>
 											</tr>
-										<%
-											}
-										%>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>
@@ -284,7 +287,7 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">나영리 번호</th>
+												<th scope="col" style="width: 120px;">나영리 번호</th>
 												<th scope="col">나영리 제목</th>
 												<th scope="col">작성자</th>
 												<th scope="col">나영리 등록일</th>
@@ -292,20 +295,20 @@
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
+											<%
+												for (int i = 0; i < 10; i++) {
+											%>
 											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">나영리 제목입니당</td>
+												<th scope="row"><%=i%></th>
+												<td style="text-align: left;">나영리 제목입니당</td>
 												<td>유디닝</td>
 												<td>2019/07/14</td>
 												<td><i class="ti-search"
 													onclick="location.href='manageMmlGet.do'"></i></td>
 											</tr>
-										<%
-											}
-										%>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>

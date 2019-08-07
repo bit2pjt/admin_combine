@@ -75,13 +75,17 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${member}" var="member" varStatus="status">
+								<c:forEach items="${listAll}" var="listAll" varStatus="status">
 									<tr>
 									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 									 -->
 									 
-									 <td><c:out value="${member.id }" /></td>
-									
+									 <td><c:out value="${listAll.id }" /></td>
+									 <td><c:out value="${listAll.m_email }" /></td>
+									 <td><c:out value="${listAll.m_nickname }" /></td>
+									 <td><c:out value="${listAll.m_regdate }" /></td>
+									<td><i class="ti-search"
+											onclick="location.href=''"></i></td>
 									</tr>
 								
 								</c:forEach>

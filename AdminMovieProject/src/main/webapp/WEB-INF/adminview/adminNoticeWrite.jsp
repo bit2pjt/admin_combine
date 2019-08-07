@@ -171,7 +171,7 @@
 										<!-- 1. 제목 -->
 										<div class="form-group">
 											<label for="example-text-input" class="col-form-label">제목</label>
-											<input class="form-control" type="text" value="제목을 입력하세요."
+											<input class="form-control" type="text" placeholder="제목을 입력하세요."
 												id="">
 										</div>
 

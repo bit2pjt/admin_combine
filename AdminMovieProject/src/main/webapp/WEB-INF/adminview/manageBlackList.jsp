@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.spring.member.BlacklistVO"%>
 <!--
 /**
 * @Class Name :  manageBlackList.jsp
@@ -62,7 +66,7 @@
 							<table class="table table-striped text-center">
 								<thead class="text-uppercase">
 									<tr>
-										<th scope="col" width="120px">블랙리스트 번호</th>
+										<th scope="col" width="120px">회원번호</th>
 										<th scope="col">이메일</th>
 										<th scope="col">닉네임</th>
 										<th scope="col">블랙리스트 등록일</th>
@@ -70,20 +74,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (int i = 0; i < 10; i++) {
-									%>
+								
+								
+								<c:forEach items="${blacklist}" var="blacklist" varStatus="status">
 									<tr>
-										<th scope="row"><%= i+1 %></th>
-										<td>bit0hyjbit0hyj@gmail.com</td>
-										<td>유우진</td>
-										<td>2019/07/13</td>
-										<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo.do'"></i></td>
+									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+									 -->
+									 
+									 <td><c:out value="${blacklist.id }" /></td>
+									 <td><c:out value="${blacklist.m_email }" /></td>
+									 <td><c:out value="${blacklist.m_nickname }" /></td>
+									 <td></td>
+									<td><i class="ti-search"
+											onclick="location.href=''"></i></td>
 									</tr>
-									<%
-										}
-									%>
+								
+								</c:forEach>
+									
 								</tbody>
 							</table>
 						</div>
