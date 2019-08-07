@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
-	
 	private int id;				//멤버ID(회원 식별 번호)
 	private String m_nickname;	//닉네임
 	private String m_image;		//프로필사진
@@ -25,5 +24,4 @@ public class MemberVO {
 	private String m_level;		//엠블럼 등급
 	private String m_favorite;	//선호장르
 	private String m_blacklist;	//블랙리스트 여부
-	
 }

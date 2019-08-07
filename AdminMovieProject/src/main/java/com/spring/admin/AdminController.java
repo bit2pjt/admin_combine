@@ -2,14 +2,21 @@ package com.spring.admin;
 
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.member.MemberService;
+
 @Controller
 public class AdminController {
 
+	@Autowired
+	AdminService adminService;
+	
+	
 	@RequestMapping(value="/adminIndex", method=RequestMethod.GET)
 	public String movieList() {
 		return "adminview/index";
@@ -24,10 +31,20 @@ public class AdminController {
 	public String adminNoticeGet() {
 		return "adminview/adminNoticeGet";
 	}
+	/**
+	  * 관리자 공지사항 목록
+	  * @param an_code - 게시글 번호
+	  * @param session - 세션
+	  * @param model
+	  * @return "adminNoticeList"
+	 */
 	@RequestMapping(value="/adminNoticeList", method=RequestMethod.GET)
-	public String adminNoticeList() {
+	public String adminNoticeList(Model model) {
+		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
+		
 		return "adminview/adminNoticeList";
 	}
+	
 	@RequestMapping(value="/adminNoticeUpdate", method=RequestMethod.GET)
 	public String adminNoticeUpdate() {
 		return "adminview/adminNoticeUpdate";

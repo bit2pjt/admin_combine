@@ -1,15 +1,36 @@
 package com.spring.board;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.spring.member.MemberService;
+import com.spring.paging.PageMaker;
+import com.spring.paging.SearchCriteria;
 
 @Controller
 public class BoardController {
 
+	@Autowired(required=false)
+	BoardFreeService boardFreeService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping(value="/manageMemberPost", method=RequestMethod.GET)
-	public String manageMemberPost() {
+	public String manageMemberPost(Model model,@ModelAttribute("searchCriteria") 
+	SearchCriteria searchCriteria) {
+		
+	PageMaker pageMaker = new PageMaker();
+    pageMaker.setCriteria(searchCriteria);
+    pageMaker.setTotalCount(boardFreeService.countSearchedArticles(searchCriteria));
+    
+    model.addAttribute("boardfree", boardFreeService.listSearch(searchCriteria));
+    model.addAttribute("pageMaker", pageMaker);	
+    
 		return "adminview/manageMemberPost";
 	}
 	@RequestMapping(value="/managePostGet", method=RequestMethod.GET)
