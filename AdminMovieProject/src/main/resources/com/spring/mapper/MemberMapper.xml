@@ -24,13 +24,89 @@
       <result property="m_level" column="m_level"/>
       <result property="m_favorite" column="m_favorite"/>
       <result property="m_blacklist" column="m_blacklist"/>
+   	  <collection property="BlacklistVO" resultMap="BlacklistVO"/>
    </resultMap>
    
+   <resultMap type="com.spring.member.BlacklistVO" id="BlacklistVO">
+      <result property="id" column="id"/>
+      <result property="black_date" column="black_date"/>
+    </resultMap>
    
-   <select id="getList" resultType="com.spring.member.MemberVO">
+   
+   <select id="listAll" resultType="com.spring.member.MemberVO">
    <![CDATA[
    select * from member where id > 0
    ]]>
    </select>
-  
+   
+    <select id="blacklist" parameterType="com.spring.member.MemberVO" resultType="com.spring.member.MemberVO">	
+       <![CDATA[
+  	SELECT
+    member.id, member.m_email, member.m_nickname, blacklist.black_date
+	FROM
+    member
+	LEFT JOIN
+    blacklist
+	ON
+   	member.id = blacklist.id
+	WHERE
+    member.M_BLACKLIST = 'Y'
+       ]]>
+   </select>
+   
+   <!-- 로그인시 회원 체크 -->
+	<select id="userCheck" parameterType="String" resultMap="MemberResultMap">
+		select *
+		from member
+		where m_email = #{email}
+	</select>
+	
+	<select id="userNickName" parameterType="int" resultType="String">
+		select m_nickname
+		from member
+		where id = #{id}
+	</select>
+	
+	<select id="findEmail" parameterType="com.spring.member.MemberVO" resultType="String">
+		select m_email
+		from member
+		where m_name = #{m_name, jdbcType=VARCHAR} and m_phone = #{m_phone, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="findPw" parameterType="com.spring.member.MemberVO" resultMap="MemberResultMap">
+		select *
+		from member
+		where m_email = #{m_email, jdbcType=VARCHAR} and m_name = #{m_name, jdbcType=VARCHAR} and m_phone = #{m_phone, jdbcType=VARCHAR}
+	</select>
+	
+
+	<insert id="memberJoin">
+		insert into member
+		values (seq_member_id.nextval, #{m_nickname}, #{m_image}, #{m_email}, #{m_eagree}, #{m_sagree}, #{m_name},#{m_phone}, #{m_cert}, #{m_password},
+				sysdate, sysdate, #{m_deleteyn}, #{m_following}, #{m_follower}, #{m_level}, #{m_favorite}, #{m_blacklist})
+	</insert>
+
+	<select id="emailOverlapChk" parameterType="String" resultType="int">
+		select count(m_email)
+		from member
+		where m_email = #{m_email}
+	</select>
+	
+	<select id="nickOverlapChk" parameterType="String" resultType="int">
+		select count(m_nickname)
+		from member
+		where m_nickname = #{m_nickname}
+	</select>
+	
+
+	<update id="updatePw" parameterType="com.spring.member.MemberVO">
+		update member set m_password = #{m_password, jdbcType=VARCHAR} where m_phone = #{m_phone, jdbcType=VARCHAR}
+	</update>
+
+	<select id="getId" parameterType="String" resultType="int">
+		select id
+		from member
+		where 	m_email = #{m_email}
+		and 	m_password = #{m_password}
+	</select>
 </mapper>
