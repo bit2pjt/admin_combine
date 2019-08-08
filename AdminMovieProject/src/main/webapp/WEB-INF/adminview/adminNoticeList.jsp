@@ -74,19 +74,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${getAllNoticeList}" var="getAllNoticeList" varStatus="status">
-									<tr>
-									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+									<c:forEach items="${getAllNoticeList}" var="getAllNoticeList"
+										varStatus="status">
+										<tr>
+											<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 									 -->
-									  <td><c:out value="${getAllNoticeList.an_code }" /></td>
-									 <td><c:out value="${getAllNoticeList.an_title }" /></td>
-									 <td><c:out value="${getAllNoticeList.an_reg_date }" /></td>
-									 <td><c:out value="${getAllNoticeList.an_update_date }" /></td>
-									<td><i class="ti-search"
-											onclick="location.href=''"></i></td>
-									</tr>
-								
-								</c:forEach>
+											<td><c:out value="${getAllNoticeList.an_code }" /></td>
+											<td><c:out value="${getAllNoticeList.an_title }" /></td>
+											<td><c:out value="${getAllNoticeList.an_reg_date }" /></td>
+											<td><c:out value="${getAllNoticeList.an_update_date }" /></td>
+											<td><i class="ti-search" onclick="location.href=''"></i></td>
+										</tr>
+
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

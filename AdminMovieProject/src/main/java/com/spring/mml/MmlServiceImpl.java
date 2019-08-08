@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.spring.board.BoardFreeDAO;
 import com.spring.member.MemberVO;
 import com.spring.mypage.MyPageDAO;
 
@@ -19,6 +20,14 @@ public class MmlServiceImpl implements MmlService {
 	@Autowired
 	private MmlDAO mmlDAO;
 
+	@Override
+	public List<Mml_ContentVO> listAll() {
+		MmlDAO mmlDAO = sqlSession.getMapper(MmlDAO.class);
+		return mmlDAO.listAll(); 
+	}
+	
+	
+	
 	////////////////
 	// 유진 개발부분//
 	////////////////
@@ -204,5 +213,7 @@ public class MmlServiceImpl implements MmlService {
 		int id = mmlDAO.getMmlId(mml_num);
 		return id;
 	}
+
+
 
 }// e_MmlServiceImpl

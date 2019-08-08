@@ -7,7 +7,7 @@ import com.spring.board.WarnVO;
 import com.spring.member.MemberVO;
 import com.spring.paging.SearchCriteria;
 
-interface BoardShareService {
+public interface BoardShareService {
 	  
 	List<BoardShareVO> listSearch(SearchCriteria searchCriteria);
 

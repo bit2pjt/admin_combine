@@ -5,7 +5,6 @@
 <mapper namespace="com.spring.mml.MmlDAO">
   
   <resultMap type="com.spring.mml.Mml_ContentVO" id="mmlMap">
-
 		<result property="mml_num" column="mml_num"/>
 		<result property="mi_code" column="mi_code"/>
 		<result property="id" column="id"/>
@@ -54,6 +53,21 @@
 		<result property="mml_warn_count" column="mml_warn_count"/>
 		<result property="m_nickname" column="m_nickname"/>
 	</resultMap>
+	
+	<select id="listAll" resultMap="mmlMap">
+        <![CDATA[
+        SELECT *  
+        FROM mml_content
+        WHERE mml_num > 0
+        ORDER BY mml_num DESC
+        ]]>
+    </select>
+	
+	
+	
+	
+	
+	
 	
 	
 	<!-- mi_ccode왜 이름 코드야... 바꿔죵 -->

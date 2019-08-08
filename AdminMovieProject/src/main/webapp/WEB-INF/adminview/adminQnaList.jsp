@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--
 /**
 * @Class Name :  adminQnaList.jsp
@@ -42,13 +44,14 @@
 			<div class="card2">
 				<div class="card-body2">
 					<!-- post-search-box start -->
-				<div class="post-search-box drop-buttons row">
+					<div class="post-search-box drop-buttons row">
 						<div class="dropdown col-md-2 col-sm-6">
 							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
 								type="button" data-toggle="dropdown">검색조건</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">카테고리1</a> <a class="dropdown-item"
-									href="#">카테고리2</a><a class="dropdown-item" href="#">카테고리3</a>
+								<a class="dropdown-item" href="#">카테고리1</a> <a
+									class="dropdown-item" href="#">카테고리2</a><a
+									class="dropdown-item" href="#">카테고리3</a>
 							</div>
 						</div>
 						<form action="#">
@@ -62,7 +65,7 @@
 							<table class="table table-striped text-center">
 								<thead class="text-uppercase">
 									<tr>
-										<th scope="col" width="120px">공지 번호</th>
+										<th scope="col" width="120px">문의 번호</th>
 										<th scope="col">카테고리</th>
 										<th scope="col">제목</th>
 										<th scope="col">글쓴이</th>
@@ -71,21 +74,22 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (int i = 0; i < 10; i++) {
-									%>
-									<tr>
-										<th scope="row"><%= i+1 %></th>
-										<td>카테고리<%=i+1 %> </td>
-										<td>테스트제목 <%=i+1 %></td>
-										<td>user<%=i+1 %></td>
-										<td>2019/07/18</td>
-										<td><i class="ti-search"
-											onclick="location.href='adminQnaGet.do'"></i></td>
-									</tr>
-									<%
-										}
-									%>
+
+									<c:forEach items="${getQnaList}" var="getQnaList"
+										varStatus="status">
+										<tr>
+											<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+									 -->
+											<td><c:out value="${getQnaList.qna_no }" /></td>
+											<td><c:out value="${getQnaList.qna_category }" /></td>
+											<td><c:out value="${getQnaList.qna_title }" /></td>
+											<td><c:out value="${getQnaList.id }" /></td>
+											<td><c:out value="${getQnaList.qna_update_date }" /></td>
+											<td><i class="ti-search" onclick="location.href=''"></i></td>
+										</tr>
+
+									</c:forEach>
+
 								</tbody>
 							</table>
 						</div>

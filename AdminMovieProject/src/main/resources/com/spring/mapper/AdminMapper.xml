@@ -22,6 +22,49 @@
       <result property="an_update_date" column="an_update_date"/>
     </resultMap>
     
+    <!-- 사용자 질문이야 -->
+    <resultMap type="com.spring.mypage.OneVO" id="merberQnaMap">
+		<result property="qna_no" column="qna_no"/>
+		<result property="id" column="id"/>
+		<result property="qna_category" column="qna_category"/>
+		<result property="qna_title" column="qna_title"/>
+		<result property="qna_content" column="qna_content"/>
+		<result property="qna_date" column="qna_date"/>
+		<result property="qna_update_date" column="qna_update_date"/>
+		<result property="qna_answer" column="qna_answer"/>
+	</resultMap>
+		
+	<resultMap type="com.spring.member.MemberVO" id="getMemberMap">
+		<result property="id" column="id"/>
+		<result property="m_nickname" column="m_nickname"/>
+		<result property="m_image" column="m_image"/>
+		<result property="m_email" column="m_email"/>
+		<result property="m_eagree" column="m_eagree"/>
+		<result property="m_sagree" column="m_sagree"/>
+		<result property="m_name" column="m_name"/>
+		<result property="m_phone" column="m_phone"/>
+		<result property="m_cert" column="m_cert"/>
+		<result property="m_password" column="m_password"/>
+		<result property="m_regdate" column="m_regdate"/>
+		<result property="m_update_date" column="m_update_date"/>
+		<result property="m_deleteyn" column="m_deleteyn"/>
+		<result property="m_following" column="m_following"/>
+		<result property="m_follower" column="m_follower"/>
+		<result property="m_level" column="m_level"/>
+		<result property="m_favorite" column="m_favorite"/>
+		<result property="m_blacklist" column="m_blacklist"/>
+	</resultMap>
+	
+	<!-- hm | 1:1문의 답변 resultMap추가  -->
+	<resultMap type="com.spring.mypage.OneAdVO" id="adminQnaMap">
+		<result property="aqna_no" column="aqna_no"/>
+		<result property="qna_no" column="qna_no"/>
+		<result property="aqna_content" column="aqna_content"/>
+		<result property="aqna_date" column="aqna_date"/>
+		<result property="aqna_update_date" column="aqna_update_date"/>
+		<result property="admin_num" column="admin_num"/>
+	</resultMap>
+	
    <select id="getAllNoticeList" resultType="com.spring.admin.AdNoticeVO">
    <![CDATA[
    select * from ad_notice where an_code > 0
@@ -29,6 +72,9 @@
    </select>
    
 
+	<select id="getQnaList" parameterType="int" resultMap="merberQnaMap">
+		select * from board_qna order by QNA_NO desc
+	</select>
    
   
 </mapper>

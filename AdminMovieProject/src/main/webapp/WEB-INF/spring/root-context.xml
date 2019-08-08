@@ -15,7 +15,7 @@
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="oracle.jdbc.OracleDriver"></property>
 		<property name="url"
-			value="jdbc:oracle:thin:@192.168.0.8:1522:orcl"></property>
+			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="blockbuster"></property>
 		<property name="password" value="1234"></property>
 	</bean>
@@ -37,7 +37,6 @@
 	<!-- com.spring 이하의 모든 디렉토리를 기본 스캔범위로 한다면? = 모든 디렉토리를 자동으로 스캔하도록 -->
 
 	<mybatis-spring:scan base-package="com.spring." />
-	<context:component-scan
-		base-package="com.spirng." />
+	<context:component-scan base-package="com.spirng." />
 
 </beans>

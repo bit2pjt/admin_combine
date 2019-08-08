@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.spring.board.BoardFreeVO;
 import com.spring.member.MemberVO;
 
 public interface MmlDAO {
 
+	List<Mml_ContentVO> listAll();
+	
+	
+	
 	////////////////
 	// 유진 개발부분//
 	////////////////

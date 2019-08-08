@@ -6,6 +6,9 @@ import com.spring.member.MemberVO;
 
 public interface MmlService {
 
+	
+	List<Mml_ContentVO> listAll();
+	
 	////////////////
 	// 유진 개발부분//
 	////////////////

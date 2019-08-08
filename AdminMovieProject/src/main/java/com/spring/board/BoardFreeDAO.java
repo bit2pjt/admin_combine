@@ -20,6 +20,7 @@ public interface BoardFreeDAO {
 	String getMemberNickname(String m_email);	//멤버 닉네임 가져오기
 	
 	MemberVO getMember(int id);
+	
 	int getMemberId(String m_email);		//멤버 아이디 가져오기
 	
 	// 자유게시판 등록 / 수정
