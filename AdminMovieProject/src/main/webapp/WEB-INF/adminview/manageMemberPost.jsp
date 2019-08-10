@@ -43,6 +43,32 @@
 			<div class="card">
 				<!-- nav tab start -->
 				<div class="card-body">
+				
+				<!-- 검색!! -->
+				<div class="box-footer" style="display:inline-block; width:100%; margin-left:25%;">
+                        <div class="form-group col-sm-2">
+                            <select class="form-control" name="searchType" id="searchType">
+                                <option value="n" <c:out value="${searchCriteria.searchType == null ? 'selected' : ''}"/>>:::::: 선택 ::::::</option>
+                                <option value="t" <c:out value="${searchCriteria.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+                                <option value="c" <c:out value="${searchCriteria.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+                                <option value="w" <c:out value="${searchCriteria.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+                                <option value="tc" <c:out value="${searchCriteria.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+                                <option value="cw" <c:out value="${searchCriteria.searchType eq 'cw' ? 'selected' : ''}"/>>내용+작성자</option>
+                                <option value="tcw" <c:out value="${searchCriteria.searchType eq 'tcw' ? 'selected' : ''}"/>>제목+내용+작성자</option>
+                            </select>
+                        </div>
+                         <div class="form-group col-sm-10" style="width:50%">
+                            <span class="input-group" style="display:inline-block; width:100%;">
+                                <input type="text" class="form-control" name="keyword" id="keywordInput" value="${searchCriteria.keyword}" placeholder="검색어" style="display:inline-block; width:50%">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-flat" id="btn-hjs">
+                                        		 검색
+                                    </button>
+                                </span>
+                            </span>
+                        </div>
+                    </div> 
+				<!-- 검색 !! -->
 					<!--search box-->
 					<div class="post-search-box drop-buttons row">
 						<div class="dropdown col-md-2 col-sm-6">
@@ -116,45 +142,29 @@
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
-							<nav aria-label="...">
-								<ul class="pagination justify-content-center">
-								
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">이전</a></li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">다음</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- yj : end | pagination -->
 							
 							  <!--페이징 시작 -->
-				 <div class="box-footer">
-                        <div class="text-center">
+				<nav aria-label="...">
+                        
                             <form id="listPageForm">
                                 <input type="hidden" name="page" value="${pageMaker.criteria.page}">
                                 <input type="hidden" name="perPageNum" value="${pageMaker.criteria.perPageNum}">
                             </form>
-                            <ul class="pagination">
+                            <ul class="pagination justify-content-center">
                                 <c:if test="${pageMaker.prev}">
-                                    <li><a href="${pageMaker.startPage - 1}">이전</a></li>
+                                    <li class="page-item disabled"><a class="page-link" href="${pageMaker.startPage - 1}">이전</a></li>
                                 </c:if>
                                 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-                                    <li <c:out value="${pageMaker.criteria.page == idx ? 'class=active' : ''}"/>>
+                                    <li class="page-item active" <c:out value="${pageMaker.criteria.page == idx ? 'class=active' : ''}"/>>
                                         <a href="${idx}">${idx}</a>
                                     </li>
                                 </c:forEach>
                                 <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-                                    <li><a href="${pageMaker.endPage + 1}">다음</a></li>
+                                    <li class="page-item" ><a class="page-link" href="${pageMaker.endPage + 1}">다음</a></li>
                                 </c:if>
                             </ul>
-                        </div>
-                    </div>
+                       
+                    </nav>
                     <!-- 페이징 끝 -->
 							
 							
@@ -363,5 +373,25 @@
 	</div>
 </div>
 </div>
+<script>
+	// 페이지
+	$(".pagination li a").on("click", function (event) {
+	    event.preventDefault();
+	
+	    var targetPage = $(this).attr("href");
+	    var listPageForm = $("#listPageForm");
+	    listPageForm.find("[name='page']").val(targetPage);
+	    listPageForm.attr("action", "manageMemberPost").attr("method", "get");
+	    listPageForm.submit();
+	});
+	
+	// 검색
+    $("#btn-hjs").on("click", function (event) {
+        self.location =
+            "manageMemberPost${pageMaker.makeQuery(1)}"
+            + "&searchType=" + $("select option:selected").val()
+            + "&keyword=" + encodeURIComponent($("#keywordInput").val());
+    });
+</script>
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>
