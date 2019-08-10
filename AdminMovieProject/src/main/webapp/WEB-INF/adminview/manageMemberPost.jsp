@@ -119,18 +119,46 @@
 							<!-- yj : start | pagination-->
 							<nav aria-label="...">
 								<ul class="pagination justify-content-center">
+								
 									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Previous</a></li>
+										href="#" tabindex="-1">이전</a></li>
 									<li class="page-item active"><a class="page-link" href="#">1</a></li>
 									<li class="page-item"><a class="page-link" href="#">2
 											<span class="sr-only">(current)</span>
 									</a></li>
 									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
+									<li class="page-item"><a class="page-link" href="#">다음</a>
 									</li>
 								</ul>
 							</nav>
 							<!-- yj : end | pagination -->
+							
+							  <!--페이징 시작 -->
+				 <div class="box-footer">
+                        <div class="text-center">
+                            <form id="listPageForm">
+                                <input type="hidden" name="page" value="${pageMaker.criteria.page}">
+                                <input type="hidden" name="perPageNum" value="${pageMaker.criteria.perPageNum}">
+                            </form>
+                            <ul class="pagination">
+                                <c:if test="${pageMaker.prev}">
+                                    <li><a href="${pageMaker.startPage - 1}">이전</a></li>
+                                </c:if>
+                                <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                                    <li <c:out value="${pageMaker.criteria.page == idx ? 'class=active' : ''}"/>>
+                                        <a href="${idx}">${idx}</a>
+                                    </li>
+                                </c:forEach>
+                                <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                                    <li><a href="${pageMaker.endPage + 1}">다음</a></li>
+                                </c:if>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 페이징 끝 -->
+							
+							
+							
 						</div>
 						<div class="tab-pane fade" id="board_share" role="tabpanel"
 							aria-labelledby="board_share-tab">
@@ -294,14 +322,12 @@
 											</tr>
 										</thead>
 										<tbody>
-										
-										<!--4.  나영리 게시글의 나열 시작 -->
-											<c:forEach items="${mml}" var="mml"
-												varStatus="status">
+
+											<!--4.  나영리 게시글의 나열 시작 -->
+											<c:forEach items="${mml}" var="mml" varStatus="status">
 												<tr class="post">
 													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
-													<td><a
-														href="">${mml.mml_title}</a></td>
+													<td><a href="">${mml.mml_title}</a></td>
 													<td>${mml.id}</td>
 													<td><fmt:formatDate value="${mml.mml_update_date}"
 															pattern="yyyy-MM-dd" /></td>

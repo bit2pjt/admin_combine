@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--
 /**
-* @Class Name :  manageSpamPost.jsp
-* @Description : 관리자 - 회원 신고 게시글 페이지
+* @Class Name :  manageMemberPost.jsp
+* @Description : 관리자 - 회원 게시글 페이지
 * @Modification Information
 * @
 * @  수정일      수정자              수정내용
 * @ ---------   ---------   -------------------------------
-* @ 2019.08.03     박현민      최초생성
+* @ 2019.07.14     한유진      최초생성
 *
 * @author BIT 116기 2조
 * @since 2019. 07.01
@@ -24,10 +26,10 @@
 	<div class="row align-items-center">
 		<div class="col-sm-6">
 			<div class="breadcrumbs-area clearfix">
-				<h4 class="page-title pull-left">신고게시글</h4>
+				<h4 class="page-title pull-left">회원게시글</h4>
 				<ul class="breadcrumbs pull-left">
 					<li><a href="index.html">Home</a></li>
-					<li><span>신고게시글</span></li>
+					<li><span>회원게시글</span></li>
 				</ul>
 			</div>
 		</div>
@@ -47,8 +49,8 @@
 							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
 								type="button" data-toggle="dropdown">검색조건</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">제목</a>
-								<a class="dropdown-item" href="#">작성자</a>
+								<a class="dropdown-item" href="#">제목</a> <a
+									class="dropdown-item" href="#">작성자</a>
 							</div>
 						</div>
 						<form action="#">
@@ -88,28 +90,28 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">글번호</th>
-												<th scope="col">글제목</th>
-												<th scope="col">작성자</th>
+												<th scope="col" style="width: 120px;">신고번호</th>
+												<th scope="col">신고내용</th>
+												<th scope="col">신고자</th>
 												<th scope="col">글등록일</th>
 												<th scope="col">보기</th>
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
-											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">게시글 제목입니당</td>
-												<td>유디닝</td>
-												<td>2019/07/14</td>
-												<td><i class="ti-search"
-													onclick="location.href='managePostGet.do'"></i></td>
-											</tr>
-										<%
-											}
-										%>
+											<!--4.  자유게시판 게시글의 나열 시작 -->
+											<c:forEach items="${boardfree}" var="board"
+												varStatus="status">
+												<tr class="post">
+													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+													<td><a
+														href="boardFreeGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bf_bno}">${board.bf_title}</a></td>
+													<td>${board.nickname}</td>
+													<td><fmt:formatDate value="${board.bf_update_date}"
+															pattern="yyyy-MM-dd" /></td>
+													<td><i class="ti-search"
+														onclick="location.href='managePostGet.do'"></i></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -137,28 +139,28 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">글번호</th>
-												<th scope="col">글제목</th>
-												<th scope="col">작성자</th>
+												<th scope="col" style="width: 120px;">신고번호</th>
+												<th scope="col">신고내용</th>
+												<th scope="col">신고자</th>
 												<th scope="col">글등록일</th>
 												<th scope="col">보기</th>
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
-											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">게시글 제목입니당</td>
-												<td>유디닝</td>
-												<td>2019/07/14</td>
-												<td><i class="ti-search"
-													onclick="location.href='managePostGet.do'"></i></td>
-											</tr>
-										<%
-											}
-										%>
+											<!--4.  자유게시판 게시글의 나열 시작 -->
+											<c:forEach items="${boardshare}" var="board"
+												varStatus="status">
+												<tr class="post">
+													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+													<td><a
+														href="boardShareGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bs_bno}">${board.bs_title}</a></td>
+													<td>${board.nickname}</td>
+													<td><fmt:formatDate value="${board.bs_update_date}"
+															pattern="yyyy-MM-dd" /></td>
+													<td><i class="ti-search"
+														onclick="location.href='managePostGet.do'"></i></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -186,28 +188,28 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">리뷰번호</th>
-												<th scope="col">리뷰내용</th>
-												<th scope="col">작성자</th>
-												<th scope="col">리뷰등록일</th>
+												<th scope="col" style="width: 120px;">신고번호</th>
+												<th scope="col">신고내용</th>
+												<th scope="col">신고자</th>
+												<th scope="col">글등록일</th>
 												<th scope="col">보기</th>
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
+											<%
+												for (int i = 0; i < 10; i++) {
+											%>
 											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">리뷰 내용 입니당</td>
+												<th scope="row"><%=i%></th>
+												<td style="text-align: left;">리뷰 내용 입니당</td>
 												<td>유디닝</td>
 												<td>2019/07/14</td>
 												<td><i class="ti-search"
 													onclick="location.href='manageReviewGet.do'"></i></td>
 											</tr>
-										<%
-											}
-										%>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>
@@ -235,28 +237,28 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">리뷰번호</th>
-												<th scope="col">리뷰내용</th>
-												<th scope="col">작성자</th>
-												<th scope="col">리뷰등록일</th>
+												<th scope="col" style="width: 120px;">신고번호</th>
+												<th scope="col">신고내용</th>
+												<th scope="col">신고자</th>
+												<th scope="col">글등록일</th>
 												<th scope="col">보기</th>
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
+											<%
+												for (int i = 0; i < 10; i++) {
+											%>
 											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">리뷰 내용 입니당</td>
+												<th scope="row"><%=i%></th>
+												<td style="text-align: left;">리뷰 내용 입니당</td>
 												<td>유디닝</td>
 												<td>2019/07/14</td>
 												<td><i class="ti-search"
 													onclick="location.href='manageReviewGet.do'"></i></td>
 											</tr>
-										<%
-											}
-										%>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>
@@ -284,28 +286,29 @@
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
-												<th scope="col" style="width:120px;">나영리 번호</th>
-												<th scope="col">나영리 제목</th>
-												<th scope="col">작성자</th>
-												<th scope="col">나영리 등록일</th>
+												<th scope="col" style="width: 120px;">신고번호</th>
+												<th scope="col">신고내용</th>
+												<th scope="col">신고자</th>
+												<th scope="col">글등록일</th>
 												<th scope="col">보기</th>
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
-											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">나영리 제목입니당</td>
-												<td>유디닝</td>
-												<td>2019/07/14</td>
-												<td><i class="ti-search"
-													onclick="location.href='manageMmlGet.do'"></i></td>
-											</tr>
-										<%
-											}
-										%>
+										
+										<!--4.  나영리 게시글의 나열 시작 -->
+											<c:forEach items="${mml}" var="mml"
+												varStatus="status">
+												<tr class="post">
+													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+													<td><a
+														href="">${mml.mml_title}</a></td>
+													<td>${mml.id}</td>
+													<td><fmt:formatDate value="${mml.mml_update_date}"
+															pattern="yyyy-MM-dd" /></td>
+													<td><i class="ti-search"
+														onclick="location.href='managePostGet.do'"></i></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

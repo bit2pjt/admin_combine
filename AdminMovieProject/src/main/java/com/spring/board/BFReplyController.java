@@ -95,7 +95,8 @@ public class BFReplyController {
 	public ResponseEntity<String> update(@PathVariable("bfr_rno") Integer bfr_rno, @RequestBody BFReplyVO replyVO) {
 		ResponseEntity<String> entity = null;
 		try {
-			replyVO.setBfr_rno(bfr_rno);
+
+ 			replyVO.setBfr_rno(bfr_rno);
 			replyService.modifyReply(replyVO);
 			entity = new ResponseEntity<>("modSuccess", HttpStatus.OK);
 		} catch (Exception e) {

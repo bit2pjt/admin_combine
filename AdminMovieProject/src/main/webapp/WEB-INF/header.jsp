@@ -84,8 +84,9 @@
 							<li><a href="javascript:void(0)" aria-expanded="true"> <i
 									class="ti-layout-sidebar-left"></i><span>게시글 관리</span></a>
 								<ul class="collapse">
-									<li><a href="manageMemberPost">회원 게시글</a></li>
+									<li><a href="manageMemberPost">전체 게시글</a></li>
 									<li><a href="manageSpamPost">신고 게시글</a></li>
+									<li><a href="manageSpamReply">신고 댓글</a></li>
 								</ul></li>
 							<li><a href="javascript:void(0)" aria-expanded="true"><i
 									class="ti-pie-chart"></i><span>공지 및 QnA 관리</span></a>
