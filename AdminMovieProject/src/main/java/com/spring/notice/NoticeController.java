@@ -34,57 +34,49 @@ public class NoticeController {
 		return "login";
 	}
 
-	// 
-	@RequestMapping(value = "/adminNoticeGet", method = RequestMethod.GET)
-	public String adminNoticeGet() {
-		return "adminview/adminNoticeGet";
-	}
-
-	/**
-	 * 관리자 공지사항 목록
-	 * 
-	 * @param an_code - 게시글 번호
-	 * @param session - 세션
-	 * @param model
-	 * @return "adminNoticeList"
-	 */
-	@RequestMapping(value = "/adminNoticeList", method = RequestMethod.GET)
-	public String adminNoticeList(Model model) {
+	// 공지사항 목록
+	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
+	public String noticeList(Model model) {
 //		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
 
-		return "adminview/adminNoticeList";
+		return "notice/noticeList";
 	}
 
-	@RequestMapping(value = "/adminNoticeUpdate", method = RequestMethod.GET)
-	public String adminNoticeUpdate() {
-		return "adminview/adminNoticeUpdate";
-	}
+	// 공지사항 상세보기
+	@RequestMapping(value = "/noticeDetail", method = RequestMethod.GET)
+	public String noticeDetail(Model model) {
+//		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
 
-	@RequestMapping(value = "/adminNoticeWrite", method = RequestMethod.GET)
-	public String adminNoticeWrite() {
-		return "adminview/adminNoticeWrite";
+		return "notice/noticeDetail";
 	}
-
-	@RequestMapping(value = "/adminQnaGet", method = RequestMethod.GET)
-	public String adminQnaGet() {
-		return "adminview/adminQnaGet";
-	}
-
-	@RequestMapping(value = "/adminQnaUpdate", method = RequestMethod.GET)
-	public String adminQnaUpdate() {
-		return "adminview/adminQnaUpdate";
-	}
-
-	@RequestMapping(value = "/adminQnaList", method = RequestMethod.GET)
-	public String adminQnaList(Model model) {
-		model.addAttribute("getQnaList");
+	
+	// 공지사항 작성
+	@RequestMapping(value = "/noticeWrite", method = RequestMethod.GET)
+	public String noticeWrite() {
 		
-		return "adminview/adminQnaList";
+		return "notice/noticeWrite";
 	}
 
-	@RequestMapping(value = "/adminQnaModal", method = RequestMethod.GET)
-	public String adminQnaModal() {
-		return "adminview/adminQnaModal";
+	// 공지사항 수정
+	@RequestMapping(value = "/noticeUpdate", method = RequestMethod.GET)
+	public String noticeUpdate() {
+		
+		return "notice/noticeUpdate";
+	}
+	
+	
+	// 1:1 문의 목록
+	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
+	public String qnaList() {
+		
+		return "notice/qnaList";
+	}
+	
+	// 1:1 문의 상세보기
+	@RequestMapping(value = "/qnaDetail", method = RequestMethod.GET)
+	public String qnaDetail() {
+		
+		return "notice/qnaDetail";
 	}
 
 }

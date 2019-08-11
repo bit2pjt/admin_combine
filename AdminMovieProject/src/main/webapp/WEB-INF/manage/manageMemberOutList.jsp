@@ -26,10 +26,10 @@
 	<div class="row align-items-center">
 		<div class="col-sm-6">
 			<div class="breadcrumbs-area clearfix">
-				<h4 class="page-title pull-left">전체 회원</h4>
+				<h4 class="page-title pull-left">탈퇴 신청 회원</h4>
 				<ul class="breadcrumbs pull-left">
 					<li><a href="/admin/">Home</a></li>
-					<li><span>전체 회원</span></li>
+					<li><span>탈퇴 신청 회원</span></li>
 				</ul>
 			</div>
 		</div>
@@ -69,8 +69,8 @@
 									<tr>
 										<th scope="col">회원번호</th>
 										<th scope="col" width=>이메일</th>
-										<th scope="col">닉네임</th>
-										<th scope="col">회원가입일</th>
+										<th scope="col">탈퇴신청일</th>
+										<th scope="col">삭제예정일</th>
 										<th scope="col">보기</th>
 									</tr>
 								</thead>

@@ -26,10 +26,10 @@
 	<div class="row align-items-center">
 		<div class="col-sm-6">
 			<div class="breadcrumbs-area clearfix">
-				<h4 class="page-title pull-left">회원게시글</h4>
+				<h4 class="page-title pull-left">신고 댓글</h4>
 				<ul class="breadcrumbs pull-left">
-					<li><a href="index.html">Home</a></li>
-					<li><span>회원게시글</span></li>
+					<li><a href="index">Home</a></li>
+					<li><span>신고 댓글</span></li>
 				</ul>
 			</div>
 		</div>
