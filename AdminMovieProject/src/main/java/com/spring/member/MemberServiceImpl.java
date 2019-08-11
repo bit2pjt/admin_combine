@@ -168,10 +168,14 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDAO.blacklist(); 
 	}
-
-	@Override
-	public String getBlackDate() {
-		return null;
+	
+	// 블랙리스트 등록일 가져오기
+	public String getBlackDate(String id) {
+		MemberDAO memberDAO = sqlSession.getMapper(MemberDAO.class);
+		String black_date = MemberDAO.getBlackDate(id);
+		
+		return black_date;
 	}
+
 
 }

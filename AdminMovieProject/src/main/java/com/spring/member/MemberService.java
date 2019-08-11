@@ -34,5 +34,5 @@ public interface MemberService {
 	public List<MemberVO> blacklist();
 	
 	// 블랙리스트 등록일 가져오기
-		public String getBlackDate();
+	public String getBlackDate(int id);
 }

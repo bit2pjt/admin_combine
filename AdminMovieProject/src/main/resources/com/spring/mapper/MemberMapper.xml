@@ -109,4 +109,10 @@
 		where 	m_email = #{m_email}
 		and 	m_password = #{m_password}
 	</select>
+	
+	<select id="getBlackDate" parameterType="String"
+		resultType="String">
+		select black_date from blacklist where id=#{id,
+		jdbcType=VARCHAR}
+	</select>
 </mapper>

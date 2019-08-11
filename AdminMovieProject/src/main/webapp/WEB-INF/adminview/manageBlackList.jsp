@@ -84,7 +84,7 @@
 									 <td><c:out value="${blacklist.id }" /></td>
 									 <td><c:out value="${blacklist.m_email }" /></td>
 									 <td><c:out value="${blacklist.m_nickname }" /></td>
-									 <td></td>
+									 <td><c:out value="${blacklist.m_nickname }" /></td>
 									<td><i class="ti-search"
 											onclick="location.href=''"></i></td>
 									</tr>
