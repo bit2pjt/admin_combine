@@ -19,7 +19,7 @@
 *  Copyright (C) by bit 2조 All right reserved.
 */
 -->
-<%@ include file="../header.jsp"%>
+<%@ include file="header.jsp"%>
 			<!-- page title area start -->
 			<div class="page-title-area">
 				<div class="row align-items-center">
@@ -129,4 +129,4 @@
 			</div>
 		</div>
 		<!-- main content area end -->
-		<%@ include file="../footer.jsp"%>
+		<%@ include file="footer.jsp"%>
