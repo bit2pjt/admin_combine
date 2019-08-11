@@ -1,13 +1,10 @@
-package com.spring.admin;
+package com.spring.notice;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.spring.member.MemberDAO;
-import com.spring.mypage.OneVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -27,13 +24,6 @@ public class AdminServiceImpl implements AdminService {
 		AdminDAO adminDAO = sqlSession.getMapper(AdminDAO.class);
 		
 		return adminDAO.getAllNoticeList();
-	}
-
-	@Override
-	public List<OneVO> getQnaList() {
-		AdminDAO adminDAO = sqlSession.getMapper(AdminDAO.class);
-		
-		return adminDAO.getQnaList();
 	}
 
 

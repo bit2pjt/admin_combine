@@ -1,4 +1,4 @@
-package com.spring.admin;
+package com.spring.notice;
 
 import java.util.Locale;
 
@@ -74,7 +74,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/adminQnaList", method = RequestMethod.GET)
 	public String adminQnaList(Model model) {
-		model.addAttribute("getQnaList", adminService.getQnaList());
+		model.addAttribute("getQnaList");
 		
 		return "adminview/adminQnaList";
 	}

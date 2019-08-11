@@ -1,8 +1,6 @@
-package com.spring.admin;
+package com.spring.notice;
 
 import java.util.List;
-
-import com.spring.mypage.OneVO;
 
 public interface AdminService {
 
@@ -10,6 +8,5 @@ public interface AdminService {
 	public List<AdNoticeVO> getAllNoticeList();
 
 	// qna 리스트 
-	public List<OneVO> getQnaList();
 
 }

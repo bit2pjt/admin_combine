@@ -1,4 +1,4 @@
-package com.spring.admin;
+package com.spring.notice;
 
 import lombok.Data;
 
