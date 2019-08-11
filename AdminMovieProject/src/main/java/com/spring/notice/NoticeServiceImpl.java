@@ -11,17 +11,17 @@ import lombok.Setter;
 
 @Service("adminService")
 @AllArgsConstructor
-public class AdminServiceImpl implements AdminService {
+public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private SqlSession sqlSession;
 
 	@Setter(onMethod_ = { @Autowired })
-	private AdminDAO adminDAOglobal;
+	private NoticeDAO adminDAOglobal;
 
 	@Override
 	public List<AdNoticeVO> getAllNoticeList() {
 		
-		AdminDAO adminDAO = sqlSession.getMapper(AdminDAO.class);
+		NoticeDAO adminDAO = sqlSession.getMapper(NoticeDAO.class);
 		
 		return adminDAO.getAllNoticeList();
 	}

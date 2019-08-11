@@ -9,29 +9,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class AdminController {
+public class NoticeController {
 
 	@Autowired
-	AdminService adminService;
+	NoticeService noticeService;
 
-
+	// index
 	@RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
-	public String movieList() {
-		return "adminview/index";
+	public String index() {
+		return "index";
 	}
 
+	// index
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		return "adminview/index";
+		return "index";
 	}
 	
+	// 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		
-		return "adminview/login";
+		return "login";
 	}
 
+	// 
 	@RequestMapping(value = "/adminNoticeGet", method = RequestMethod.GET)
 	public String adminNoticeGet() {
 		return "adminview/adminNoticeGet";
@@ -47,7 +50,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/adminNoticeList", method = RequestMethod.GET)
 	public String adminNoticeList(Model model) {
-		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
+//		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
 
 		return "adminview/adminNoticeList";
 	}
