@@ -68,4 +68,13 @@ public class ManageServiceImpl implements ManageService {
 		return null;
 	}
 
+	@Override
+	public MemberVO getInfo(int id) {
+		// 멤버 정보 가져오기
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		MemberVO vo = manageDAO.getInfo(id); 
+		
+		return vo;
+	}
+
 }

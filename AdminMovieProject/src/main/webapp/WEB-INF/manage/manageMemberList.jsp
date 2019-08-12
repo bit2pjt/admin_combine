@@ -84,10 +84,15 @@
 									 <td><c:out value="${listAll.m_email }" /></td>
 									 <td><c:out value="${listAll.m_nickname }" /></td>
 									 <td><c:out value="${listAll.m_regdate }" /></td>
+									<!-- 페이징 
 									<td><i class="ti-search"
-											onclick="location.href=''"></i></td>
+											onclick="location.href='manageMemberInfo${pageMaker.makeSearch(pageMaker.criteria.page)}&id=${board.bf_bno}'"></i></td>
+									 -->
+									<td><i class="ti-search"
+											onclick="location.href='manageMemberInfo?id=${listAll.id}'"></i></td>
+									
+									
 									</tr>
-								
 								</c:forEach>
 								
 								

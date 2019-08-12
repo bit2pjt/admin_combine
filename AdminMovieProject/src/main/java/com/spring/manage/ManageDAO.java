@@ -26,4 +26,7 @@ public interface ManageDAO {
 	// 탈퇴 예정일 가져오기
 	public Date getRemoveDate(int id);
 	
+	// 멤버 정보 가져오기
+	MemberVO getInfo(int id);
+	
 }

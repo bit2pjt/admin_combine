@@ -1,10 +1,13 @@
 package com.spring.manage;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ManageController {
@@ -22,7 +25,12 @@ public class ManageController {
 	
 	// 회원 상세보기
 	@RequestMapping(value = "/manageMemberInfo", method = RequestMethod.GET)
-	public String manageMemberInfo() {
+	public String manageMemberInfo(@RequestParam("id") int id, HttpSession session
+			, Model model) {
+		
+		MemberVO memberVO = manageService.getInfo(id);
+		
+		model.addAttribute("memberVO", memberVO); // 멤버 정보
 		
 		return "manage/manageMemberInfo";
 	}
