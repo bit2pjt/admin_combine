@@ -79,4 +79,10 @@
 		where id = #{id}
 	</select>
 	
+	<select id="getBlackDate" parameterType="int" resultType="Date">
+		select black_date
+		from blacklist
+		where id = #{id}
+	</select>
+	
 </mapper>

@@ -51,9 +51,12 @@ public class ManageServiceImpl implements ManageService {
 	}
 
 	@Override
-	public String getBlackDate(int id) {
+	public Date getBlackDate(int id) {
 		// 블랙리스트 등록일
-		return null;
+		ManageDAO ManageDAO = sqlSession.getMapper(ManageDAO.class);
+		Date black_date = ManageDAO.getBlackDate(id);
+		
+		return black_date;		
 	}
 
 	@Override
