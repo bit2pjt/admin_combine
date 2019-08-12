@@ -18,7 +18,7 @@ public interface ManageDAO {
 	public String userNickName(int id);
 
 	// 블랙리스트 등록일 가져오기
-	public Date getBlackDate(int id);
+	BlackListVO getBlackDate(int id);
 	
 	// 탈퇴 신청일 가져오기
 	public Date getDeleteDate(int id);

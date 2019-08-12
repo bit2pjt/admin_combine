@@ -90,14 +90,8 @@
 									 -->
 									<td><i class="ti-search"
 											onclick="location.href='manageMemberInfo?id=${listAll.id}'"></i></td>
-									
-									
 									</tr>
 								</c:forEach>
-								
-								
-								
-									
 								</tbody>
 							</table>
 						</div>

@@ -1,5 +1,6 @@
 package com.spring.manage;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +38,28 @@ public class ManageController {
 	
 	// 회원 정보 수정
 	@RequestMapping(value = "/manageMemberModify", method = RequestMethod.GET)
-	public String manageMemberModify() {
+	public String manageMemberModify(HttpSession session, HttpServletRequest request) {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		MemberVO memberVO = manageService.getInfo(id);
+		
+	    request.setAttribute("memberVO", memberVO);
 		
 		return "manage/manageMemberModify";
 	}
 	
+	// 회원 정보 수정 액션
+	
+	
 	// 블랙리스트 목록
 	@RequestMapping(value = "/manageBlackList", method = RequestMethod.GET)
-	public String manageBlackList(Model model) {
+	public String manageBlackList(Model model, HttpServletRequest request) {
 		model.addAttribute("blacklist", manageService.blacklist());
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		MemberVO memberVO = manageService.getInfo(id);
+		
+	    request.setAttribute("memberVO", memberVO);
 		
 		return "manage/manageBlackList";
 	}

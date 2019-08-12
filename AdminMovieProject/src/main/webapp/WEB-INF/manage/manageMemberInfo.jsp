@@ -129,18 +129,19 @@
 						</table>
 					</div>
 					<div class="info-right">
+					<!-- admin에서 회원정보 수정불가 -->
 						<button type="button" class="btn btn-dark mb-3"
-							onclick="location.href='manageMemberModify.do'">회원정보 수정</button>
+							onclick="location.href='manageMemberModify?id=${memberVO.id}'" style="visibility:hidden">회원정보 수정</button>
 						<br>
 						<button type="button" class="btn btn-dark mb-3"
-							onclick="location.href='manageMemberPost.do'">게시글 관리</button>
+							onclick="location.href='manageMemberPost'">게시글 관리</button>
 						<br>
 						<button type="button" class="btn btn-dark mb-3">블랙리스트 등록</button>
 						<br>
-						<button type="button" class="btn btn-dark mb-3">회원탈퇴</button>
+						<button type="button" class="btn btn-dark mb-3">회원삭제</button>
 						<br>
 						<button type="button" class="btn btn-dark mb-3 btn-memberlist"
-							onclick="location.href='manageMemberList.do'">회원목록</button>
+							onclick="location.href='manageMemberList'">회원목록</button>
 					</div>
 				</div>
 			</div>

@@ -83,9 +83,9 @@
 									 <td><c:out value="${blacklist.id }" /></td>
 									 <td><c:out value="${blacklist.m_email }" /></td>
 									 <td><c:out value="${blacklist.m_nickname }" /></td>
-									 <td><c:out value="${blacklist.m_nickname }" /></td>
+									 <td><c:out value="${blacklist. }" /></td>
 									<td><i class="ti-search"
-											onclick="location.href=''"></i></td>
+											onclick="location.href='manageMemberInfo?id=${listAll.id}'"></i></td>
 									</tr>
 								
 								</c:forEach>
