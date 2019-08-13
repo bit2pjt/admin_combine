@@ -9,23 +9,27 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
-@Service("adminService")
+@Service("noticeService")
 @AllArgsConstructor
 public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private SqlSession sqlSession;
 
 	@Setter(onMethod_ = { @Autowired })
-	private NoticeDAO adminDAOglobal;
+	private NoticeDAO noticeDAOglobal;
 
 	@Override
-	public List<AdNoticeVO> getAllNoticeList() {
+	public List<AdNoticeVO> noticeList() {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
 		
-		NoticeDAO adminDAO = sqlSession.getMapper(NoticeDAO.class);
-		
-		return adminDAO.getAllNoticeList();
+		return noticeDAO.noticeList();
 	}
 
-
+	@Override
+	public List<BoardQnaVO> qnaList() {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		
+		return noticeDAO.qnaList();
+	}
 
 }

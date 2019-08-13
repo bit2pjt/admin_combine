@@ -37,7 +37,7 @@ public class NoticeController {
 	// 공지사항 목록
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
 	public String noticeList(Model model) {
-//		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
+		model.addAttribute("noticeList", noticeService.noticeList());
 
 		return "notice/noticeList";
 	}
@@ -67,7 +67,8 @@ public class NoticeController {
 	
 	// 1:1 문의 목록
 	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
-	public String qnaList() {
+	public String qnaList(Model model) {
+		model.addAttribute("qnaList", noticeService.qnaList());
 		
 		return "notice/qnaList";
 	}

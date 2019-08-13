@@ -74,21 +74,21 @@
 									</tr>
 								</thead>
 								<tbody>
-
-									<c:forEach items="${getQnaList}" var="getQnaList"
+									<c:forEach items="${qnaList}" var="qnaList"
 										varStatus="status">
 										<tr>
 											<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 									 -->
-											<td><c:out value="${getQnaList.qna_no }" /></td>
-											<td><c:out value="${getQnaList.qna_category }" /></td>
-											<td><c:out value="${getQnaList.qna_title }" /></td>
-											<td><c:out value="${getQnaList.id }" /></td>
-											<td><c:out value="${getQnaList.qna_update_date }" /></td>
+											<td><c:out value="${qnaList.qna_no }" /></td>
+											<td><c:out value="${qnaList.qna_category }" /></td>
+											<td><c:out value="${qnaList.qna_title }" /></td>
+											<td><c:out value="${qnaList.id }" /></td>
+											<td><c:out value="${qnaList.qna_update_date }" /></td>
 											<td><i class="ti-search" onclick="location.href=''"></i></td>
 										</tr>
 
 									</c:forEach>
+									
 
 								</tbody>
 							</table>

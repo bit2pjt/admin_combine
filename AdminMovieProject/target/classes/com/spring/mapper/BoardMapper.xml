@@ -69,6 +69,7 @@
 		<result property="m_level" column="m_level" />
 		<result property="m_favorite" column="m_favorite" />
 		<result property="m_blacklist" column="m_blacklist" />
+		<result property="m_authkey" column="m_authkey" />
 	</resultMap>
 
 	<select id="listAll" resultMap="BoardFreeMap">
