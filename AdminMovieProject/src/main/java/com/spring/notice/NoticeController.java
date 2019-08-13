@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -49,9 +50,14 @@ public class NoticeController {
 
 	// 공지사항 상세보기
 	@RequestMapping(value = "/noticeDetail", method = RequestMethod.GET)
-	public String noticeDetail(Model model) {
-//		model.addAttribute("getAllNoticeList", adminService.getAllNoticeList());
+	public String noticeDetail(@RequestParam("an_code") int an_code, HttpSession session, Model model) {
+		AdNoticeVO adNoticeVO = noticeService.noticeDetail(an_code);
+		
+		model.addAttribute("adNoticeVO", adNoticeVO);
 
+		String admin_name = noticeService.getAdminName(1); // 게시물 작성자의 정보
+
+		
 		return "notice/noticeDetail";
 	}
 

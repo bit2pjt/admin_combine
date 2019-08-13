@@ -48,4 +48,12 @@ public class NoticeServiceImpl implements NoticeService {
 		return admin_name;
 	}
 
+	@Override
+	public AdNoticeVO noticeDetail(int an_code) {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		AdNoticeVO adNoticeVO = noticeDAO.noticeDetail(an_code);
+		
+		return adNoticeVO;
+	}
+
 }

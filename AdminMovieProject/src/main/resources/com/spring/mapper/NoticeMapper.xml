@@ -89,5 +89,8 @@
 		INSERT INTO ad_notice VALUES (seq_ad_notice_no.nextval, #{admin_num}, #{an_content, jdbcType=VARCHAR},  #{an_title, jdbcType=VARCHAR},
             sysdate, sysdate)
 	</insert>
-	
+	<!--  detail 가져오기 -->
+		<select id="noticeDetail" parameterType="int" resultType="com.spring.notice.AdNoticeVO">
+		select * from ad_notice where an_code=#{an_code}
+	</select>
 </mapper>

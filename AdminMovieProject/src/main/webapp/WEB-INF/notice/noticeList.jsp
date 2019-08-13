@@ -83,9 +83,8 @@
 											<td><c:out value="${noticeList.an_title }" /></td>
 											<td><c:out value="${noticeList.an_reg_date }" /></td>
 											<td><c:out value="${noticeList.an_update_date }" /></td>
-											<td><i class="ti-search" onclick="location.href=''"></i></td>
+											<td><i class="ti-search" onclick="location.href='noticeDetail?an_code=${noticeList.an_code}'"></i></td>
 										</tr>
-
 									</c:forEach>
 								</tbody>
 							</table>

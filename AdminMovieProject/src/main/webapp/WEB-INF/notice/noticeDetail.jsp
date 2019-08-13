@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--
 /**
 * @Class Name :  adminNoticeGet.jsp
@@ -43,24 +46,24 @@
 				<div class="card-body2">
 					<div class="content-body">
 						<ul>
-						<li><strong>글제목 : </strong> <span>집에 가고 싶어요.</span></li>
+						<li><strong>글제목 : </strong> <span>${adNoticeVO.an_title}</span></li>
 							
 							<li>
 								<div class="ct" style="width: 20%;">
-									<strong>글번호 : </strong> <span>1</span>
+									<strong>글번호 : </strong> <span>${adNoticeVO.an_code}</span>
 								</div>
 						
 								<div class="ct" style="width: 25%;">
-									<strong>작성일 :</strong> <span>2019/07/08</span>
+									<strong>작성일 :</strong> <span>${adNoticeVO.an_reg_date}</span>
 								</div>
 								<div class="ct">
-									<strong>수정일:</strong> <span> 2019/07/08 </span>
+									<strong>수정일:</strong> <span>${adNoticeVO.an_update_date}</span>
 								</div>
 							</li>
 							
 							<li>
 								<div class="abc">
-									<textarea cols="10" rows="10" style="resize: none;" readonly>게시글 상세보기 하단에 댓글도 보여줘야하지않을까잉...?</textarea>
+									<code>${adNoticeVO.an_content}</code>
 								</div>
 								<div class="btns">
 									<button type="button" class="btn btn-dark mb-3"
@@ -69,7 +72,7 @@
 									<button type="button" class="btn btn-dark mb-3">게시글삭제</button> <!-- 삭제기능 넣어야함 -->
 									<br>
 									<button type="button" class="btn btn-dark mb-3"
-										onclick="location.href='adminNoticeList.do'">목록으로
+										onclick="location.href='noticeList'">목록으로
 										돌아가기</button>
 									<br>
 								</div>
