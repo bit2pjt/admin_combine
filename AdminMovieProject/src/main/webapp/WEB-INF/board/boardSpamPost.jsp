@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--
 /**
 * @Class Name :  manageSpamPost.jsp
@@ -96,20 +99,21 @@
 											</tr>
 										</thead>
 										<tbody>
-										<%
-											for(int i=0; i<10; i++){
-										%>
-											<tr>
-												<th scope="row"><%= i %></th>
-												<td style="text-align:left;">게시글 제목입니당</td>
-												<td>유디닝</td>
-												<td>2019/07/14</td>
-												<td><i class="ti-search"
-													onclick="location.href='managePostGet.do'"></i></td>
-											</tr>
-										<%
-											}
-										%>
+										<!--4.  자유게시판 게시글의 나열 시작 -->
+											<c:forEach items="${boardFree}" var="board"
+												varStatus="status">
+												<tr class="post">
+													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
+													<td>${board.bf_bno}</td>
+													<td><a
+														href="boardPostDetail?bf_bno=${board.bf_bno}">${board.bf_title}</a></td>
+													<td>${board.nickname}</td>
+													<td><fmt:formatDate value="${board.bf_update_date}"
+															pattern="yyyy-MM-dd" /></td>
+													<td><i class="ti-search"
+														onclick="location.href='boardPostDetail?bf_bno=${board.bf_bno}'"></i></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

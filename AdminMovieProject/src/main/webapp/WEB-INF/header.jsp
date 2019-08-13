@@ -91,7 +91,7 @@
 							<li><a href="javascript:void(0)" aria-expanded="true"> <i
 									class="ti-layout-sidebar-left"></i><span>게시글 관리</span></a>
 								<ul class="collapse">
-									<li><a href="boardAlllist">전체 게시글</a></li>
+									<li><a href="boardAllList">전체 게시글</a></li>
 									<li><a href="boardSpamPost">신고 게시글</a></li>
 									<li><a href="boardSpamReply">신고 댓글</a></li>
 								</ul></li>

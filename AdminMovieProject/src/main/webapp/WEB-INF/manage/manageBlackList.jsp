@@ -83,7 +83,8 @@
 									 <td><c:out value="${blacklist.id }" /></td>
 									 <td><c:out value="${blacklist.m_email }" /></td>
 									 <td><c:out value="${blacklist.m_nickname }" /></td>
-									 <td><c:out value="${blacklist. }" /></td>
+									 <!-- <td><c:out value="${blacklist.m_nickname }" /></td> -->
+										<td>2019-07-29</td>
 									<td><i class="ti-search"
 											onclick="location.href='manageMemberInfo?id=${listAll.id}'"></i></td>
 									</tr>

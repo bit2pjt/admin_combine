@@ -44,7 +44,7 @@
 				<!-- nav tab start -->
 				<div class="card-body">
 				
-				<!-- 검색!! -->
+				<!-- 검색!!
 				<div class="box-footer" style="display:inline-block; width:100%; margin-left:25%;">
                         <div class="form-group col-sm-2">
                             <select class="form-control" name="searchType" id="searchType">
@@ -67,7 +67,7 @@
                                 </span>
                             </span>
                         </div>
-                    </div> 
+                    </div>  -->
 				<!-- 검색 !! -->
 					<!--search box-->
 					<div class="post-search-box drop-buttons row">
@@ -125,17 +125,18 @@
 										</thead>
 										<tbody>
 											<!--4.  자유게시판 게시글의 나열 시작 -->
-											<c:forEach items="${boardfree}" var="board"
+											<c:forEach items="${boardFree}" var="board"
 												varStatus="status">
 												<tr class="post">
-													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
+													<td>${board.bf_bno}</td>
 													<td><a
-														href="boardFreeGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bf_bno}">${board.bf_title}</a></td>
+														href="boardPostDetail?bf_bno=${board.bf_bno}">${board.bf_title}</a></td>
 													<td>${board.nickname}</td>
 													<td><fmt:formatDate value="${board.bf_update_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='managePostGet.do'"></i></td>
+														onclick="location.href='boardPostDetail?bf_bno=${board.bf_bno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>

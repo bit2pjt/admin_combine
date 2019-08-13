@@ -66,7 +66,7 @@ public class ManageController {
 	// 탈퇴 신청 회원 목록
 	@RequestMapping(value = "/manageMemberOutList", method = RequestMethod.GET)
 	public String manageMemberOutList(Model model) {
-		model.addAttribute("delete", manageService.deletelist());
+		model.addAttribute("deletelist", manageService.deletelist());
 
 		return "manage/manageMemberOutList";
 	}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0.//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.board.BoardFreeDAO">
+	<resultMap type="com.spring.board.BoardFreeVO"
+		id="BoardFreeMap">
+		<result property="bf_bno" column="bf_bno" />
+		<result property="id" column="id" />
+		<result property="bf_category" column="bf_category" />
+		<result property="bf_title" column="bf_title" />
+		<result property="bf_reg_date" column="bf_reg_date" />
+		<result property="bf_update_date" column="bf_update_date" />
+		<result property="bf_source" column="bf_source" />
+		<result property="bf_content" column="bf_content" />
+		<result property="bf_warn_counter" column="bf_warn_counter" />
+		<result property="bf_view_counter" column="bf_view_counter" />
+		<result property="bf_deleteyn" column="bf_deleteyn" />
+		<result property="bf_recommend" column="bf_recommend" />
+		<result property="bf_decommend" column="bf_decommend" />
+	</resultMap>
+
+	<resultMap type="com.spring.board.ThumbVO" id="ThumbMap">
+		<result property="bf_thumb" column="bf_thumb" />
+		<result property="bfr_rno" column="bfr_rno" />
+		<result property="bf_bno" column="bf_bno" />
+		<result property="id" column="id" />
+	</resultMap>
+
+	<resultMap type="com.spring.board.WarnVO" id="WarnMap">
+		<result property="bf_bno" column="bf_bno" />
+		<result property="id" column="id" />
+		<result property="bf_date" column="bf_date" />
+	</resultMap>
+
+	<resultMap type="com.spring.manage.MemberVO"
+		id="MemberResultMap">
+		<result property="id" column="id" />
+		<result property="m_nickname" column="m_nickname" />
+		<result property="m_image" column="m_image" />
+		<result property="m_email" column="m_email" />
+		<result property="m_eagree" column="m_eagree" />
+		<result property="m_sagree" column="m_sagree" />
+		<result property="m_name" column="m_name" />
+		<result property="m_phone" column="m_phone" />
+		<result property="m_cert" column="m_cert" />
+		<result property="m_password" column="m_password" />
+		<result property="m_regdate" column="m_regdate" />
+		<result property="m_update_date" column="m_update_date" />
+		<result property="m_deleteyn" column="m_deleteyn" />
+		<result property="m_following" column="m_following" />
+		<result property="m_follower" column="m_follower" />
+		<result property="m_level" column="m_level" />
+		<result property="m_favorite" column="m_favorite" />
+		<result property="m_blacklist" column="m_blacklist" />
+	</resultMap>
+
+	<select id="listAll" resultMap="BoardFreeMap">
+        <![CDATA[
+        SELECT *  
+        FROM board_free
+        WHERE bf_bno > 0
+        ORDER BY bf_bno DESC
+        ]]>
+	</select>
+	<select id="getContent" parameterType="int"
+		resultMap="BoardFreeMap">
+		select *
+		from board_free
+		where bf_bno = #{page}
+	</select>
+	<select id="getWriter" parameterType="int"
+		resultMap="MemberResultMap">
+		select *
+		from member
+		where id = #{id}
+	</select>
+	<select id="spamListAll" resultMap="BoardFreeMap">
+	 <![CDATA[
+        SELECT *  
+        FROM board_free
+        WHERE bf_warn_counter >= 5
+        ORDER BY bf_bno DESC
+        ]]>
+	</select>
+</mapper>

@@ -45,7 +45,7 @@
 						<ul>
 							<li>
 								<div class="ct" style="width: 50%;">
-									<strong>작성자 : </strong> <span>비트인</span>
+									<strong>작성자 : </strong> <span>${memberVO.m_nickname}</span>
 								</div>
 								<div class="ct">
 									<strong>추천:</strong> <span> 100 </span>
@@ -53,28 +53,27 @@
 							</li>
 							<li>
 								<div class="ct" style="width: 50%;">
-									<strong>작성일 :</strong> <span>2019/07/08</span>
+									<strong>작성일 :</strong> <span>${boardFreeVO.bf_reg_date}</span>
 								</div>
 								<div class="ct">
 									<strong>비추천:</strong> <span> 100 </span>
 								</div>
 							</li>
-							<li><strong>글제목 : </strong> <span>집에 가고 싶어요.</span></li>
+							<li><strong>글제목 : </strong> <span>${boardFreeVO.bf_title}</span></li>
 							<li>
 								<div class="abc">
-									<textarea cols="10" rows="10" readonly>
-                                                게시글 상세보기 하단에 댓글도 보여줘야하지않을까잉...?</textarea>
+									<code cols="10" rows="10" readonly>${boardFreeVO.bf_content}</code>
 								</div>
 								<div class="btns">
 									<button type="button" class="btn btn-dark mb-3"
-										onclick="location.href='manageMemberPost.do'">게시글삭제</button>
+										onclick="location.href='manageMemberPost'">게시글삭제</button>
 									<br>
 									<button type="button" class="btn btn-dark mb-3"
-										onclick="location.href='manageMemberPost.do'">삭제 및
+										onclick="location.href='manageMemberPost'">삭제 및
 										블랙리스트 추가</button>
 									<br>
 									<button type="button" class="btn btn-dark mb-3"
-										onclick="location.href='manageMemberPost.do'">목록으로
+										onclick="location.href='boardAllList'">목록으로
 										돌아가기</button>
 									<br>
 								</div>

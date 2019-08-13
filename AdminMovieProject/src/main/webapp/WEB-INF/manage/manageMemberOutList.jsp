@@ -75,17 +75,18 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${listAll}" var="listAll" varStatus="status">
+								<c:forEach items="${deletelist}" var="deletelist" varStatus="status">
 									<tr>
 									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 									 -->
 									 
-									 <td><c:out value="${listAll.id }" /></td>
-									 <td><c:out value="${listAll.m_email }" /></td>
-									 <td><c:out value="${listAll.m_nickname }" /></td>
-									 <td><c:out value="${listAll.m_regdate }" /></td>
+									 <td><c:out value="${deletelist.id }" /></td>
+									 <td><c:out value="${deletelist.m_email }" /></td>
+									 <!-- <td><c:out value="${blacklist.m_nickname }" /></td> -->
+										<td>2019-07-29</td>
+										<td>2019-08-29</td>
 									<td><i class="ti-search"
-											onclick="location.href=''"></i></td>
+											onclick="location.href='manageMemberInfo?id=${deletelist.id}'"></i></td>
 									</tr>
 								
 								</c:forEach>
