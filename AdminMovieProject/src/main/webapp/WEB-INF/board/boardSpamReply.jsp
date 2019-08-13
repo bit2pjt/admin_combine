@@ -99,17 +99,17 @@
 										</thead>
 										<tbody>
 											<!--4.  자유게시판 게시글의 나열 시작 -->
-											<c:forEach items="${boardfree}" var="board"
+											<c:forEach items="${boardFree}" var="board"
 												varStatus="status">
 												<tr class="post">
-													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
-													<td><a
-														href="boardFreeGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bf_bno}">${board.bf_title}</a></td>
-													<td>${board.nickname}</td>
-													<td><fmt:formatDate value="${board.bf_update_date}"
+													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
+													<td>${board.bfr_rno}</td>
+													<td>${board.bfr_warncontent}</td>
+													<td>${board.id}</td>
+													<td><fmt:formatDate value="${board.bfr_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='managePostGet.do'"></i></td>
+														onclick="location.href='boardReplyDetail?bf_bno=${board.bfr_rno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>

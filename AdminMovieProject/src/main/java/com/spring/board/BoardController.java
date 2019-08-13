@@ -76,7 +76,9 @@ public class BoardController {
 	
 	// 신고 댓글 목록
 	@RequestMapping(value = "/boardSpamReply", method = RequestMethod.GET)
-	public String boardSpamReply() {
+	public String boardSpamReply(Model model) {
+		// 자유게시판
+		model.addAttribute("boardFree", boardFreeService.spamRListAll());
 		
 		return "board/boardSpamReply";
 	}

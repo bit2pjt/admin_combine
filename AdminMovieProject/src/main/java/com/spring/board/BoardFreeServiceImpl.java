@@ -346,7 +346,12 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		return boardFreeDAO.spamListAll(); 
 	}
 	
-	
+	// 신고댓글
+	@Override
+	public List<BfrWarningVO> spamRListAll() {
+		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
+		return boardFreeDAO.spamRListAll(); 
+	}
 	
 	@Override
 	public String getMemberNickname(String m_email) {

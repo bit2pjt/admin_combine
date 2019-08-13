@@ -10,6 +10,8 @@ interface BoardFreeService {
 	List<BoardFreeVO> listAll();
 	// 스팸 게시물
 	List<BoardFreeVO> spamListAll();
+	// 신고댓글
+	List<BfrWarningVO> spamRListAll();
 	
 	List<BoardFreeVO> listCriteria(Criteria criteria);
 	

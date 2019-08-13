@@ -33,6 +33,21 @@
 		<result property="id" column="id" />
 		<result property="bf_date" column="bf_date" />
 	</resultMap>
+	
+	<resultMap type="com.spring.board.FreeWarningVO" id="FreeWarningVO">
+		<result property="bf_bno" column="bf_bno" />
+		<result property="id" column="id" />
+		<result property="bf_date" column="bf_date" />
+		<result property="bf_warncontent" column="bf_warncontent"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.board.BfrWarningVO" id="BfrWarningVO">
+		<result property="bfr_rno" column="bfr_rno" />
+		<result property="id" column="id" />
+		<result property="bfr_date" column="bfr_date" />
+		<result property="bfr_warncontent" column="bfr_warncontent"/>
+	</resultMap>
+	
 
 	<resultMap type="com.spring.manage.MemberVO"
 		id="MemberResultMap">
@@ -82,6 +97,13 @@
         FROM board_free
         WHERE bf_warn_counter >= 5
         ORDER BY bf_bno DESC
+        ]]>
+	</select>
+	<select id="spamRListAll" resultMap="BfrWarningVO">
+	 <![CDATA[
+        SELECT *  
+        FROM bfr_warning
+        ORDER BY bfr_rno DESC
         ]]>
 	</select>
 </mapper>
