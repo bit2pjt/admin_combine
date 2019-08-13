@@ -78,5 +78,16 @@
         ORDER BY qna_no DESC
         ]]>
 	</select>
-
+	
+	<!-- notice write -->
+	<select id="getAdminName" parameterType="int" resultType="String">
+		select admin_name from ad_member where admin_num=#{admin_num}
+	</select>
+	
+	<!-- insert : insertNotice -->
+	<insert id="insertNotice" parameterType="com.spring.notice.AdNoticeVO">
+		INSERT INTO ad_notice VALUES (seq_ad_notice_no.nextval, #{admin_num}, #{an_content, jdbcType=VARCHAR},  #{an_title, jdbcType=VARCHAR},
+            sysdate, sysdate)
+	</insert>
+	
 </mapper>

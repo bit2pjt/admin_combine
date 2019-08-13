@@ -32,4 +32,20 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDAO.qnaList();
 	}
 
+	@Override
+	public int insertNotice(AdNoticeVO adNoticeVO) {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		int result = noticeDAO.insertNotice(adNoticeVO);
+		
+		return result;
+	}
+
+	@Override
+	public String getAdminName(int admin_id) {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		String admin_name = noticeDAO.getAdminName(admin_id);
+		
+		return admin_name;
+	}
+
 }

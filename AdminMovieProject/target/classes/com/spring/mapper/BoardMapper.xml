@@ -21,6 +21,7 @@
 		<result property="bf_decommend" column="bf_decommend" />
 	</resultMap>
 
+
 	<resultMap type="com.spring.board.ThumbVO" id="ThumbMap">
 		<result property="bf_thumb" column="bf_thumb" />
 		<result property="bfr_rno" column="bfr_rno" />
@@ -33,21 +34,24 @@
 		<result property="id" column="id" />
 		<result property="bf_date" column="bf_date" />
 	</resultMap>
-	
-	<resultMap type="com.spring.board.FreeWarningVO" id="FreeWarningVO">
+
+	<resultMap type="com.spring.board.FreeWarningVO"
+		id="FreeWarningVO">
 		<result property="bf_bno" column="bf_bno" />
 		<result property="id" column="id" />
 		<result property="bf_date" column="bf_date" />
-		<result property="bf_warncontent" column="bf_warncontent"/>
+		<result property="bf_warncontent" column="bf_warncontent" />
 	</resultMap>
-	
-	<resultMap type="com.spring.board.BfrWarningVO" id="BfrWarningVO">
+
+	<resultMap type="com.spring.board.BfrWarningVO"
+		id="BfrWarningVO">
 		<result property="bfr_rno" column="bfr_rno" />
 		<result property="id" column="id" />
 		<result property="bfr_date" column="bfr_date" />
-		<result property="bfr_warncontent" column="bfr_warncontent"/>
+		<result property="bfr_warncontent" column="bfr_warncontent" />
 	</resultMap>
 	
+
 
 	<resultMap type="com.spring.manage.MemberVO"
 		id="MemberResultMap">
@@ -72,7 +76,8 @@
 		<result property="m_authkey" column="m_authkey" />
 	</resultMap>
 
-	<select id="listAll" resultMap="BoardFreeMap">
+	<!-- free board 시작 -->
+	<select id="listfAll" resultMap="BoardFreeMap">
         <![CDATA[
         SELECT *  
         FROM board_free
@@ -80,11 +85,11 @@
         ORDER BY bf_bno DESC
         ]]>
 	</select>
-	<select id="getContent" parameterType="int"
+	<select id="getfContent" parameterType="int"
 		resultMap="BoardFreeMap">
 		select *
 		from board_free
-		where bf_bno = #{page}
+		where bf_bno = #{bf_bno}
 	</select>
 	<select id="getWriter" parameterType="int"
 		resultMap="MemberResultMap">
@@ -92,7 +97,7 @@
 		from member
 		where id = #{id}
 	</select>
-	<select id="spamListAll" resultMap="BoardFreeMap">
+	<select id="spamfListAll" resultMap="BoardFreeMap">
 	 <![CDATA[
         SELECT *  
         FROM board_free
@@ -100,7 +105,7 @@
         ORDER BY bf_bno DESC
         ]]>
 	</select>
-	<select id="spamRListAll" resultMap="BfrWarningVO">
+	<select id="spamfRListAll" resultMap="BfrWarningVO">
 	 <![CDATA[
         SELECT *  
         FROM bfr_warning

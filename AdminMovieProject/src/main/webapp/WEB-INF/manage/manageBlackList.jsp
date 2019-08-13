@@ -86,7 +86,7 @@
 									 <!-- <td><c:out value="${blacklist.m_nickname }" /></td> -->
 										<td>2019-07-29</td>
 									<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo?id=${listAll.id}'"></i></td>
+											onclick="location.href='manageMemberInfo?id=${blacklist.id}'"></i></td>
 									</tr>
 								
 								</c:forEach>

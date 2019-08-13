@@ -9,4 +9,10 @@ public interface NoticeDAO {
 
 	// qna 리스트 
 	public List<BoardQnaVO> qnaList();
+	
+	//공지사항 등록
+	int insertNotice(AdNoticeVO adNoticeVO);
+	
+	//관리자 이름 
+	public String getAdminName(int admin_id);
 }

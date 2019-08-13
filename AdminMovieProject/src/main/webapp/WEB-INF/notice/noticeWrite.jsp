@@ -68,6 +68,42 @@
 </head>
 
 <body>
+<script>
+$(function() {
+		var btn = $("#update-btn");
+		var from = $("#noticeform");
+	
+		btn.on("click", function() {
+			//alert($(".update-content").text());
+			if ($(".post-title").val().length == 0) {
+	            alert("제목을 입력해주세요.");
+	         	$(".post-title").focus();
+	            return false;
+	         }else if ($(".update-content").val().length == 0) {
+	            alert("내용을 입력하세요.");
+	        	$(".update-content").focus();
+	            return false;
+	         }else {
+	        	 if (confirm("등록하시겠습니까?") == true) { //확인
+	        		 noticeform.submit();
+	              } else { //취소
+	                 return false;
+	             }
+	        }
+			
+		})
+	});  
+
+function register_back() {
+   msg = "게시글 작성을 취소하시겠습니까?";
+   if (confirm(msg) != 0) {
+  	 location.href = "/movie/boardFreeListP?page=${searchCriteria.page}"
+           + "&perPageNum=${searchCriteria.perPageNum}"
+           + "&searchType=${searchCriteria.searchType}"
+           + "&keyword=${searchCriteria.keyword}";
+   }
+}
+</script>
 	<!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -152,7 +188,7 @@
 							<h4 class="page-title pull-left">공지사항 작성하기</h4>
 							<ul class="breadcrumbs pull-left">
 								<li><a href="/admin/">Home</a></li>
-								<li><a href="/admin/adminNoticeList.do">공지사항</a></li>
+								<li><a href="/admin/noticeList">공지사항</a></li>
 								<li><span>공지사항 작성하기</span></li>
 							</ul>
 						</div>
@@ -167,24 +203,25 @@
 						<div class="card2">
 							<div class="card-body2">
 								<div class="content-body">
-									<form method="post">
+									<form name="noticeform" action="noticeWriteAction" method="POST"
+                  onsubmit="return check()">
+               
 										<!-- 1. 제목 -->
 										<div class="form-group">
 											<label for="example-text-input" class="col-form-label">제목</label>
-											<input class="form-control" type="text" placeholder="제목을 입력하세요."
-												id="">
+											<input name="an_title"class="form-control" type="text" placeholder="제목을 입력하세요."
+												id="an_title">
 										</div>
 
 										<label for="example-text-input" class="col-form-label">내용</label>
 										<!-- 2. 썸머노트 -->
-										<textarea id="summernote" name="editordata"
+										<textarea id="summernote" name="an_content"
 											style="resize: none;"></textarea>
 
 
 										<!-- 3. 글쓰기 버튼 -->
 										<div style="text-align: right">
-											<button type="submit" class="btn btn-dark mb-3"
-												onclick="location.href=''">작성하기</button>
+											<button type="submit" class="btn btn-dark mb-3">작성하기</button>
 
 											<button type="button" class="btn btn-dark mb-3"
 												onclick="location.href='adminNoticeList.do'">취소</button>
