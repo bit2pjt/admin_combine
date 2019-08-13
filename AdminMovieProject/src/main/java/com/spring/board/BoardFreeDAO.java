@@ -9,11 +9,11 @@ import com.spring.paging.Criteria;
 import com.spring.paging.SearchCriteria;
 
 public interface BoardFreeDAO {
-	List<BoardFreeVO> listAll();
+	List<BoardFreeVO> listfAll();
 	// 스팸 게시물
-	List<BoardFreeVO> spamListAll();
+	List<BoardFreeVO> spamfListAll();
 	// 신고댓글
-	List<BfrWarningVO> spamRListAll();
+	List<BfrWarningVO> spamfRListAll();
 	
 	List<BoardFreeVO> listCriteria(Criteria criteria);
 	
@@ -35,7 +35,8 @@ public interface BoardFreeDAO {
 	
 	BoardFreeVO selectBoardFree(int bf_bno);	// 자유게시판 상세정보 가져오기
 	
-	BoardFreeVO getContent(int page);
+	// 이름변경
+	BoardFreeVO getfContent(int page);
 	
 	void boardDelete(int bno);
 	

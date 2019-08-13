@@ -1300,6 +1300,7 @@ table.dbkit-table tr td {
 
 .seo-fact {
     border-radius: 3px;
+    background: linear-gradient(159deg, rgb(137, 25, 254) 0%, rgb(137, 25, 254) 59%);
 }
 
 .sbg1 {
@@ -1321,6 +1322,12 @@ table.dbkit-table tr td {
     background: -webkit-linear-gradient(59deg, rgb(254, 208, 63) 0%, rgb(230, 190, 63) 110%);
     background: linear-gradient(31deg, rgb(254, 208, 63) 0%, rgb(230, 190, 63) 110%);
 }
+
+.sbg55 {
+    background: -webkit-linear-gradient(59deg, rgb(137, 25, 254) 0%, rgb(137, 25, 254) 110%);
+    background: linear-gradient(31deg, rgb(137, 25, 254) 0%, rgb(137, 25, 254) 110%);
+}
+
 
 .seofct-icon {
     color: #fff;

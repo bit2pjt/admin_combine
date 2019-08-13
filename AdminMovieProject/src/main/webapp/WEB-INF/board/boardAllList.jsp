@@ -187,17 +187,18 @@
 										</thead>
 										<tbody>
 											<!--4.  자유게시판 게시글의 나열 시작 -->
-											<c:forEach items="${boardshare}" var="board"
+											<c:forEach items="${boardShare}" var="board"
 												varStatus="status">
 												<tr class="post">
-													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
+													<td>${board.bs_bno}</td>
 													<td><a
-														href="boardShareGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bs_bno}">${board.bs_title}</a></td>
+														href="boardPostDetail?bs_bno=${board.bs_bno}">${board.bs_title}</a></td>
 													<td>${board.nickname}</td>
 													<td><fmt:formatDate value="${board.bs_update_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='managePostGet.do'"></i></td>
+														onclick="location.href='boardPostDetail?bs_bno=${board.bs_bno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>

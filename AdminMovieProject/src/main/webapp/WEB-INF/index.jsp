@@ -25,10 +25,10 @@
 				<div class="row align-items-center">
 					<div class="col-sm-6">
 						<div class="breadcrumbs-area clearfix">
-							<h4 class="page-title pull-left">Dashboard</h4>
+							<h4 class="page-title pull-left">사이트 한눈에 보기</h4>
 							<ul class="breadcrumbs pull-left">
 								<li><a href="/admin/">Home</a></li>
-								<li><span>Dashboard</span></li>
+								<li><span>home</span></li>
 							</ul>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 											<div class="seofct-icon">
 												<i class="ti-thumb-up"></i> 회원수
 											</div>
-											<h2>1</h2>
+											<h2>12</h2><!-- 여기에 회원수 카운트 추가~~ -->
 										</div>
 										<canvas id="seolinechart1" height="50"></canvas>
 									</div>
@@ -56,27 +56,13 @@
 							</div>
 							<div class="col-md-6 mt-md-5 mb-3">
 								<div class="card">
-									<div class="seo-fact sbg2">
+									<div class="seo-fact sbg1">
 										<div
 											class="p-4 d-flex justify-content-between align-items-center">
 											<div class="seofct-icon">
 												<i class="ti-share"></i> 게시글수
 											</div>
-											<h2>0</h2>
-										</div>
-										<canvas id="seolinechart2" height="50"></canvas>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 mt-5 mb-3">
-								<div class="card">
-									<div class="seo-fact sbg1">
-										<div
-											class="p-4 d-flex justify-content-between align-items-center">
-											<div class="seofct-icon">
-												<i class="ti-thumb-up"></i> 회원수
-											</div>
-											<h2>1</h2>
+											<h2>45</h2><!-- 여기에 전체 게시글 수 카운트 추가~~ -->
 										</div>
 										<canvas id="seolinechart1" height="50"></canvas>
 									</div>
@@ -84,13 +70,41 @@
 							</div>
 							<div class="col-md-6 mt-5 mb-3">
 								<div class="card">
-									<div class="seo-fact sbg1">
+									<div class="seo-fact sbg3">
 										<div
 											class="p-4 d-flex justify-content-between align-items-center">
 											<div class="seofct-icon">
-												<i class="ti-thumb-up"></i> 회원수
+												<i class="ti-share"></i> 공지사항수
 											</div>
-											<h2>1</h2>
+											<h2>2</h2><!-- 여기에 공지사항 카운트 추가~~ -->
+										</div>
+										<canvas id="seolinechart1" height="50"></canvas>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 mt-5 mb-3">
+								<div class="card">
+									<div class="seo-fact sbg55">
+										<div
+											class="p-4 d-flex justify-content-between align-items-center">
+											<div class="seofct-icon">
+												<i class="ti-share"></i> 나눔게시글 수 
+											</div>
+											<h2>29</h2><!-- 여기에 나눔게시글 카운트 추가~~ -->
+										</div>
+										<canvas id="seolinechart1" height="50"></canvas>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 mt-md-5 mb-3">
+								<div class="card">
+									<div class="seo-fact sbg4">
+										<div
+											class="p-4 d-flex justify-content-between align-items-center">
+											<div class="seofct-icon">
+												<i class="ti-share"></i> 나영리 게시글 수 
+											</div>
+											<h2>2</h2><!-- 여기에 나영리 카운트 추가~~ -->
 										</div>
 										<canvas id="seolinechart1" height="50"></canvas>
 									</div>
@@ -102,25 +116,11 @@
 										<div
 											class="p-4 d-flex justify-content-between align-items-center">
 											<div class="seofct-icon">
-												<i class="ti-share"></i> 게시글수
+												<i class="ti-share"></i> 자유게시글 수
 											</div>
-											<h2>0</h2>
+											<h2>16</h2><!-- 여기에 자유게시글 카운트 추가~~ -->
 										</div>
-										<canvas id="seolinechart2" height="50"></canvas>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 mt-md-5 mb-3">
-								<div class="card">
-									<div class="seo-fact sbg2">
-										<div
-											class="p-4 d-flex justify-content-between align-items-center">
-											<div class="seofct-icon">
-												<i class="ti-share"></i> 게시글수
-											</div>
-											<h2>0</h2>
-										</div>
-										<canvas id="seolinechart2" height="50"></canvas>
+										<canvas id="seolinechart1" height="50"></canvas>
 									</div>
 								</div>
 							</div>
@@ -133,8 +133,8 @@
 					<div class="col-lg-4 mt-5">
 						<div class="card h-full">
 							<div class="card-body">
-								<h4 class="header-title">사용자</h4>
-								<canvas id="seolinechart8" height="233"></canvas>
+								<h4 class="header-title">게시판 별 글수 </h4>
+								<canvas id="seolinechart8" height="500"></canvas>
 							</div>
 						</div>
 					</div>

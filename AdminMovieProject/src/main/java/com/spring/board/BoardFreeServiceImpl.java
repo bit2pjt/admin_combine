@@ -34,14 +34,14 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	private SqlSession sqlSession;
 	
 	/**
-	  * 게시글의 내용을 가져옴
-	  * @param page - 게시글번호
+	  * 게시글의 내용을 가져옴 이름변경
+	  * @param page - 게시글번호 
 	  * @return vo
 	*/
 	@Override
-	public BoardFreeVO getContent(int page) {
+	public BoardFreeVO getfContent(int page) {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		BoardFreeVO vo = boardFreeDAO.getContent(page);
+		BoardFreeVO vo = boardFreeDAO.getfContent(page);
 		
 		return vo;
 	}
@@ -334,23 +334,23 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 
 
 	@Override
-	public List<BoardFreeVO> listAll() {
+	public List<BoardFreeVO> listfAll() {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		return boardFreeDAO.listAll(); 
+		return boardFreeDAO.listfAll(); 
 	}
 	
 	// 스팸 게시물
 	@Override
-	public List<BoardFreeVO> spamListAll() {
+	public List<BoardFreeVO> spamfListAll() {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		return boardFreeDAO.spamListAll(); 
+		return boardFreeDAO.spamfListAll(); 
 	}
 	
 	// 신고댓글
 	@Override
-	public List<BfrWarningVO> spamRListAll() {
+	public List<BfrWarningVO> spamfRListAll() {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		return boardFreeDAO.spamRListAll(); 
+		return boardFreeDAO.spamfRListAll(); 
 	}
 	
 	@Override
