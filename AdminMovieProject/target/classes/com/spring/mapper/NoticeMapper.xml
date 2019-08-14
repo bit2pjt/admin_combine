@@ -37,7 +37,7 @@
 		<result property="m_blacklist" column="m_blacklist" />
 		<result property="m_authkey" column="m_authkey" />
 	</resultMap>
-
+-->
 
 	<resultMap type="com.spring.notice.AdQnaVO" id="AdQnaVO">
 		<result property="aqna_no" column="aqna_no"/>
@@ -47,7 +47,7 @@
 		<result property="aqna_update_date" column="aqna_update_date"/>
 		<result property="admin_num" column="admin_num"/>
 	</resultMap>
-		-->
+		
 	
 	<!-- hm | 1:1문의 답변 resultMap추가  -->
 	<resultMap type="com.spring.notice.AdNoticeVO" id="AdNoticeVO">
@@ -90,7 +90,19 @@
             sysdate, sysdate)
 	</insert>
 	<!--  detail 가져오기 -->
-		<select id="noticeDetail" parameterType="int" resultType="com.spring.notice.AdNoticeVO">
+	<select id="noticeDetail" parameterType="int" resultType="com.spring.notice.AdNoticeVO">
 		select * from ad_notice where an_code=#{an_code}
 	</select>
+	
+	
+	<!--  detail 질문 가져오기 -->
+	<select id="boardQnaDetail" parameterType="int" resultType="com.spring.notice.BoardQnaVO">
+		select * from board_qna where QNA_NO=#{qna_no}
+	</select>
+	
+		<!--  detail 답변 가져오기 -->
+	<select id="adQnaDetail" parameterType="int" resultType="com.spring.notice.AdQnaVO">
+		select * from ad_qna where QNA_NO=#{qna_no}
+	</select>
+	
 </mapper>

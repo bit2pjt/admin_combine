@@ -70,6 +70,7 @@
 										<th scope="col">제목</th>
 										<th scope="col">글쓴이</th>
 										<th scope="col">작성일</th>
+											<th scope="col">답변여부</th>
 										<th scope="col">보기</th>
 									</tr>
 								</thead>
@@ -84,7 +85,8 @@
 											<td><c:out value="${qnaList.qna_title }" /></td>
 											<td><c:out value="${qnaList.id }" /></td>
 											<td><c:out value="${qnaList.qna_update_date }" /></td>
-											<td><i class="ti-search" onclick="location.href=''"></i></td>
+											<td><c:out value="${qnaList.qna_answer }" /></td>
+											<td><i class="ti-search" onclick="location.href='qnaDetail?qna_no=${qnaList.qna_no}'"></i></td>
 										</tr>
 
 									</c:forEach>

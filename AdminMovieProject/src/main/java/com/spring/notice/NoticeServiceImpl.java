@@ -56,4 +56,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return adNoticeVO;
 	}
 
+	@Override
+	public BoardQnaVO boardQnaDetail(int qna_no) {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		BoardQnaVO boardQnaVO = noticeDAO.boardQnaDetail(qna_no);
+		
+		return boardQnaVO;
+	}
+
+	@Override
+	public AdQnaVO adQnaDetail(int qna_no) {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		AdQnaVO adQnaVO = noticeDAO.adQnaDetail(qna_no);
+		
+		return adQnaVO;
+	}
 }

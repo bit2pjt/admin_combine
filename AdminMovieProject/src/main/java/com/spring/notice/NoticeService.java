@@ -19,4 +19,9 @@ interface NoticeService {
 	// 공지사항 내용
 	AdNoticeVO noticeDetail(int an_code);
 
+	// qna 내용
+	BoardQnaVO boardQnaDetail(int qna_no);
+	
+	// qna 답변 내용
+	AdQnaVO adQnaDetail(int qna_no);
 }

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--
 /**
 * @Class Name :  adminQnaGet.jsp
@@ -42,91 +45,104 @@
 				<div class="card-body2">
 					<div class="card-body">
 
-						<p>사용자 아이디</p>
-						<h4 class="header-title">[카테고리]제목이 들어올 자리입니다.</h4>
+						<p>아이디 : ${boardQnaVO.id }</p>
+						<h4 class="header-title">[${boardQnaVO.qna_category }]${boardQnaVO.qna_title }</h4>
 
-						<p>내용이 들어올 자리입니다 내용이 들어올 자리입니다내용이 들어올 자리입니다 내용이 들어올 자리입니다 내용이
-							들어올 자리입니다 내용이 들어올 자리입니다 내용이 들어올 자리입니다 내용이 들어올 자리입니다 내용이 들어올 자리입니다
-							내용이 들어올 자리입니다</p>
-						<h6>작성날짜 / 수정날짜</h6>
-
+						<h6>${boardQnaVO.qna_content }</h6>
+						<br>
+						<div style="text-align: right">
+							<p>작성일 : ${boardQnaVO.qna_date } / 수정일 :
+								${boardQnaVO.qna_update_date }</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 사용자 문의 끝  -->
 
+
+
 		<!-- 관리자 답변 -->
 		<div class="col-lg-12 mt-5">
 			<div class="card2">
 				<div class="card-body2">
-					<!-- 답변 없을때 -->
-					<div class="card-body">
-						<h4 class="header-title">답변이 없습니다</h4>
+					<c:choose>
+						<c:when test="${boardQnaVO.qna_answer == 'N'}">
+							<!-- 답변 없을때 -->
+							<div class="card-body">
+								<h4 class="header-title">답변이 없습니다</h4>
 
-						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary btn-flat btn-lg mt-3"
-							data-toggle="modal" data-target="#nodab">답변하기</button>
-						<!-- Modal -->
-						<div class="modal fade" id="nodab" aria-hidden="true"
-							style="display: none;">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">답변을 입력해 주세요</h5>
-										<button type="button" class="close" data-dismiss="modal">
-											<span>×</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<textarea class="form-control" rows="3"></textarea>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
+								<!-- Button trigger modal -->
+								<button type="button"
+									class="btn btn-primary btn-flat btn-lg mt-3"
+									data-toggle="modal" data-target="#nodab">답변하기</button>
+								<!-- Modal -->
+								<div class="modal fade" id="nodab" aria-hidden="true"
+									style="display: none;">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">답변을 입력해 주세요</h5>
+												<button type="button" class="close" data-dismiss="modal">
+													<span>×</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<textarea class="form-control" rows="3"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary">Save
+													changes</button>
+											</div>
+										</div>
 									</div>
 								</div>
+
 							</div>
-						</div>
+							<!-- 답변 없을때 끝 -->
 
-					</div>
-					<!-- 답변 없을때 끝 -->
-
-					<!-- 답변 있을때 -->
-					<div class="card-body">
-						<p>답변입니다답변입니다답변입니다답변입니다답변입니다답변입니다답변입니다답변입니다답변입니다답변입니다답변입니다</p>
-						<h6>2019.07.25</h6>
-						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary btn-flat btn-lg mt-3"
-							data-toggle="modal" data-target="#exampleModalCenter">수정하기</button>
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModalCenter" aria-hidden="true"
-							style="display: none;">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">답변 수정</h5>
-										<button type="button" class="close" data-dismiss="modal">
-											<span>×</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<textarea class="form-control" rows="3"></textarea>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save
-											changes</button>
+						</c:when>
+						<c:otherwise>
+							<!-- 답변 있을때 -->
+							<div class="card-body">
+								${adQnaVO.qna_no }
+								<p>${adQnaVO.aqna_content }</p>
+								<h6>${adQnaVO.aqna_update_date }</h6>
+								<!-- Button trigger modal -->
+								<button type="button"
+									class="btn btn-primary btn-flat btn-lg mt-3"
+									data-toggle="modal" data-target="#exampleModalCenter">수정하기</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModalCenter"
+									aria-hidden="true" style="display: none;">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">답변 수정</h5>
+												<button type="button" class="close" data-dismiss="modal">
+													<span>×</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<textarea class="form-control" rows="3"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary">Save
+													changes</button>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
 
-					</div>
-					<!-- 답변 있을때 끝 -->
+							</div>
+							<!-- 답변 있을때 끝 -->
+						</c:otherwise>
+					</c:choose>
+
 				</div>
 			</div>
 		</div>

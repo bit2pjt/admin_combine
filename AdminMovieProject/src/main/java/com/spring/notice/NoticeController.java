@@ -120,8 +120,19 @@ public class NoticeController {
 
 	// 1:1 문의 상세보기
 	@RequestMapping(value = "/qnaDetail", method = RequestMethod.GET)
-	public String qnaDetail() {
+	public String qnaDetail(@RequestParam("qna_no") int qna_no, HttpSession session, Model model) {
+		
+		BoardQnaVO boardQnaVO = noticeService.boardQnaDetail(qna_no);
+		AdQnaVO adQnaVO = noticeService.adQnaDetail(qna_no);
+		
+		
+		model.addAttribute("boardQnaVO", boardQnaVO);
+		model.addAttribute("adQnaVO", adQnaVO);
+		
+//		String admin_name = noticeService.getAdminName(1); // 게시물 작성자의 정보
 
+		
+		
 		return "notice/qnaDetail";
 	}
 
