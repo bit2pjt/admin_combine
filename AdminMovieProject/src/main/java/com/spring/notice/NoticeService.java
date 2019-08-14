@@ -24,4 +24,7 @@ interface NoticeService {
 	
 	// qna 답변 내용
 	AdQnaVO adQnaDetail(int qna_no);
+	
+	// 로그인
+	public AdMemberVO userCheck(String admin_id);
 }

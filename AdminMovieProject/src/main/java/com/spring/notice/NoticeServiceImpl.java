@@ -71,4 +71,9 @@ public class NoticeServiceImpl implements NoticeService {
 		
 		return adQnaVO;
 	}
+
+	@Override
+	public AdMemberVO userCheck(String admin_id) {
+		return null;
+	}
 }

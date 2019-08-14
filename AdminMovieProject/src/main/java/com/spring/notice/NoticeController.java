@@ -33,12 +33,12 @@ public class NoticeController {
 		return "index";
 	}
 
-	// 로그인
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-
-		return "login";
-	}
+//	// 로그인
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public String login() {
+//
+//		return "login";
+//	}
 
 	// 공지사항 목록
 	@RequestMapping(value = "/noticeList", method = RequestMethod.GET)
@@ -135,5 +135,73 @@ public class NoticeController {
 		
 		return "notice/qnaDetail";
 	}
+	
+	//로그인 액션
+	/**
+	 * 로그인
+	 * 
+	 * @param vo       - 로그인시 입력한 정보가 담긴 MemberVO
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @return "index"
+	 * @throws Exception
+//	 */
+//	@RequestMapping(value = "/Login")
+//	public String MemberLogin(MemberVO vo, HttpServletRequest request, HttpServletResponse response, Model model)
+//			throws Exception {
+//		String email = vo.getM_email();
+//		String pw = vo.getM_password();
+//		HttpSession session = request.getSession();
+//
+//		int check = memberService.userCheck(email, pw);	//로그인 성공 여부
+//		
+//		if (check == 1) {	//로그인 성공시 메일인증여부 체크
+//			String auth = memberService.getCert(email,pw);	//이메일 인증 여부
+//			if(auth.equals("Y")) {	//메일인증 성공시 탈퇴여부 체크
+//				String deleteyn = memberService.getDeletestatus(email,pw);	//탈퇴 여부
+//				if(deleteyn.equals("N")) {
+//					session.setAttribute("m_email", email);
+//					session.setAttribute("id", memberService.getId(email, pw));
+//					request.setAttribute("msg", "login_success");
+//					request.setAttribute("rlink", "index");
+//				}else {
+//					request.setAttribute("msg", "login_delete");
+//					request.setAttribute("rlink", "index");
+//					//model.addAttribute("msg","delete");
+//				}
+//			}else {
+//				request.setAttribute("msg", "login_cert");
+//				request.setAttribute("rlink", "index");
+//				//model.addAttribute("msg","cert");
+//			}
+//		}else if (check == -1) {
+//			request.setAttribute("msg", "login_pw");
+//			request.setAttribute("rlink", "index");
+//			//model.addAttribute("msg","pw");
+//		} else {
+//			request.setAttribute("msg", "login_idpw");
+//			request.setAttribute("rlink", "index");
+//			//model.addAttribute("msg","idpw");
+//		}
+//		return "member/login_alert";
+//	}
+
+	//로그아웃 액션
+	/**
+	 * 로그아웃
+	 * 
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @return "index"
+	 */
+	@RequestMapping(value = "/Logout")
+	public String MemberLogOut(HttpServletRequest request, HttpServletResponse response, Model model) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/index";
+	}
+
 
 }
