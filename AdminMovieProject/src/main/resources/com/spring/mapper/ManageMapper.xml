@@ -39,13 +39,13 @@
 		<result property="remove_date" column="remove_date" />
 	</resultMap>
 
-
+<!-- 
 	<select id="listAll" resultType="com.spring.manage.MemberVO">
    <![CDATA[
    select * from member where id > 0
    ]]>
 	</select>
-
+ -->
 	<select id="blacklist" resultType="com.spring.manage.MemberVO">	
        <![CDATA[
   	SELECT
@@ -88,7 +88,138 @@
 		where id = #{id}
 	</select>
 
+	<!-- 정렬 -->
+	 <select id="listCriteria" resultMap="MemberResultMap">
+        <![CDATA[
+ 		select
+        	id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+            from
+		   (
+		    select
+		    rownum rn
+		   	, id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+            from member
+            order by id desc
+		   )
+		   where rn > (#{page} -1) *#{perPageNum} and rn <= #{page} * #{perPageNum}
+        ]]>
+    </select>
+
+    
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 'i'.toString()">
+                AND id LIKE CONCAT('%' || #{keyword}, '%')
+            </if>
+            <if test="searchType == 'e'.toString()">
+                AND m_email LIKE CONCAT('%' || #{keyword}, '%')
+            </if>
+            <if test="searchType == 'n'.toString()">
+                AND m_nickname LIKE CONCAT('%' || #{keyword}, '%')
+            </if>
+        </if>
+    </sql>
 	
-	
+	<select id="countSearchedArticles" resultType="int">
+        <![CDATA[
+	        SELECT COUNT(id)
+		    FROM member
+		    WHERE id > 0
+        ]]>
+        <include refid="search"/>
+    </select>
+    
+     <select id="listSearch" resultMap="MemberResultMap">
+        <![CDATA[
+        select
+        	id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+            from
+		   (
+		    select
+		    rownum rn
+		    , id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+		    from member
+		    WHERE id > 0
+		    ]]>
+          	<include refid="search"/>
+       		<![CDATA[
+            order by id desc
+		   )
+		   where rn > (#{page} -1) *#{perPageNum} and rn <= #{page} * #{perPageNum}
+        ]]>
+    </select>
+    
 	
 </mapper>

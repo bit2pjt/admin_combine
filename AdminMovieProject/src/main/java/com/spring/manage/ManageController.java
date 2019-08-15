@@ -1,16 +1,18 @@
 package com.spring.manage;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.spring.paging.PageMaker;
+import com.spring.paging.SearchCriteria;
 
 @Controller
 public class ManageController {
@@ -19,12 +21,28 @@ public class ManageController {
 	ManageService manageService;
 
 	// 전체회원 목록
-	@RequestMapping(value = "/manageMemberList", method = RequestMethod.GET)
-	public String manageMemberList(Model model) {
-		model.addAttribute("listAll", manageService.listAll());
-
-		return "manage/manageMemberList";
+//	@RequestMapping(value = "/manageMemberList", method = RequestMethod.GET)
+//	public String manageMemberList(Model model) {
+//		model.addAttribute("listAll", manageService.listAll());
+//
+//		return "manage/manageMemberList";
+//	}
+	
+	@RequestMapping(value = "/manageMemberList", method=RequestMethod.GET)
+	public String manageMemberList(Model model,@ModelAttribute("searchCriteria") 
+		SearchCriteria searchCriteria) {
+		
+		PageMaker pageMaker = new PageMaker();
+        pageMaker.setCriteria(searchCriteria);
+        pageMaker.setTotalCount(manageService.countSearchedArticles(searchCriteria));
+        
+        model.addAttribute("member", manageService.listSearch(searchCriteria));
+        model.addAttribute("pageMaker", pageMaker);	
+        
+        return "manage/manageMemberList";
 	}
+	
+	
 
 	// 회원 상세보기
 	@RequestMapping(value = "/manageMemberInfo", method = RequestMethod.GET)

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--
 /**
 * @Class Name :  manageMemberList.jsp
@@ -43,31 +44,38 @@
 		<div class="col-lg-12 mt-5">
 			<div class="card2">
 				<div class="card-body2">
-					<!-- post-search-box start -->
-					<div class="post-search-box drop-buttons row">
-						<div class="dropdown col-md-2 col-sm-6">
-							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
-								type="button" data-toggle="dropdown">검색조건</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">회원번호</a> <a
-									class="dropdown-item" href="#">이메일</a> <a class="dropdown-item"
-									href="#">닉네임</a>
-							</div>
+					<!-- 서치 -->
+					<div class="col-sm-8 mb-3">
+						<div style="display: inline-flex; ">
+						
+							<select class="form-control col-sm-4 mb-3" name="searchType" id="searchType" style="margin-right: 10px;">
+								<option value="null"
+									<c:out value="${searchCriteria.searchType == null ? 'selected' : ''}"/>>::::::
+									선택 ::::::</option>
+								<option value="i"
+									<c:out value="${searchCriteria.searchType eq 'i' ? 'selected' : ''}"/>>회원번호</option>
+								<option value="e"
+									<c:out value="${searchCriteria.searchType eq 'e' ? 'selected' : ''}"/>>이메일</option>
+								<option value="n"
+									<c:out value="${searchCriteria.searchType eq 'n' ? 'selected' : ''}"/>>닉네임</option>
+							</select>
+								<input type="text" class="form-control col-sm-8 mb-3" name="keyword"
+									id="keywordInput" value="${searchCriteria.keyword}"
+									placeholder="검색어" style="margin-right: 5px;">
+
+								<button type="button" class="btn btn-dark mb-3" id="btn-hjs">
+									검색</button>
 						</div>
-						<form action="#">
-							<input class="post-search-box" type="text" name="search"
-								placeholder="Search..." required> <i class="ti-search"></i>
-						</form>
 					</div>
-					<!-- post-search-box end -->
-					
+					<!-- 서치끗 -->
+
 					<!-- 메인 테이블 시작 -->
 					<div class="single-table">
 						<div class="table-responsive">
 							<table class="table table-striped text-center">
 								<thead class="text-uppercase">
 									<tr>
-										<th scope="col">회원번호</th>
+										<th scope="col">순번</th>
 										<th scope="col" width=>이메일</th>
 										<th scope="col">닉네임</th>
 										<th scope="col">회원가입일</th>
@@ -75,41 +83,53 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${listAll}" var="listAll" varStatus="status">
-									<tr>
-									<!-- <td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
-									 -->
-									 
-									 <td><c:out value="${listAll.id }" /></td>
-									 <td><c:out value="${listAll.m_email }" /></td>
-									 <td><c:out value="${listAll.m_nickname }" /></td>
-									 <td><c:out value="${listAll.m_regdate }" /></td>
-									<!-- 페이징 
-									<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo${pageMaker.makeSearch(pageMaker.criteria.page)}&id=${board.bf_bno}'"></i></td>
-									 -->
-									<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo?id=${listAll.id}'"></i></td>
-									</tr>
-								</c:forEach>
+
+									<c:forEach items="${member}" var="member" varStatus="status">
+										<tr class="post">
+											<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
+											<td><c:out value="${member.m_email }" /></td>
+											<td><c:out value="${member.m_nickname }" /></td>
+											<td><c:out value="${member.m_regdate }" /></td>
+											<td><i class="ti-search"
+												onclick="location.href='manageMemberInfo${pageMaker.makeSearch(pageMaker.criteria.page)}?id=${member.id}'"></i></td>
+										</tr>
+									</c:forEach>
+
 								</tbody>
 							</table>
 						</div>
 					</div>
-					<!-- yj : start | pagination-->
-					<nav aria-label="...">
-						<ul class="pagination justify-content-center">
-							<li class="page-item disabled"><a class="page-link" href="#"
-								tabindex="-1">Previous</a></li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2 <span
-									class="sr-only">(current)</span></a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">Next</a>
-							</li>
-						</ul>
-					</nav>
-					<!-- yj : end | pagination -->
+
+
+					<!--추가의 끝-->
+					<div class="box-footer">
+						<div class="pagination justify-content-center">
+							<form id="listPageForm">
+								<input type="hidden" name="page"
+									value="${pageMaker.criteria.page}"> <input
+									type="hidden" name="perPageNum"
+									value="${pageMaker.criteria.perPageNum}">
+							</form>
+							<ul class="pagination">
+								<c:if test="${pageMaker.prev}">
+									<li><a class="page-link" href="${pageMaker.startPage - 1}">이전</a></li>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}" var="idx">
+									<li class="page-link"
+										<c:out value="${pageMaker.criteria.page == idx ? 'class=active' : ''}"/>>
+										<a class="page-item active" href="${idx}">${idx}</a>
+									</li>
+								</c:forEach>
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li class="page-item"><a class="page-link" href="${pageMaker.endPage + 1}">다음</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+
+
+					<!--5. 추가  구현부  -->
 				</div>
 			</div>
 		</div>
@@ -118,5 +138,25 @@
 	</div>
 </div>
 </div>
+<script>
+	$(".pagination li a").on("click", function(event) {
+		event.preventDefault();
+
+		var targetPage = $(this).attr("href");
+		var listPageForm = $("#listPageForm");
+		listPageForm.find("[name='page']").val(targetPage);
+		listPageForm.attr("action", "manageMemberList").attr("method", "get");
+		listPageForm.submit();
+	});
+
+	$("#btn-hjs").on(
+			"click",
+			function(event) {
+				self.location = "manageMemberList${pageMaker.makeQuery(1)}"
+						+ "&searchType=" + $("select option:selected").val()
+						+ "&keyword="
+						+ encodeURIComponent($("#keywordInput").val());
+			});
+</script>
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>

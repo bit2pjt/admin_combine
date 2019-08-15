@@ -7,6 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.paging.Criteria;
+import com.spring.paging.SearchCriteria;
+
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
@@ -20,14 +23,61 @@ public class ManageServiceImpl implements ManageService {
 	@Setter(onMethod_ = { @Autowired })
 	private ManageDAO manageDAOglobal;
 
+//	@Override
+//	public List<MemberVO> listAll() {
+//		// 전체 회원 목록
+//		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+//
+//		return manageDAO.listAll();
+//	}
+	
 	@Override
-	public List<MemberVO> listAll() {
-		// 전체 회원 목록
+    public int countSearchedArticles(SearchCriteria searchCriteria) {
 		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+    	return manageDAO.countSearchedArticles(searchCriteria);
+    }
 
-		return manageDAO.listAll();
+
+	@Override
+	public List<MemberVO> listCriteria(Criteria criteria) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		return manageDAO.listCriteria(criteria);
 	}
 
+	@Override
+	public int countArticles(Criteria criteria) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		return manageDAO.countArticles(criteria);
+	}
+	
+	@Override
+    public List<MemberVO> listSearch(SearchCriteria searchCriteria) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		List<MemberVO> list = manageDAO.listSearch(searchCriteria);
+//		for(int i=0; i<list.size(); i++) {
+//			int id = list.get(i).getId();
+//			String nickname = userNickName(id);
+//			list.get(i).setM_nickname(nickname);
+//		}
+		return list;
+    }
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<MemberVO> blacklist() {
 		// 블랙리스트

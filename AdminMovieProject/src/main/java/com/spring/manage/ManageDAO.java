@@ -3,10 +3,22 @@ package com.spring.manage;
 import java.sql.Date;
 import java.util.List;
 
+import com.spring.paging.Criteria;
+import com.spring.paging.SearchCriteria;
+
 public interface ManageDAO {
 
 	// 전체 멤버 리스트
-	public List<MemberVO> listAll();
+//	public List<MemberVO> listAll();
+	
+	List<MemberVO> listCriteria(Criteria criteria);
+	
+	List<MemberVO> listSearch(SearchCriteria searchCriteria);
+
+    int countSearchedArticles(SearchCriteria searchCriteria);
+    
+	int countArticles(Criteria criteria);
+	
 	
 	// 블랙리스트
 	public List<MemberVO> blacklist();

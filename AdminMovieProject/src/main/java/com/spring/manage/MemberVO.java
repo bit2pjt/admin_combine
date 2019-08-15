@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class MemberVO {
 	private int id;				//멤버ID(회원 식별 번호)
-	private String m_nickname;	//닉네임
+	private String m_nickname;	//닉네임	
 	private String m_image;		//프로필사진
 	private String m_email;		//이메일
 	private String m_eagree;	//이메일 수신동의
