@@ -46,9 +46,10 @@
 				<div class="card-body2">
 					<!-- 서치 -->
 					<div class="col-sm-8 mb-3">
-						<div style="display: inline-flex; ">
-						
-							<select class="form-control col-sm-4 mb-3" name="searchType" id="searchType" style="margin-right: 10px;">
+						<div style="display: inline-flex;">
+
+							<select class="form-control col-sm-4 mb-3" name="searchType"
+								id="searchType" style="margin-right: 10px;">
 								<option value="null"
 									<c:out value="${searchCriteria.searchType == null ? 'selected' : ''}"/>>::::::
 									선택 ::::::</option>
@@ -58,13 +59,13 @@
 									<c:out value="${searchCriteria.searchType eq 'e' ? 'selected' : ''}"/>>이메일</option>
 								<option value="n"
 									<c:out value="${searchCriteria.searchType eq 'n' ? 'selected' : ''}"/>>닉네임</option>
-							</select>
-								<input type="text" class="form-control col-sm-8 mb-3" name="keyword"
-									id="keywordInput" value="${searchCriteria.keyword}"
-									placeholder="검색어" style="margin-right: 5px;">
+							</select> <input type="text" class="form-control col-sm-8 mb-3"
+								name="keyword" id="keywordInput"
+								value="${searchCriteria.keyword}" placeholder="검색어"
+								style="margin-right: 5px;">
 
-								<button type="button" class="btn btn-dark mb-3" id="btn-hjs">
-									검색</button>
+							<button type="button" class="btn btn-dark mb-3" id="btn-hjs">
+								검색</button>
 						</div>
 					</div>
 					<!-- 서치끗 -->
@@ -83,25 +84,25 @@
 									</tr>
 								</thead>
 								<tbody>
-
+								<!-- 리스트 시작 -->
 									<c:forEach items="${member}" var="member" varStatus="status">
 										<tr class="post">
 											<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 											<td><c:out value="${member.m_email }" /></td>
 											<td><c:out value="${member.m_nickname }" /></td>
-											<td><c:out value="${member.m_regdate }" /></td>
+											<td><c:out value="${member.black_date }" /></td>
 											<td><i class="ti-search"
-												onclick="location.href='manageMemberInfo${pageMaker.makeSearch(pageMaker.criteria.page)}?id=${member.id}'"></i></td>
+												onclick="location.href='manageMemberInfo${pageMaker.makeSearch(pageMaker.criteria.page)}&id=${member.id}'"></i></td>
 										</tr>
 									</c:forEach>
-
+								<!-- 리스트 끝 -->
 								</tbody>
 							</table>
 						</div>
 					</div>
 
 
-					<!--추가의 끝-->
+					<!--페이지메이커 시작-->
 					<div class="box-footer">
 						<div class="pagination justify-content-center">
 							<form id="listPageForm">
@@ -122,14 +123,13 @@
 									</li>
 								</c:forEach>
 								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-									<li class="page-item"><a class="page-link" href="${pageMaker.endPage + 1}">다음</a></li>
+									<li class="page-item"><a class="page-link"
+										href="${pageMaker.endPage + 1}">다음</a></li>
 								</c:if>
 							</ul>
 						</div>
 					</div>
-
-
-					<!--5. 추가  구현부  -->
+					<!--페이지메이커 끝-->
 				</div>
 			</div>
 		</div>
@@ -138,6 +138,7 @@
 	</div>
 </div>
 </div>
+<!-- 스크립트 추가 -->
 <script>
 	$(".pagination li a").on("click", function(event) {
 		event.preventDefault();
@@ -145,18 +146,19 @@
 		var targetPage = $(this).attr("href");
 		var listPageForm = $("#listPageForm");
 		listPageForm.find("[name='page']").val(targetPage);
-		listPageForm.attr("action", "manageMemberList").attr("method", "get");
+		listPageForm.attr("action", "manageMemberList").attr("method", "get"); // 변경
 		listPageForm.submit();
 	});
 
 	$("#btn-hjs").on(
 			"click",
 			function(event) {
-				self.location = "manageMemberList${pageMaker.makeQuery(1)}"
+				self.location = "manageMemberList${pageMaker.makeQuery(1)}" //변경
 						+ "&searchType=" + $("select option:selected").val()
 						+ "&keyword="
 						+ encodeURIComponent($("#keywordInput").val());
 			});
 </script>
+<!-- 스크립트 추가 끝 -->
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>

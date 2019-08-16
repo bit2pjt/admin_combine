@@ -54,11 +54,12 @@ public class ManageServiceImpl implements ManageService {
     public List<MemberVO> listSearch(SearchCriteria searchCriteria) {
 		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
 		List<MemberVO> list = manageDAO.listSearch(searchCriteria);
-//		for(int i=0; i<list.size(); i++) {
-//			int id = list.get(i).getId();
-//			String nickname = userNickName(id);
-//			list.get(i).setM_nickname(nickname);
-//		}
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			Date black_date = getBlackDate(id);
+			list.get(i).setBlack_date(black_date);
+		}
 		return list;
     }
 

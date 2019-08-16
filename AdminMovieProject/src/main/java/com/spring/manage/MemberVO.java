@@ -25,4 +25,5 @@ public class MemberVO {
 	private String m_favorite;	//선호장르
 	private String m_blacklist;	//블랙리스트 여부
 	private String m_authkey;
+	private Date black_date;// 블랙리스트 선정된날
 }
