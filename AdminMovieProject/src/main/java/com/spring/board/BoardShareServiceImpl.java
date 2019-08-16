@@ -182,7 +182,14 @@ public class BoardShareServiceImpl implements BoardShareService {
 	@Override
 	public List<BoardShareVO> listsAll() {
 		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
-		return BoardShareDAO.listsAll(); 
+		List<BoardShareVO> list = BoardShareDAO.listsAll(); 
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		return list;
 	}
 	
 	// 스팸 게시물
@@ -197,5 +204,13 @@ public class BoardShareServiceImpl implements BoardShareService {
 	public List<BsrWarningVO> spamsRListAll() {
 		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
 		return BoardShareDAO.spamsRListAll(); 
+	}
+
+	@Override
+	public BoardShareVO getfContent(int bs_bno) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		BoardShareVO vo = BoardShareDAO.getfContent(bs_bno);
+		
+		return vo;
 	}
 }

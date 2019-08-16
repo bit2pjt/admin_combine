@@ -46,4 +46,6 @@ interface BoardShareService {
 	String ReplyWarn(WarnVO vo);
 
 	int insertReplyWarn(WarnVO vo);
+	
+	BoardShareVO getfContent(int bs_bno);
 }

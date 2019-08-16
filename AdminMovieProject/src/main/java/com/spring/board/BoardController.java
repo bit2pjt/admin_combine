@@ -44,8 +44,8 @@ public class BoardController {
 	}
 
 	// 게시글 상세보기
-	@RequestMapping(value = "/boardPostDetail", method = RequestMethod.GET)
-	public String boardPostDetail(@RequestParam("bf_bno") int bf_bno, HttpSession session, Model model) {
+	@RequestMapping(value = "/boardFreeDetail", method = RequestMethod.GET)
+	public String boardFreeDetail(@RequestParam("bf_bno") int bf_bno, HttpSession session, Model model) {
 		BoardFreeVO boardFreeVO = boardFreeService.getfContent(bf_bno); // 게시글의 내용
 		
 		MemberVO memberVO = boardFreeService.getWriter(boardFreeVO.getId()); // 게시물 작성자의 정보
@@ -53,8 +53,22 @@ public class BoardController {
 		model.addAttribute("boardFreeVO", boardFreeVO); // 게시글의 내용
 		model.addAttribute("memberVO", memberVO); // 게시물 작성자의 정보
 
-		return "board/boardPostDetail";
+		return "board/boardFreeDetail";
 	}
+	
+	// 게시글 상세보기
+	@RequestMapping(value = "/boardShareDetail", method = RequestMethod.GET)
+	public String boardShareDetail(@RequestParam("bs_bno") int bs_bno, HttpSession session, Model model) {
+		BoardShareVO boardShareVO = boardShareService.getfContent(bs_bno); // 게시글의 내용
+		
+		MemberVO memberVO = boardFreeService.getWriter(boardShareVO.getId()); // 게시물 작성자의 정보
+
+		model.addAttribute("boardShareVO", boardShareVO); // 게시글의 내용
+		model.addAttribute("memberVO", memberVO); // 게시물 작성자의 정보
+
+		return "board/boardShareDetail";
+	}	
+	
 	
 //	@RequestMapping(value = "/boardPostDetail", method = RequestMethod.GET)
 //	public String boardPostsDetail(@RequestParam("bs_bno") int bs_bno, HttpSession session, Model model) {
