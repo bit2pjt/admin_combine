@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0.//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.spring.manage.ManageDAO">
+
+	<resultMap type="com.spring.manage.MemberVO" id="MemberResultMap">
+		<result property="id" column="id" />
+		<result property="m_nickname" column="m_nickname" />
+		<result property="m_image" column="m_image" />
+		<result property="m_email" column="m_email" />
+		<result property="m_eagree" column="m_eagree" />
+		<result property="m_sagree" column="m_sagree" />
+		<result property="m_name" column="m_name" />
+		<result property="m_phone" column="m_phone" />
+		<result property="m_cert" column="m_cert" />
+		<result property="m_password" column="m_password" />
+		<result property="m_regdate" column="m_regdate" />
+		<result property="m_update_date" column="m_update_date" />
+		<result property="m_deleteyn" column="m_deleteyn" />
+		<result property="m_following" column="m_following" />
+		<result property="m_follower" column="m_follower" />
+		<result property="m_level" column="m_level" />
+		<result property="m_favorite" column="m_favorite" />
+		<result property="m_blacklist" column="m_blacklist" />
+		<result property="m_authkey" column="m_authkey" />
+	</resultMap>
+
+	<resultMap type="com.spring.manage.BlackListVO" id="BlackListVO">
+		<result property="id" column="id" />
+		<result property="black_date" column="black_date" />
+	</resultMap>
+	
+	<resultMap type="com.spring.manage.DeleteMemberVO" id="DeleteMemberVO">
+		<result property="id" column="id" />
+		<result property="delete_date" column="delete_date" />
+		<result property="remove_date" column="remove_date" />
+	</resultMap>
+
+<!-- 
+	<select id="listAll" resultType="com.spring.manage.MemberVO">
+   <![CDATA[
+   select * from member where id > 0
+   ]]>
+	</select>
+ -->
+	<select id="blacklist" resultType="com.spring.manage.MemberVO">	
+       <![CDATA[
+  	SELECT
+    member.id, member.m_email, member.m_nickname, blacklist.black_date
+	FROM
+    member
+	LEFT JOIN
+    blacklist
+	ON
+   	member.id = blacklist.id
+	WHERE
+    member.M_BLACKLIST = 'Y'
+       ]]>
+	</select>
+	
+	<select id="deletelist" resultType="com.spring.manage.MemberVO">	
+       <![CDATA[
+  	SELECT
+    member.id, member.m_email, delete_member.delete_date, delete_member.remove_date
+	FROM
+    member
+	LEFT JOIN
+    delete_member
+	ON
+   	member.id = delete_member.id
+	WHERE
+    member.M_DELETEYN = 'Y'
+       ]]>
+	</select>
+	
+	<select id="getInfo" parameterType="int" resultType="com.spring.manage.MemberVO">
+		select *
+		from member
+		where id = #{id}
+	</select>
+	
+	<select id="getBlackDate" parameterType="int" resultType="Date">
+		select black_date
+		from blacklist
+		where id = #{id}
+	</select>
+
+	<!-- 정렬 -->
+	 <select id="listCriteria" resultMap="MemberResultMap">
+        <![CDATA[
+ 		select
+        	id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+            from
+		   (
+		    select
+		    rownum rn
+		   	, id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+            from member
+            order by id desc
+		   )
+		   where rn > (#{page} -1) *#{perPageNum} and rn <= #{page} * #{perPageNum}
+        ]]>
+    </select>
+
+    
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 'i'.toString()">
+                AND id LIKE CONCAT('%' || #{keyword}, '%')
+            </if>
+            <if test="searchType == 'e'.toString()">
+                AND m_email LIKE CONCAT('%' || #{keyword}, '%')
+            </if>
+            <if test="searchType == 'n'.toString()">
+                AND m_nickname LIKE CONCAT('%' || #{keyword}, '%')
+            </if>
+        </if>
+    </sql>
+	
+	<select id="countSearchedArticles" resultType="int">
+        <![CDATA[
+	        SELECT COUNT(id)
+		    FROM member
+		    WHERE id > 0
+        ]]>
+        <include refid="search"/>
+    </select>
+    
+     <select id="listSearch" resultMap="MemberResultMap">
+        <![CDATA[
+        select
+        	id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+            from
+		   (
+		    select
+		    rownum rn
+		    , id
+			, m_nickname
+			, m_image
+			, m_email
+			, m_eagree
+			, m_sagree
+			, m_name
+			, m_phone
+			, m_cert
+			, m_password
+			, m_regdate
+			, m_update_date
+			, m_deleteyn
+			, m_following
+			, m_follower
+			, m_level
+			, m_favorite
+			, m_blacklist
+			, m_authkey
+		    from member
+		    WHERE id > 0
+		    ]]>
+          	<include refid="search"/>
+       		<![CDATA[
+            order by id desc
+		   )
+		   where rn > (#{page} -1) *#{perPageNum} and rn <= #{page} * #{perPageNum}
+        ]]>
+    </select>
+    
+    
+    <select id="userNickName" parameterType="int" resultType="String">
+		select m_nickname from member where id = #{id}
+	</select>
+	
+</mapper>

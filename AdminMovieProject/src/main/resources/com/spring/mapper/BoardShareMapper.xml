@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0.//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.board.BoardShareDAO">
+	
+
+	<resultMap type="com.spring.board.BoardShareVO" id="BoardShareMap">
+		<result property="bs_bno" column="bs_bno" />
+		<result property="id" column="id" />
+		<result property="bs_category" column="bs_category" />
+		<result property="bs_content" column="bs_content" />
+		<result property="bs_title" column="bs_title" />
+		<result property="bs_reg_date" column="bs_reg_date" />
+		<result property="bs_update_date" column="bs_update_date" />
+		<result property="bs_view_counter" column="bs_view_counter" />
+		<result property="bs_warn_counter" column="bs_warn_counter" />
+		<result property="bs_deleteyn" column="bs_deleteyn" />
+	</resultMap>
+
+
+	<resultMap type="com.spring.board.FreeWarningVO"
+		id="FreeWarningVO">
+		<result property="bf_bno" column="bf_bno" />
+		<result property="id" column="id" />
+		<result property="bf_date" column="bf_date" />
+		<result property="bf_warncontent" column="bf_warncontent" />
+	</resultMap>
+
+		
+	<resultMap type="com.spring.board.BsrWarningVO"
+		id="BsrWarningVO">
+		<result property="bsr_rno" column="bsr_rno" />
+		<result property="id" column="id" />
+		<result property="bsr_date" column="bsr_date" />
+		<result property="bsr_warncontent" column="bsr_warncontent" />
+	</resultMap>
+
+
+	<resultMap type="com.spring.manage.MemberVO"
+		id="MemberResultMap">
+		<result property="id" column="id" />
+		<result property="m_nickname" column="m_nickname" />
+		<result property="m_image" column="m_image" />
+		<result property="m_email" column="m_email" />
+		<result property="m_eagree" column="m_eagree" />
+		<result property="m_sagree" column="m_sagree" />
+		<result property="m_name" column="m_name" />
+		<result property="m_phone" column="m_phone" />
+		<result property="m_cert" column="m_cert" />
+		<result property="m_password" column="m_password" />
+		<result property="m_regdate" column="m_regdate" />
+		<result property="m_update_date" column="m_update_date" />
+		<result property="m_deleteyn" column="m_deleteyn" />
+		<result property="m_following" column="m_following" />
+		<result property="m_follower" column="m_follower" />
+		<result property="m_level" column="m_level" />
+		<result property="m_favorite" column="m_favorite" />
+		<result property="m_blacklist" column="m_blacklist" />
+		<result property="m_authkey" column="m_authkey" />
+	</resultMap>
+
+
+	<!-- free share 시작 -->
+	<select id="listsAll" resultMap="BoardShareMap">
+        <![CDATA[
+        SELECT *  
+        FROM board_share
+        WHERE bs_bno > 0
+        ORDER BY bs_bno DESC
+        ]]>
+	</select>
+	<select id="getsContent" parameterType="int"
+		resultMap="BoardShareMap">
+		select *
+		from board_share
+		where bs_bno = #{bs_bno}
+	</select>
+	<select id="spamsListAll" resultMap="BoardShareMap">
+	 <![CDATA[
+        SELECT *  
+        FROM board_share
+        WHERE bs_warn_counter >= 5
+        ORDER BY bs_bno DESC
+        ]]>
+	</select>
+	<select id="spamsRListAll" resultMap="BsrWarningVO">
+	 <![CDATA[
+        SELECT *  
+        FROM bsr_warning
+        ORDER BY bsr_rno DESC
+        ]]>
+	</select>
+	
+	<select id="getfContent" parameterType="int" resultMap="BoardShareMap">
+		select *
+		from board_share
+		where bs_bno = #{bs_bno}
+	</select>
+</mapper>

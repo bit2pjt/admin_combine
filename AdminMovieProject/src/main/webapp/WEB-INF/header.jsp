@@ -10,7 +10,7 @@
 * @ ---------   ---------   -------------------------------
 * @ 2019.07.12     한유진      최초생성
 * @ 2019.07.13     한유진      전체수정
-*
+* @ 2019.08.10     박현민   제이쿼리 추가
 * @author BIT 116기 2조
 * @since 2019. 07.01
 * @version 1.0
@@ -49,6 +49,11 @@
 
 <!-- modernizr css -->
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+
+<!-- 제이쿼리 -->
+<script src='{% static "js/jquery-1.11.3.min.js" %}'></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -66,8 +71,9 @@
 		<div class="sidebar-menu">
 			<div class="sidebar-header">
 				<div class="logo">
-					<span style="color:white;font-weight:bold;font-size:30px;">BlockBuster</span><br>
-					<span style="color:white;font-weight:bold;font-size:20px;">(&nbsp;ADMIN SITE&nbsp;)</span>
+					<span style="color: white; font-weight: bold; font-size: 30px;">BlockBuster</span><br>
+					<span style="color: white; font-weight: bold; font-size: 20px;">(&nbsp;ADMIN
+						SITE&nbsp;)</span>
 				</div>
 			</div>
 			<div class="main-menu">
@@ -78,20 +84,22 @@
 								aria-expanded="true"> <i class="ti-dashboard"></i><span>회원
 										관리</span></a>
 								<ul class="collapse">
-									<li><a href="manageMemberList.do">전체 회원</a></li>
-									<li><a href="manageBlackList.do">블랙리스트 회원</a></li>
+									<li><a href="manageMemberList">전체 회원</a></li>
+									<li><a href="manageBlackList">블랙리스트 회원</a></li>
+									<li><a href="manageMemberOutList">탈퇴신청 회원</a></li>
 								</ul></li>
 							<li><a href="javascript:void(0)" aria-expanded="true"> <i
 									class="ti-layout-sidebar-left"></i><span>게시글 관리</span></a>
 								<ul class="collapse">
-									<li><a href="manageMemberPost.do">회원 게시글</a></li>
-									<li><a href="manageSpamPost.do">신고 게시글</a></li>
+									<li><a href="boardAllList">전체 게시글</a></li>
+									<li><a href="boardSpamPost">신고 게시글</a></li>
+									<li><a href="boardSpamReply">신고 댓글</a></li>
 								</ul></li>
 							<li><a href="javascript:void(0)" aria-expanded="true"><i
 									class="ti-pie-chart"></i><span>공지 및 QnA 관리</span></a>
 								<ul class="collapse">
-									<li><a href="adminNoticeList.do">공지사항</a></li>
-									<li><a href="adminQnaList.do">QnA</a></li>
+									<li><a href="noticeList">공지사항</a></li>
+									<li><a href="qnaList">QnA</a></li>
 								</ul></li>
 						</ul>
 					</nav>

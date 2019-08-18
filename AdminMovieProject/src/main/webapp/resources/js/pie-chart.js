@@ -406,7 +406,7 @@ if ($('#seolinechart8').length) {
         type: 'doughnut',
         // The data for our dataset
         data: {
-            labels: ["FB", "TW", "G+", "INS"],
+            labels: ["나눔게시판", "자유게시판", "나영리", "공지사항"],
             datasets: [{
                 backgroundColor: [
                     "#8919FE",
@@ -415,7 +415,7 @@ if ($('#seolinechart8').length) {
                     "#E36D68"
                 ],
                 borderColor: '#fff',
-                data: [810, 410, 260, 150],
+                data: [29, 16, 2, 2],
             }]
         },
         // Configuration options go here
