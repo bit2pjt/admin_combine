@@ -90,7 +90,7 @@
 											<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
 											<td><c:out value="${member.m_email }" /></td>
 											<td><c:out value="${member.m_nickname }" /></td>
-											<td><c:out value="${member.black_date }" /></td>
+											<td><c:out value="${member.m_regdate }" /></td>
 											<td><i class="ti-search"
 												onclick="location.href='manageMemberInfo${pageMaker.makeSearch(pageMaker.criteria.page)}&id=${member.id}'"></i></td>
 										</tr>

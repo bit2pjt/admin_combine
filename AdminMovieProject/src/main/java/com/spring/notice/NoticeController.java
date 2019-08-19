@@ -1,7 +1,5 @@
 package com.spring.notice;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,24 +12,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.manage.MemberVO;
+
 @Controller
 public class NoticeController {
 
 	@Autowired
 	NoticeService noticeService;
 
-	// index
-	@RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
-	public String index() {
-		return "index";
-	}
-
-	// index
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-
-		return "index";
-	}
+//	// index
+//	@RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
+//	public String index() {
+//		return "index";
+//	}
+//
+//	// index
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home(Model model, MemberVO memberVO) {
+////		model.addAttribute("member", noticeService.dailyABoardCount(bno));
+//		
+//		
+//		return "index";
+//	}
 
 //	// 로그인
 //	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -113,6 +115,7 @@ public class NoticeController {
 	// 1:1 문의 목록
 	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
 	public String qnaList(Model model) {
+
 		model.addAttribute("qnaList", noticeService.qnaList());
 
 		return "notice/qnaList";
@@ -135,6 +138,58 @@ public class NoticeController {
 		
 		return "notice/qnaDetail";
 	}
+	
+	
+	
+	// 1:1 문의 답변 달기
+	@RequestMapping(value = "/insertAnswer", method = RequestMethod.GET)
+	public String insertAnswer(@RequestParam("qna_no") int qna_no, HttpSession session, Model model) {
+		
+		AdQnaVO adQnaVO = noticeService.adQnaDetail(qna_no);
+		model.addAttribute("adQnaVO", adQnaVO);// 작성자(어드민)번호
+		
+		
+
+		
+		
+		return "notice/insertAnswer";
+	}
+	
+	
+	// 1:1 문의 답변 작성 액션
+	@RequestMapping(value = "/insertAnswerAction", method = RequestMethod.POST)
+	public String insertAnswerAction(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			AdQnaVO adQnaVO, BoardQnaVO boardQnaVO, RedirectAttributes rttr) {
+
+		// 관리자 아이디 넣어줘야함
+//		adNoticeVO.setAdmin_num(session.getAttribute("admin_num"));
+		adQnaVO.setAdmin_num(1); // 임시
+
+		// an_title, an_content의 앞뒤 공백 제거
+		adQnaVO.setAqna_content(adQnaVO.getAqna_content().trim());// 내용 입력
+
+		try {
+			int result = noticeService.insertAnswer(adQnaVO);
+			if (result == 0) {
+				return "redirect:/insertAnswer";
+			}
+		} catch (Exception e) {
+			System.out.println("ERROR : insertAnswer - " + e.getMessage());
+		}
+		return "redirect:/insertAnswer";
+
+	}
+	
+	
+	// 1:1 문의 답변 수정 
+	@RequestMapping(value = "/updateAnswer", method = RequestMethod.GET)
+	public String updateAnswer(@RequestParam("aqna_no") int aqna_no, HttpSession session, HttpServletRequest request) {
+
+	
+		return "notice/updateAnswer";
+	}
+	
+	
 	
 	//로그인 액션
 	/**
