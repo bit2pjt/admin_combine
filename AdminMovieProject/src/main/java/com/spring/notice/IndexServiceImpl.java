@@ -120,4 +120,10 @@ public class IndexServiceImpl implements NoticeService {
 		
 	}
 
+	@Override
+	public int updateBoardQna(AdQnaVO adQnaVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

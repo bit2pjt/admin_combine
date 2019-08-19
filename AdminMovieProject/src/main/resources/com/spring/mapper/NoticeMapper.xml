@@ -161,8 +161,21 @@
 	
 	<!-- qna 답변 달기 -->
 	<insert id="insertAnswer" parameterType="com.spring.notice.AdQnaVO">
-		INSERT INTO ad_qna
+		insert into ad_qna 
+		values(seq_ad_qna_no.nextval, #{qna_no}, #{aqna_content}, sysdate, sysdate, null)
 	</insert>
+	
+	<update id="updateBoardQna" parameterType="com.spring.notice.AdQnaVO">
+		update board_qna set qna_answer='Y' where qna_no= #{qna_no}
+	</update>
+	
+	<update id="updateAnswer" parameterType="com.spring.notice.AdQnaVO">
+		update ad_qna set aqna_content=#{aqna_content}, aqna_update_date= sysdate 
+		where aqna_no=#{aqna_no}
+	</update>
+
+
+
 
 
 	<!-- index -->
