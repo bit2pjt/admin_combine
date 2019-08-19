@@ -6,8 +6,7 @@
 <mapper namespace="com.spring.board.BoardShareDAO">
 	
 
-	<resultMap type="com.spring.board.BoardShareVO"
-		id="BoardShareMap">
+	<resultMap type="com.spring.board.BoardShareVO" id="BoardShareMap">
 		<result property="bs_bno" column="bs_bno" />
 		<result property="id" column="id" />
 		<result property="bs_category" column="bs_category" />
@@ -92,5 +91,11 @@
         FROM bsr_warning
         ORDER BY bsr_rno DESC
         ]]>
+	</select>
+	
+	<select id="getfContent" parameterType="int" resultMap="BoardShareMap">
+		select *
+		from board_share
+		where bs_bno = #{bs_bno}
 	</select>
 </mapper>

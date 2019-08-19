@@ -70,20 +70,7 @@
                     </div>  -->
 				<!-- 검색 !! -->
 					<!--search box-->
-					<div class="post-search-box drop-buttons row">
-						<div class="dropdown col-md-2 col-sm-6">
-							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
-								type="button" data-toggle="dropdown">검색조건</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">제목</a> <a
-									class="dropdown-item" href="#">작성자</a>
-							</div>
-						</div>
-						<form action="#">
-							<input class="post-search-box" type="text" name="search"
-								placeholder="Search..." required> <i class="ti-search"></i>
-						</form>
-					</div>
+
 					<br>
 					<div class="post-tabs">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -95,24 +82,17 @@
 								id="board_share-tab" data-toggle="tab" href="#board_share"
 								role="tab" aria-controls="board_share" aria-selected="false">나눔게시판</a>
 							</li>
-							<li class="nav-item"><a class="nav-link"
-								id="movie_review-tab" data-toggle="tab" href="#movie_review"
-								role="tab" aria-controls="movie_review" aria-selected="false">영화리뷰</a>
+							<li class="nav-item">
+								<a class="nav-link" id="mml-tab" data-toggle="tab" href="#mml" role="tab" aria-controls="mml"
+								aria-selected="false">나영리</a>
 							</li>
-							<li class="nav-item"><a class="nav-link"
-								id="cinema_review-tab" data-toggle="tab" href="#cinema_review"
-								role="tab" aria-controls="cinema_review" aria-selected="false">영화관
-									리뷰</a></li>
-							<li class="nav-item"><a class="nav-link" id="mml-tab"
-								data-toggle="tab" href="#mml" role="tab" aria-controls="mml"
-								aria-selected="false">나영리</a></li>
 						</ul>
 					</div>
 					<div class="tab-content mt-3" id="myTabContent">
 						<div class="tab-pane fade show active" id="board_free"
 							role="tabpanel" aria-labelledby="board_free-tab">
 							<div class="single-table">
-								<div class="table-responsive">
+								<div class="table-responsive" style="overflow-y: scroll;">
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
@@ -125,18 +105,16 @@
 										</thead>
 										<tbody>
 											<!--4.  자유게시판 게시글의 나열 시작 -->
-											<c:forEach items="${boardFree}" var="board"
-												varStatus="status">
+											<c:forEach items="${boardFree}" var="board" varStatus="status">
 												<tr class="post">
 													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
 													<td>${board.bf_bno}</td>
-													<td><a
-														href="boardPostDetail?bf_bno=${board.bf_bno}">${board.bf_title}</a></td>
+													<td><a href="boardFreeDetail?bf_bno=${board.bf_bno}">${board.bf_title}</a></td>
 													<td>${board.nickname}</td>
 													<td><fmt:formatDate value="${board.bf_update_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='boardPostDetail?bf_bno=${board.bf_bno}'"></i></td>
+														onclick="location.href='boardFreeDetail?bf_bno=${board.bf_bno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -144,8 +122,8 @@
 								</div>
 							</div>
 							
-							  <!--페이징 시작 -->
-				<nav aria-label="...">
+							  <!--페이징 시작 
+							<nav aria-label="...">
                         
                             <form id="listPageForm">
                                 <input type="hidden" name="page" value="${pageMaker.criteria.page}">
@@ -165,16 +143,14 @@
                                 </c:if>
                             </ul>
                        
-                    </nav>
-                    <!-- 페이징 끝 -->
-							
-							
+                    		</nav>
+                    		페이징 끝 -->
 							
 						</div>
 						<div class="tab-pane fade" id="board_share" role="tabpanel"
 							aria-labelledby="board_share-tab">
 							<div class="single-table">
-								<div class="table-responsive">
+								<div class="table-responsive" style="overflow-y: scroll;">
 									<table class="table table-striped text-center">
 										<thead class="text-uppercase">
 											<tr>
@@ -193,19 +169,19 @@
 													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
 													<td>${board.bs_bno}</td>
 													<td><a
-														href="boardPostDetail?bs_bno=${board.bs_bno}">${board.bs_title}</a></td>
+														href="boardShareDetail?bs_bno=${board.bs_bno}">${board.bs_title}</a></td>
 													<td>${board.nickname}</td>
 													<td><fmt:formatDate value="${board.bs_update_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='boardPostDetail?bs_bno=${board.bs_bno}'"></i></td>
+														onclick="location.href='boardShareDetail?bs_bno=${board.bs_bno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
+							<!-- yj : start | pagination
 							<nav aria-label="...">
 								<ul class="pagination justify-content-center">
 									<li class="page-item disabled"><a class="page-link"
@@ -219,7 +195,9 @@
 									</li>
 								</ul>
 							</nav>
-							<!-- yj : end | pagination -->
+							 yj : end | pagination -->
+						
+							 
 						</div>
 						<div class="tab-pane fade" id="movie_review" role="tabpanel"
 							aria-labelledby="movie_review-tab">

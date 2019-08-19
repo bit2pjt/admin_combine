@@ -451,6 +451,9 @@ img {
     opacity: 0;
     animation: popin 1.5s linear infinite 0.5s;
 }
+.breadcrumbs-area {
+	margin: 20px 20px;
+}
 
 @keyframes popin{
     0%{

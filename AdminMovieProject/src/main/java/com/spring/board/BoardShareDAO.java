@@ -50,4 +50,6 @@ public interface BoardShareDAO {
 	int insertReplyWarn(WarnVO vo);
 	
 	void ReplyWarnCount(int rno);
+	
+	BoardShareVO getfContent(int bs_bno);
 }

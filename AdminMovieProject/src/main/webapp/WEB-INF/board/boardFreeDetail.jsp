@@ -48,7 +48,7 @@
 									<strong>작성자 : </strong> <span>${memberVO.m_nickname}</span>
 								</div>
 								<div class="ct">
-									<strong>추천:</strong> <span> 100 </span>
+									<strong>추천:</strong> <span> ${boardFreeVO.bf_recommend} </span>
 								</div>
 							</li>
 							<li>
@@ -56,11 +56,11 @@
 									<strong>작성일 :</strong> <span>${boardFreeVO.bf_reg_date}</span>
 								</div>
 								<div class="ct">
-									<strong>비추천:</strong> <span> 100 </span>
+									<strong>비추천:</strong> <span> ${boardFreeVO.bf_decommend} </span>
 								</div>
 							</li>
 							<li><strong>글제목 : </strong> <span>${boardFreeVO.bf_title}</span></li>
-							<li>
+							<li style="margin-top:20px;">
 								<div class="abc">
 									<code cols="10" rows="10" readonly>${boardFreeVO.bf_content}</code>
 								</div>

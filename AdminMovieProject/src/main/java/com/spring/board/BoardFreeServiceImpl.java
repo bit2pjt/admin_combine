@@ -336,7 +336,21 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	@Override
 	public List<BoardFreeVO> listfAll() {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		return boardFreeDAO.listfAll(); 
+		List<BoardFreeVO> list = boardFreeDAO.listfAll();
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		
+		return list; 
+	}
+	
+	private String userNickName(int id) {
+		ManageDAO memberDAO = sqlSession.getMapper(ManageDAO.class);
+		String nickname = memberDAO.userNickName(id);
+		return nickname;
 	}
 	
 	// 스팸 게시물
@@ -426,11 +440,7 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 		return list;
     }
 	
-	private String userNickName(int id) {
-		ManageDAO memberDAO = sqlSession.getMapper(ManageDAO.class);
-		String nickname = memberDAO.userNickName(id);
-		return nickname;
-	}
+	
 	
     @Override
     public int countSearchedArticles(SearchCriteria searchCriteria) {
