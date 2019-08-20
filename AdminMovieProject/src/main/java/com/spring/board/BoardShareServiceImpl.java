@@ -157,6 +157,7 @@ public class BoardShareServiceImpl implements BoardShareService {
     public List<BoardShareVO> listSearch(SearchCriteria searchCriteria) {
 		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
 		List<BoardShareVO> list = BoardShareDAO.listSearch(searchCriteria);
+		
 		for(int i=0; i<list.size(); i++) {
 			int id = list.get(i).getId();
 			String nickname = userNickName(id);
@@ -196,14 +197,31 @@ public class BoardShareServiceImpl implements BoardShareService {
 	@Override
 	public List<BoardShareVO> spamsListAll() {
 		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
-		return BoardShareDAO.spamsListAll(); 
+		List<BoardShareVO> list = BoardShareDAO.spamsListAll();
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		
+		return list; 
 	}
 	
 	// 신고댓글
 	@Override
 	public List<BsrWarningVO> spamsRListAll() {
 		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
-		return BoardShareDAO.spamsRListAll(); 
+		List<BsrWarningVO> list = BoardShareDAO.spamsRListAll();
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		
+		return list; 
+		
 	}
 
 	@Override

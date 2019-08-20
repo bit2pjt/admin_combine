@@ -11,5 +11,5 @@ public class BfrWarningVO {
 	private int id;	// 신고자
 	private Date bfr_date;	// 신고날짜
 	private String bfr_warncontent;	// 신고 내용
-	
+	private String nickname;
 }

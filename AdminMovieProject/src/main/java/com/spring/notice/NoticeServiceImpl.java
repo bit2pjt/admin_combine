@@ -6,6 +6,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.board.BoardFreeDAO;
+import com.spring.board.BoardFreeVO;
+import com.spring.board.BoardShareDAO;
+import com.spring.manage.ManageDAO;
+import com.spring.manage.MemberVO;
+
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
@@ -19,17 +25,54 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeDAO noticeDAOglobal;
 
 	@Override
+	public int getMemberId(String m_email) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		int id = BoardShareDAO.getMemberId(m_email);
+		return id;
+	}
+	
+	@Override
+	public String getMemberNickname(String m_email) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		String m_nickname = BoardShareDAO.getMemberNickname(m_email);
+		
+		return m_nickname;
+	}
+
+	@Override
+	public MemberVO getMember(int id) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		MemberVO member = BoardShareDAO.getMember(id);
+		
+		return member;
+	}
+	
+	@Override
 	public List<AdNoticeVO> noticeList() {
 		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		List<AdNoticeVO> list = noticeDAO.noticeList();
 		
-		return noticeDAO.noticeList();
+		return list; 
 	}
 
 	@Override
 	public List<BoardQnaVO> qnaList() {
 		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		List<BoardQnaVO> list = noticeDAO.qnaList();
 		
-		return noticeDAO.qnaList();
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		
+		return list;
+	}
+
+	private String userNickName(int id) {
+		ManageDAO memberDAO = sqlSession.getMapper(ManageDAO.class);
+		String nickname = memberDAO.userNickName(id);
+		return nickname;
 	}
 
 	@Override
@@ -77,37 +120,37 @@ public class NoticeServiceImpl implements NoticeService {
 		return null;
 	}
 
-	@Override
-	public int dailyMemberCount(int id) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		int dailyMemberCount = noticeDAO.dailyMemberCount(id);
-		
-		return dailyMemberCount;
-	}
-
-	@Override
-	public int dailyFBoardCount(int bf_bno) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int dailySBoardCount(int bs_bno) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int dailyMBoardCount(int mml_num) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int dailyABoardCount(int bno) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//	@Override
+//	public int dailyMemberCount(int id) {
+//		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+//		int dailyMemberCount = noticeDAO.dailyMemberCount(id);
+//		
+//		return dailyMemberCount;
+//	}
+//
+//	@Override
+//	public int dailyFBoardCount(int bf_bno) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public int dailySBoardCount(int bs_bno) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public int dailyMBoardCount(int mml_num) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public int dailyABoardCount(int bno) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 	@Override
 	public int allMemberCount(int id) {

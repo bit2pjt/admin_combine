@@ -2,19 +2,29 @@ package com.spring.notice;
 
 import java.util.List;
 
+import com.spring.manage.MemberVO;
+
 public interface NoticeDAO {
 	
+	String getMemberNickname(String m_email);	//멤버 닉네임 가져오기
+	
+	MemberVO getMember(int id);
+	
+	int getMemberId(String m_email);		//멤버 아이디 가져오기
+	
+	
+	
 	// 전체 공지사항 리스트
-	public List<AdNoticeVO> noticeList();
+	List<AdNoticeVO> noticeList();
 
 	// qna 리스트 
-	public List<BoardQnaVO> qnaList();
+	List<BoardQnaVO> qnaList();
 	
 	//공지사항 등록
 	int insertNotice(AdNoticeVO adNoticeVO);
 	
 	//관리자 이름 
-	public String getAdminName(int admin_id);
+	String getAdminName(int admin_id);
 	
 	// 공지사항 내용
 	AdNoticeVO noticeDetail(int an_code);
@@ -26,26 +36,26 @@ public interface NoticeDAO {
 	AdQnaVO adQnaDetail(int qna_no);
 	
 	// 로그인
-	public AdMemberVO userCheck(String admin_id);
+	AdMemberVO userCheck(String admin_id);
 	
 	
-	// 	index 회원수 일 카운트
-	int dailyMemberCount(int id);
-	
-	// index 자유게시판 글 등록수 일 카운트
-	int dailyFBoardCount(int bf_bno);
-	
-	// index 나눔게시판 글 등록수 일 카운트 
-	int dailySBoardCount(int bs_bno);
-
-	// index 나눔게시판 글 등록수 일 카운트 
-	int dailyMBoardCount(int mml_num);
-	
-	// index 모든 게시판 글 등록수
-	int dailyABoardCount(int bno);
-	
-	// index 회원수 전체
-	int allMemberCount(int id);
+//	// 	index 회원수 일 카운트
+//	int dailyMemberCount(int id);
+//	
+//	// index 자유게시판 글 등록수 일 카운트
+//	int dailyFBoardCount(int bf_bno);
+//	
+//	// index 나눔게시판 글 등록수 일 카운트 
+//	int dailySBoardCount(int bs_bno);
+//
+//	// index 나눔게시판 글 등록수 일 카운트 
+//	int dailyMBoardCount(int mml_num);
+//	
+//	// index 모든 게시판 글 등록수
+//	int dailyABoardCount(int bno);
+//	
+//	// index 회원수 전체
+//	int allMemberCount(int id);
 	
 	
 	// qna 답변 입력

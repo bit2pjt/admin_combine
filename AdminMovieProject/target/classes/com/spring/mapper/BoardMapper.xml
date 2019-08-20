@@ -109,6 +109,7 @@
 	 <![CDATA[
         SELECT *  
         FROM bfr_warning
+        WHERE bfr_rno > 0
         ORDER BY bfr_rno DESC
         ]]>
 	</select>
