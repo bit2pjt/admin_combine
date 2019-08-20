@@ -56,4 +56,10 @@ public class IndexServiceImpl implements IndexService {
 	}
 
 
+	@Override
+	public int updateBoardQna(AdQnaVO adQnaVO) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

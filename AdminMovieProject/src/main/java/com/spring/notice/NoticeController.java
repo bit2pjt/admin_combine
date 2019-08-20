@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.manage.MemberVO;
@@ -122,6 +123,7 @@ public class NoticeController {
 	}
 
 	// 1:1 문의 상세보기
+	
 	@RequestMapping(value = "/qnaDetail", method = RequestMethod.GET)
 	public String qnaDetail(@RequestParam("qna_no") int qna_no, HttpSession session, Model model) {
 		
@@ -133,27 +135,43 @@ public class NoticeController {
 		model.addAttribute("adQnaVO", adQnaVO);
 		
 //		String admin_name = noticeService.getAdminName(1); // 게시물 작성자의 정보
-
-		
-		
 		return "notice/qnaDetail";
 	}
 	
 	
 	
 	// 1:1 문의 답변 달기
+	@ResponseBody
 	@RequestMapping(value = "/insertAnswer", method = RequestMethod.GET)
-	public String insertAnswer(@RequestParam("qna_no") int qna_no, HttpSession session, Model model) {
+	public String insertAnswer(@RequestParam("qna_no") int qna_no, @RequestParam("aqna_content") String aqna_content, HttpSession session, Model model) {
+		AdQnaVO adQnaVO = new AdQnaVO();
 		
-		AdQnaVO adQnaVO = noticeService.adQnaDetail(qna_no);
-		model.addAttribute("adQnaVO", adQnaVO);// 작성자(어드민)번호
+		adQnaVO.setQna_no(qna_no);
+		adQnaVO.setAqna_content(aqna_content);
+		int num = noticeService.insertAnswer(adQnaVO);
+		String qna_no1 = String.valueOf(qna_no);
+//		model.addAttribute("adQnaVO", adQnaVO);// 작성자(어드민)번호
 		
-		
-
-		
-		
-		return "notice/insertAnswer";
+		return qna_no1;
 	}
+	
+	// 1:1 문의 답변 수정 
+		@ResponseBody
+		@RequestMapping(value = "/updateAnswer", method = RequestMethod.GET)
+		public String updateAnswer(@RequestParam("qna_no") int qna_no, @RequestParam("aqna_no") int aqna_no, 
+				@RequestParam("aqna_content") String aqna_content, HttpSession session, HttpServletRequest request) {
+			System.out.println("aqna_no: " + aqna_no);
+			System.out.println("aqna_content: " + aqna_content);
+			
+			AdQnaVO adQnaVO = new AdQnaVO();
+			
+			String qna_no1 = String.valueOf(qna_no);
+			adQnaVO.setAqna_no(aqna_no);
+			adQnaVO.setAqna_content(aqna_content);
+			int num = noticeService.updateAnswer(adQnaVO);
+		
+			return qna_no1;
+		}
 	
 	
 	// 1:1 문의 답변 작성 액션
@@ -181,13 +199,7 @@ public class NoticeController {
 	}
 	
 	
-	// 1:1 문의 답변 수정 
-	@RequestMapping(value = "/updateAnswer", method = RequestMethod.GET)
-	public String updateAnswer(@RequestParam("aqna_no") int aqna_no, HttpSession session, HttpServletRequest request) {
-
 	
-		return "notice/updateAnswer";
-	}
 	
 	
 	

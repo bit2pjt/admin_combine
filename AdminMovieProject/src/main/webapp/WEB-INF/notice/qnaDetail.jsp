@@ -77,24 +77,26 @@
 									class="btn btn-primary btn-flat btn-lg mt-3"
 									data-toggle="modal" data-target="#nodab">답변하기</button>
 								<!-- Modal -->
-								<div class="modal fade" id="nodab" aria-hidden="true"
-									style="display: none;">
+								<div class="modal fade" id="nodab" aria-hidden="true" style="display: none;">
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title">답변을 입력해 주세요</h5>
+												<h4 class="modal-title">답변을 입력해 주세요</h4>
 												<button type="button" class="close" data-dismiss="modal">
 													<span>×</span>
 												</button>
 											</div>
 											<div class="modal-body">
-												<textarea class="form-control" rows="3"></textarea>
+											<div class="form-group">
+					                            <label for="qnaNo" style="margin-bottom:10px;"><strong>문의 번호</strong></label>
+					                            <input class="form-control" id="qnaNo" name="qnaNo" value="${boardQnaVO.qna_no }"readonly>
+					                        </div>
+					                        <label for="qnaText" style="margin-bottom:10px;"><strong>답변 내용</strong></label>
+												<textarea class="form-control" id="qnaText" name="qnaText" rows="3"></textarea>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Save
-													changes</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+												<button type="button" class="btn btn-success btn-register"> 등록 </button>
 											</div>
 										</div>
 									</div>
@@ -107,8 +109,8 @@
 						<c:otherwise>
 							<!-- 답변 있을때 -->
 							<div class="card-body">
-								${adQnaVO.qna_no }
-								<p>${adQnaVO.aqna_content }</p>
+								답변번호: &nbsp;${adQnaVO.aqna_no }
+								<p>답변내용:&nbsp; ${adQnaVO.aqna_content }</p>
 								<h6>${adQnaVO.aqna_update_date }</h6>
 								<!-- Button trigger modal -->
 								<button type="button"
@@ -126,13 +128,16 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<textarea class="form-control" rows="3"></textarea>
+											<div class="form-group">
+					                            <label for="aqnaNo" style="margin-bottom:10px;"><strong>답변 번호</strong></label>
+					                            <input class="form-control" id="aqnaNo" name="aqnaNo" value="${adQnaVO.aqna_no }"readonly>
+					                        </div>
+											 <label for="updateText" style="margin-bottom:10px;"><strong>답변 내용</strong></label>
+												<textarea class="form-control" id="updateText" name="updateText" rows="3">${adQnaVO.aqna_content }</textarea>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Save
-													changes</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal"> 취소 </button>
+												<button type="button" id="btn-update" class="btn btn-success btn-update"> 수정 </button>
 											</div>
 										</div>
 									</div>
@@ -149,6 +154,50 @@
 		<!-- 관리자 답변 끝 -->
 	</div>
 </div>
+<script>
+$(".btn-register").on("click", function () {
+    var qna_no = $("#qnaNo").val();
+    var aqna_content = $("#qnaText").val();
+    
+    $.ajax({
+        url : "insertAnswer",
+        type : "get",
+        data: {qna_no:qna_no, aqna_content: aqna_content},
+        dataType : "text",
+        success : function (result) {
+        		alert(result);
+        	 alert("답변 등록 완료!");
+        	 $("#nodab").removeClass("show");
+             $(".modal-backdrop").remove();
+             $("body").removeClass("modal-open");
+             location.href="qnaDetail?qna_no=" + result;
+        	 
+        }
+    });
+});
 
+$(".btn-update").on("click", function () { // 댓글의 수정 버튼 클릭시
+	var qna_no = "${adQnaVO.qna_no }";
+	var aqna_no = $("#aqnaNo").val();
+	var aqna_content = $("#updateText").val();
+	
+	$.ajax({
+		url : "updateAnswer",
+		type : "get",
+		data: {qna_no: qna_no, aqna_no:aqna_no, aqna_content: aqna_content},
+		dataType : "text",
+		success : function (result) {
+			alert(result);
+			alert("답변 수정 완료!");
+			$("#nodab").removeClass("show");
+			$(".modal-backdrop").remove();
+			$("body").removeClass("modal-open");
+		            //opener.document.location.reload();
+			 location.href="qnaDetail?qna_no=" + result;
+	        	 
+		}
+	});
+});
+</script>
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>

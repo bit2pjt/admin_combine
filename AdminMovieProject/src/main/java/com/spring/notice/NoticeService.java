@@ -58,6 +58,8 @@ interface NoticeService {
 	// qna 답변 입력
 	int insertAnswer(AdQnaVO adQnaVO);
 	
+	int updateBoardQna(AdQnaVO adQnaVO);
+	
 	// qna 답변 수정
 	int updateAnswer(AdQnaVO adQnaVO);
 	
