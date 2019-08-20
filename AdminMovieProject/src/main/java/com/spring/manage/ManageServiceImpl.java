@@ -60,6 +60,7 @@ public class ManageServiceImpl implements ManageService {
 			Date black_date = getBlackDate(id);
 			list.get(i).setBlack_date(black_date);
 		}
+		
 		return list;
     }
 

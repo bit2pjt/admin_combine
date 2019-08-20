@@ -43,21 +43,6 @@
 			<div class="card">
 				<!-- nav tab start -->
 				<div class="card-body">
-					<!--search box-->
-					<div class="post-search-box drop-buttons row">
-						<div class="dropdown col-md-2 col-sm-6">
-							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
-								type="button" data-toggle="dropdown">검색조건</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">제목</a> <a
-									class="dropdown-item" href="#">작성자</a>
-							</div>
-						</div>
-						<form action="#">
-							<input class="post-search-box" type="text" name="search"
-								placeholder="Search..." required> <i class="ti-search"></i>
-						</form>
-					</div>
 					<br>
 					<div class="post-tabs">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -116,21 +101,6 @@
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
-							<nav aria-label="...">
-								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Previous</a></li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- yj : end | pagination -->
 						</div>
 						<div class="tab-pane fade" id="board_share" role="tabpanel"
 							aria-labelledby="board_share-tab">
@@ -165,21 +135,6 @@
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
-							<nav aria-label="...">
-								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Previous</a></li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- yj : end | pagination -->
 						</div>
 						<div class="tab-pane fade" id="movie_review" role="tabpanel"
 							aria-labelledby="movie_review-tab">
@@ -214,21 +169,6 @@
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
-							<nav aria-label="...">
-								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Previous</a></li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- yj : end | pagination -->
 						</div>
 						<div class="tab-pane fade" id="cinema_review" role="tabpanel"
 							aria-labelledby="cinema_review-tab">
@@ -263,21 +203,7 @@
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
-							<nav aria-label="...">
-								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Previous</a></li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- yj : end | pagination -->
+							
 						</div>
 						<div class="tab-pane fade" id="mml" role="tabpanel"
 							aria-labelledby="mml-tab">
@@ -313,21 +239,7 @@
 									</table>
 								</div>
 							</div>
-							<!-- yj : start | pagination-->
-							<nav aria-label="...">
-								<ul class="pagination justify-content-center">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Previous</a></li>
-									<li class="page-item active"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2
-											<span class="sr-only">(current)</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-							<!-- yj : end | pagination -->
+							
 						</div>
 					</div>
 				</div>

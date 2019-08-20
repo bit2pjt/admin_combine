@@ -9,80 +9,67 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
-@Service("noticeService")
+@Service("IndexService")
 @AllArgsConstructor
-public class NoticeServiceImpl implements NoticeService {
+public class IndexServiceImpl implements NoticeService {
 	@Autowired
 	private SqlSession sqlSession;
 
 	@Setter(onMethod_ = { @Autowired })
-	private NoticeDAO noticeDAOglobal;
+	private IndexDAO indexDAOglobal;
 
 	@Override
 	public List<AdNoticeVO> noticeList() {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		
-		return noticeDAO.noticeList();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<BoardQnaVO> qnaList() {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		
-		return noticeDAO.qnaList();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int insertNotice(AdNoticeVO adNoticeVO) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		int result = noticeDAO.insertNotice(adNoticeVO);
-		
-		return result;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public String getAdminName(int admin_id) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		String admin_name = noticeDAO.getAdminName(admin_id);
-		
-		return admin_name;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public AdNoticeVO noticeDetail(int an_code) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		AdNoticeVO adNoticeVO = noticeDAO.noticeDetail(an_code);
-		
-		return adNoticeVO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public BoardQnaVO boardQnaDetail(int qna_no) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		BoardQnaVO boardQnaVO = noticeDAO.boardQnaDetail(qna_no);
-		
-		return boardQnaVO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public AdQnaVO adQnaDetail(int qna_no) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		AdQnaVO adQnaVO = noticeDAO.adQnaDetail(qna_no);
-		
-		return adQnaVO;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public AdMemberVO userCheck(String admin_id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int dailyMemberCount(int id) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		int dailyMemberCount = noticeDAO.dailyMemberCount(id);
-		
-		return dailyMemberCount;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -117,19 +104,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int insertAnswer(AdQnaVO adQnaVO) {
-		// 답변입력
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		int result = noticeDAO.insertAnswer(adQnaVO);
-		noticeDAO.updateBoardQna(adQnaVO);
-		return result;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int updateAnswer(AdQnaVO adQnaVO) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		int result = noticeDAO.updateAnswer(adQnaVO);
-		
-		return result;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -140,9 +122,8 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int updateBoardQna(AdQnaVO adQnaVO) {
-		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
-		int result = noticeDAO.updateBoardQna(adQnaVO);
-		
-		return result;
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
 }

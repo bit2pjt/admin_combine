@@ -51,9 +51,12 @@
 <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
 
 <!-- 제이쿼리 -->
-<script src='{% static "js/jquery-1.11.3.min.js" %}'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<style type="text/css" data-author="zingchart"></style>
 </head>
 
 <body>
@@ -71,7 +74,7 @@
 		<div class="sidebar-menu">
 			<div class="sidebar-header">
 				<div class="logo">
-					<span style="color: white; font-weight: bold; font-size: 30px;">BlockBuster</span><br>
+					<a href="/admin/"><span style="color: white; font-weight: bold; font-size: 30px;">BlockBuster</span></a><br>
 					<span style="color: white; font-weight: bold; font-size: 20px;">(&nbsp;ADMIN
 						SITE&nbsp;)</span>
 				</div>
