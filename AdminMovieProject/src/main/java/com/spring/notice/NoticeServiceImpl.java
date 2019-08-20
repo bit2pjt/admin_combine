@@ -120,13 +120,12 @@ public class NoticeServiceImpl implements NoticeService {
 		// 답변입력
 		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
 		int result = noticeDAO.insertAnswer(adQnaVO);
-		
+		noticeDAO.updateBoardQna(adQnaVO);
 		return result;
 	}
 
 	@Override
 	public int updateAnswer(AdQnaVO adQnaVO) {
-		// 답변 수정
 		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
 		int result = noticeDAO.updateAnswer(adQnaVO);
 		
@@ -137,5 +136,13 @@ public class NoticeServiceImpl implements NoticeService {
 	public void deleteAnswer(int aqna_no) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int updateBoardQna(AdQnaVO adQnaVO) {
+		NoticeDAO noticeDAO = sqlSession.getMapper(NoticeDAO.class);
+		int result = noticeDAO.updateBoardQna(adQnaVO);
+		
+		return result;
 	}
 }
