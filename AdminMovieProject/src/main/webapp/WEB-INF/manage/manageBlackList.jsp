@@ -45,7 +45,7 @@
 			<div class="card2">
 				<div class="card-body2">
 				<!-- 서치 -->
-					<div class="col-sm-8 mb-3">
+					<!-- <div class="col-sm-8 mb-3">
 						<div style="display: inline-flex; ">
 						
 							<select class="form-control col-sm-4 mb-3" name="searchType" id="searchType" style="margin-right: 10px;">
@@ -67,7 +67,7 @@
 									검색</button>
 						</div>
 					</div>
-					<!-- 서치 끝 -->
+					- 서치 끝 -->
 				
 					<div class="single-table">
 						<div class="table-responsive">
@@ -86,11 +86,10 @@
 								
 								<c:forEach items="${blacklist}" var="blacklist" varStatus="status">
 									<tr>
-									<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>							 
+									<td><c:out value="${blacklist.id }" /></td>							 
 									<!-- <td><c:out value="${blacklist.id }" /></td>  --> 
 									 <td><c:out value="${blacklist.m_email }" /></td>
 									 <td><c:out value="${blacklist.m_nickname }" /></td>
-									 <td><c:out value="${blacklist.black_date }" /></td>
 										<td>2019-07-29</td>
 									<td><i class="ti-search"
 											onclick="location.href='manageMemberInfo?id=${blacklist.id}'"></i></td>
@@ -102,7 +101,7 @@
 						</div>
 					</div>
 					<!--페이지메이커 시작-->
-					<div class="box-footer">
+					<!--<div class="box-footer">
 						<div class="pagination justify-content-center">
 							<form id="listPageForm">
 								<input type="hidden" name="page"
@@ -128,7 +127,7 @@
 							</ul>
 						</div>
 					</div>
-					<!--페이지메이커 끝-->
+					페이지메이커 끝-->
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,5 @@
 package com.spring.notice;
 
-import java.util.List;
-
 interface IndexService {
 	// 	index 회원수 일 카운트
 	int dailyMemberCount(int id);
@@ -20,4 +18,5 @@ interface IndexService {
 	
 	// index 회원수 전체
 	int allMemberCount(int id);
+	
 }

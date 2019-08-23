@@ -51,8 +51,8 @@
 							<select class="form-control col-sm-4 mb-3" name="searchType"
 								id="searchType" style="margin-right: 10px;">
 								<option value="null"
-									<c:out value="${searchCriteria.searchType == null ? 'selected' : ''}"/>>::::::
-									선택 ::::::</option>
+									<c:out value="${searchCriteria.searchType == null ? 'selected' : ''}"/>>:::
+									선택 :::</option>
 								<option value="i"
 									<c:out value="${searchCriteria.searchType eq 'i' ? 'selected' : ''}"/>>회원번호</option>
 								<option value="e"

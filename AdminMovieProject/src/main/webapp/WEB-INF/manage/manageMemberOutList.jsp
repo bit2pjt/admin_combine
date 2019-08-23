@@ -44,7 +44,7 @@
 			<div class="card2">
 				<div class="card-body2">
 					<!-- post-search-box start -->
-					<div class="post-search-box drop-buttons row">
+					<!-- <div class="post-search-box drop-buttons row">
 						<div class="dropdown col-md-2 col-sm-6">
 							<button class="btn btn-rounded btn-light-purple dropdown-toggle"
 								type="button" data-toggle="dropdown">검색조건</button>
@@ -59,7 +59,7 @@
 								placeholder="Search..." required> <i class="ti-search"></i>
 						</form>
 					</div>
-					<!-- post-search-box end -->
+					post-search-box end -->
 					
 					<!-- 메인 테이블 시작 -->
 					<div class="single-table">
@@ -98,7 +98,7 @@
 							</table>
 						</div>
 					</div>
-					<!-- yj : start | pagination-->
+					<!-- yj : start | pagination
 					<nav aria-label="...">
 						<ul class="pagination justify-content-center">
 							<li class="page-item disabled"><a class="page-link" href="#"
@@ -110,7 +110,7 @@
 							<li class="page-item"><a class="page-link" href="#">Next</a>
 							</li>
 						</ul>
-					</nav>
+					</nav>-->
 					<!-- yj : end | pagination -->
 				</div>
 			</div>

@@ -54,7 +54,7 @@
 								id="board_share-tab" data-toggle="tab" href="#board_share"
 								role="tab" aria-controls="board_share" aria-selected="false">나눔게시판</a>
 							</li>
-							<li class="nav-item"><a class="nav-link"
+				<!-- 			<li class="nav-item"><a class="nav-link"
 								id="movie_review-tab" data-toggle="tab" href="#movie_review"
 								role="tab" aria-controls="movie_review" aria-selected="false">영화리뷰</a>
 							</li>
@@ -62,7 +62,7 @@
 								id="cinema_review-tab" data-toggle="tab" href="#cinema_review"
 								role="tab" aria-controls="cinema_review" aria-selected="false">영화관
 									리뷰</a></li>
-							<li class="nav-item"><a class="nav-link" id="mml-tab"
+					 -->		<li class="nav-item"><a class="nav-link" id="mml-tab"
 								data-toggle="tab" href="#mml" role="tab" aria-controls="mml"
 								aria-selected="false">나영리</a></li>
 						</ul>
@@ -118,17 +118,17 @@
 										</thead>
 										<tbody>
 											<!--4.  자유게시판 게시글의 나열 시작 -->
-											<c:forEach items="${boardshare}" var="board"
+											<c:forEach items="${boardShare}" var="board"
 												varStatus="status">
 												<tr class="post">
-													<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td>
-													<td><a
-														href="boardShareGet${pageMaker.makeSearch(pageMaker.criteria.page)}&bno=${board.bs_bno}">${board.bs_title}</a></td>
+													<!--<td>${pageMaker.totalCount - ((pageMaker.criteria.page-1) * pageMaker.criteria.perPageNum + status.index) }</td> -->
+													<td>${board.bsr_rno}</td>
+													<td>${board.bsr_warncontent}</td>
 													<td>${board.nickname}</td>
-													<td><fmt:formatDate value="${board.bs_update_date}"
+													<td><fmt:formatDate value="${board.bsr_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='managePostGet.do'"></i></td>
+														onclick="location.href='boardReplyDetail?bs_bno=${board.bsr_rno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -170,6 +170,7 @@
 								</div>
 							</div>
 						</div>
+						
 						<div class="tab-pane fade" id="cinema_review" role="tabpanel"
 							aria-labelledby="cinema_review-tab">
 							<div class="single-table">

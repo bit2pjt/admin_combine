@@ -357,14 +357,28 @@ public class BoardFreeServiceImpl implements BoardFreeService {
 	@Override
 	public List<BoardFreeVO> spamfListAll() {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		return boardFreeDAO.spamfListAll(); 
+		List<BoardFreeVO> list = boardFreeDAO.spamfListAll();
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		return list; 
 	}
 	
 	// 신고댓글
 	@Override
 	public List<BfrWarningVO> spamfRListAll() {
 		BoardFreeDAO boardFreeDAO = sqlSession.getMapper(BoardFreeDAO.class);
-		return boardFreeDAO.spamfRListAll(); 
+		List<BfrWarningVO> list = boardFreeDAO.spamfRListAll();
+		
+		for(int i=0; i<list.size(); i++) {
+			int id = list.get(i).getId();
+			String nickname = userNickName(id);
+			list.get(i).setNickname(nickname);
+		}
+		return list; 
 	}
 	
 	@Override

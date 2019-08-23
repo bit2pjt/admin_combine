@@ -13,5 +13,6 @@ public class AdNoticeVO {
 	private String an_title;	//	AN_TITLE : 공지 제목
 	private Date an_reg_date;	//	AN_REG_DATE : 공지 등록 날짜
 	private Date an_update_date;	//	AN_UPDATE_DATE	: 공지 수정 날짜
+	private String nickname;
 	
 }
