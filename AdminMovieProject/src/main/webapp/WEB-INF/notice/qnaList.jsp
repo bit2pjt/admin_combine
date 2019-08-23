@@ -83,7 +83,7 @@
 											<td><c:out value="${qnaList.qna_no }" /></td>
 											<td><c:out value="${qnaList.qna_category }" /></td>
 											<td><c:out value="${qnaList.qna_title }" /></td>
-											<td><c:out value="${qnaList.id }" /></td>
+											<td><c:out value="${qnaList.nickname }" /></td>
 											<td><c:out value="${qnaList.qna_update_date }" /></td>
 											<td><c:out value="${qnaList.qna_answer }" /></td>
 											<td><i class="ti-search" onclick="location.href='qnaDetail?qna_no=${qnaList.qna_no}'"></i></td>
@@ -96,7 +96,7 @@
 							</table>
 						</div>
 					</div>
-					<!-- yj : start | pagination-->
+					<!-- yj : start | pagination
 					<nav aria-label="...">
 						<ul class="pagination justify-content-center">
 							<li class="page-item disabled"><a class="page-link" href="#"
@@ -107,7 +107,7 @@
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
 							<li class="page-item"><a class="page-link" href="#">Next</a>
 							</li>
-						</ul>
+						</ul>-->
 						<!-- <ul class="pagination">
 							<li class="page-item"><a class="page-link" href="#"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
