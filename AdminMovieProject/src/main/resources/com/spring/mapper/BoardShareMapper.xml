@@ -18,6 +18,17 @@
 		<result property="bs_warn_counter" column="bs_warn_counter" />
 		<result property="bs_deleteyn" column="bs_deleteyn" />
 	</resultMap>
+	
+	<resultMap type="com.spring.board.BSReplyVO" id="BSReplyMap">
+		<result property="bsr_rno" column="bsr_rno" />
+		<result property="bs_bno" column="bs_bno" />
+		<result property="id" column="id" />
+		<result property="bsr_regdate" column="bsr_regdate" />
+		<result property="bsr_update" column="bsr_update" />
+		<result property="bsr_alert" column="bsr_alert" />
+		<result property="bsr_content" column="bsr_content" />
+		<result property="bsr_block" column="bsr_block" />
+	</resultMap>
 
 
 	<resultMap type="com.spring.board.FreeWarningVO"
@@ -98,4 +109,18 @@
 		from board_share
 		where bs_bno = #{bs_bno}
 	</select>
+	
+	<delete id="deleteSpamSBoard" parameterType="int">
+		delete from board_share where bs_bno=#{bno}
+	</delete>
+	
+	<select id="boardSReplyDetail" parameterType="int" resultMap="BSReplyMap">
+		select *
+		from bs_reply
+		where bsr_rno = #{bsr_rno}
+	</select>
+	
+	<delete id="deleteSReply" parameterType="int">
+		delete from bs_reply where bsr_rno=#{rno}
+	</delete>
 </mapper>

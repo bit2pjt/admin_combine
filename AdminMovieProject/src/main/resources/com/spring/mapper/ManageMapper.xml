@@ -26,6 +26,39 @@
 		<result property="m_favorite" column="m_favorite" />
 		<result property="m_blacklist" column="m_blacklist" />
 		<result property="m_authkey" column="m_authkey" />
+		<result property="black_date" column="black_date" />
+		<result property="delete_date" column="delete_date" />
+		<result property="remove_date" column="remove_date" />
+	</resultMap>
+	
+	<resultMap type="com.spring.board.BoardFreeVO"
+		id="BoardFreeMap">
+		<result property="bf_bno" column="bf_bno" />
+		<result property="id" column="id" />
+		<result property="bf_category" column="bf_category" />
+		<result property="bf_title" column="bf_title" />
+		<result property="bf_reg_date" column="bf_reg_date" />
+		<result property="bf_update_date" column="bf_update_date" />
+		<result property="bf_source" column="bf_source" />
+		<result property="bf_content" column="bf_content" />
+		<result property="bf_warn_counter" column="bf_warn_counter" />
+		<result property="bf_view_counter" column="bf_view_counter" />
+		<result property="bf_deleteyn" column="bf_deleteyn" />
+		<result property="bf_recommend" column="bf_recommend" />
+		<result property="bf_decommend" column="bf_decommend" />
+	</resultMap>
+	
+	<resultMap type="com.spring.board.BoardShareVO" id="BoardShareMap">
+		<result property="bs_bno" column="bs_bno" />
+		<result property="id" column="id" />
+		<result property="bs_category" column="bs_category" />
+		<result property="bs_content" column="bs_content" />
+		<result property="bs_title" column="bs_title" />
+		<result property="bs_reg_date" column="bs_reg_date" />
+		<result property="bs_update_date" column="bs_update_date" />
+		<result property="bs_view_counter" column="bs_view_counter" />
+		<result property="bs_warn_counter" column="bs_warn_counter" />
+		<result property="bs_deleteyn" column="bs_deleteyn" />
 	</resultMap>
 
 	<resultMap type="com.spring.manage.BlackListVO" id="BlackListVO">
@@ -48,31 +81,31 @@
  -->
 	<select id="blacklist" resultType="com.spring.manage.MemberVO">	
        <![CDATA[
-  	SELECT
-    member.id, member.m_email, member.m_nickname, blacklist.black_date
-	FROM
-    member
-	LEFT JOIN
-    blacklist
-	ON
-   	member.id = blacklist.id
-	WHERE
-    member.M_BLACKLIST = 'Y'
+	  	SELECT
+	    member.id, member.m_email, member.m_nickname, blacklist.black_date
+		FROM
+	    member
+		LEFT JOIN
+	    blacklist
+		ON
+	   	member.id = blacklist.id
+		WHERE
+	    member.M_BLACKLIST = 'Y'
        ]]>
 	</select>
 	
 	<select id="deletelist" resultType="com.spring.manage.MemberVO">	
        <![CDATA[
-  	SELECT
-    member.id, member.m_email, delete_member.delete_date, delete_member.remove_date
-	FROM
-    member
-	LEFT JOIN
-    delete_member
-	ON
-   	member.id = delete_member.id
-	WHERE
-    member.M_DELETEYN = 'Y'
+	  	SELECT
+	    member.id, member.m_email, delete_member.delete_date, delete_member.remove_date
+		FROM
+	    member
+		LEFT JOIN
+	    delete_member
+		ON
+	   	member.id = delete_member.id
+		WHERE
+	    member.M_DELETEYN = 'Y'
        ]]>
 	</select>
 	
@@ -82,8 +115,8 @@
 		where id = #{id}
 	</select>
 	
-	<select id="getBlackDate" parameterType="int" resultType="Date">
-		select black_date
+	<select id="getBlackDate" parameterType="int" resultMap="BlackListVO">
+		select *
 		from blacklist
 		where id = #{id}
 	</select>
@@ -225,5 +258,43 @@
     <select id="userNickName" parameterType="int" resultType="String">
 		select m_nickname from member where id = #{id}
 	</select>
+	
+	<select id="listFreeAll" resultMap="BoardFreeMap">
+        <![CDATA[
+        SELECT *  
+        FROM board_free
+        WHERE id = #{id}
+        ORDER BY bf_bno DESC
+        ]]>
+	</select>
+	
+	<select id="listShareAll" resultMap="BoardShareMap">
+        <![CDATA[
+        SELECT *  
+        FROM board_share
+        WHERE id = #{id}
+        ORDER BY bs_bno DESC
+        ]]>
+	</select>
+	
+	<delete id="deleteBlackList" parameterType="int">
+		delete from blacklist where id=#{id}
+	</delete>
+	
+	<delete id="deleteMemberAdmin" parameterType="int">
+		delete from delete_member where id=#{id}
+	</delete>
+	
+	<update id="updateBlackList" parameterType="int">
+		update member
+		set m_blacklist='N'
+		where id=#{id}
+	</update>
+	
+	<update id="updatedeleteMember" parameterType="int">
+		update member
+		set M_DELETEYN ='N'
+		where id=#{id}
+	</update>
 	
 </mapper>

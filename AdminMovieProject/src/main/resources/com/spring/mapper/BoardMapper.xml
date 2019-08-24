@@ -20,6 +20,19 @@
 		<result property="bf_recommend" column="bf_recommend" />
 		<result property="bf_decommend" column="bf_decommend" />
 	</resultMap>
+	
+	<resultMap type="com.spring.board.BFReplyVO" id="BFReplyMap">
+		<result property="bfr_rno" column="bfr_rno" />
+		<result property="bfr_bno" column="bfr_bno" />
+		<result property="id" column="id" />
+		<result property="bfr_regdate" column="bfr_regdate" />
+		<result property="bfr_like" column="bfr_like" />
+		<result property="bfr_dislike" column="bfr_dislike" />
+		<result property="bfr_update" column="bfr_update" />
+		<result property="bfr_alert" column="bfr_alert" />
+		<result property="bfr_content" column="bfr_content" />
+		<result property="bfr_block" column="bfr_block" />
+	</resultMap>
 
 
 	<resultMap type="com.spring.board.ThumbVO" id="ThumbMap">
@@ -97,6 +110,7 @@
 		from member
 		where id = #{id}
 	</select>
+	
 	<select id="spamfListAll" resultMap="BoardFreeMap">
 	 <![CDATA[
         SELECT *  
@@ -105,6 +119,7 @@
         ORDER BY bf_bno DESC
         ]]>
 	</select>
+	
 	<select id="spamfRListAll" resultMap="BfrWarningVO">
 	 <![CDATA[
         SELECT *  
@@ -113,4 +128,19 @@
         ORDER BY bfr_rno DESC
         ]]>
 	</select>
+	
+	<delete id="deleteSpamBoard" parameterType="int">
+		delete from board_free where bf_bno=#{bno}
+	</delete>
+	
+	
+	<select id="boardFReplyDetail" parameterType="int" resultMap="BFReplyMap">
+		select *
+		from bf_reply
+		where bfr_rno = #{bfr_rno}
+	</select>
+	
+	<delete id="deleteFReply" parameterType="int">
+		delete from bf_reply where bfr_rno=#{rno}
+	</delete>
 </mapper>

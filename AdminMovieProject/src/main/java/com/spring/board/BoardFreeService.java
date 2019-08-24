@@ -58,4 +58,10 @@ interface BoardFreeService {
 	String warn_check(WarnVO vo);
 
 	String ReplyWarn(WarnVO vo);
+	
+	void deleteSpamFBoard(int bno);
+	
+	void deleteFReply(int rno);
+	
+	BFReplyVO boardFReplyDetail(int bfr_rno);
 }
