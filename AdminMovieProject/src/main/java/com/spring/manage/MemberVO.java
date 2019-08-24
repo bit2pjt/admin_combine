@@ -26,4 +26,6 @@ public class MemberVO {
 	private String m_blacklist;	//블랙리스트 여부
 	private String m_authkey;
 	private Date black_date;// 블랙리스트 선정된날
+	private Date delete_date; // 탈퇴신청 날짜
+	private Date remove_date; // 삭제 날짜
 }

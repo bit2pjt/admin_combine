@@ -78,7 +78,7 @@
 										<th scope="col">이메일</th>
 										<th scope="col">닉네임</th>
 										<th scope="col">블랙리스트 등록일</th>
-										<th scope="col">보기</th>
+										<th scope="col">삭제</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -90,10 +90,12 @@
 									<!-- <td><c:out value="${blacklist.id }" /></td>  --> 
 									 <td><c:out value="${blacklist.m_email }" /></td>
 									 <td><c:out value="${blacklist.m_nickname }" /></td>
-										<td>2019-07-29</td>
-									<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo?id=${blacklist.id}'"></i></td>
+										<td>${blacklist.black_date }</td>
+									<td> 
+										<a href="#" onclick="deleteBlackList()">삭제</a>
+									</td>
 									</tr>
+									<input type="hidden" id="blackId" value="${blacklist.id }"/>
 								</c:forEach>
 									
 								</tbody>
@@ -135,10 +137,20 @@
 
 	</div>
 </div>
-</div>
 <!-- main content area end -->
 <!-- 스크립트 추가 -->
 <script>
+	function deleteBlackList() {
+		var id = $("#blackId").val();
+		var blacklistyn = confirm("삭제 하시겠습니까?");
+		
+		if(blacklistyn == true)
+			location.href="deleteBlackList?id=" + id;
+		else
+			return false;		
+		
+	}
+	
 	$(".pagination li a").on("click", function(event) {
 		event.preventDefault();
 

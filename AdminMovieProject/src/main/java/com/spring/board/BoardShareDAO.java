@@ -52,4 +52,10 @@ public interface BoardShareDAO {
 	void ReplyWarnCount(int rno);
 	
 	BoardShareVO getfContent(int bs_bno);
+	
+	void deleteSpamSBoard(int bno);
+	
+	BSReplyVO boardSReplyDetail(int bsr_rno);
+	
+	void deleteSReply(int rno);
 }

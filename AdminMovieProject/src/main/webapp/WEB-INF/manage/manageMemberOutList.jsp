@@ -71,7 +71,7 @@
 										<th scope="col" width=>이메일</th>
 										<th scope="col">탈퇴신청일</th>
 										<th scope="col">삭제예정일</th>
-										<th scope="col">보기</th>
+										<th scope="col">삭제</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -83,16 +83,15 @@
 									 <td><c:out value="${deletelist.id }" /></td>
 									 <td><c:out value="${deletelist.m_email }" /></td>
 									 <!-- <td><c:out value="${blacklist.m_nickname }" /></td> -->
-										<td>2019-07-29</td>
-										<td>2019-08-29</td>
-									<td><i class="ti-search"
-											onclick="location.href='manageMemberInfo?id=${deletelist.id}'"></i></td>
+									 <td><c:out value="${deletelist.delete_date }" /></td>
+									 <td><c:out value="${deletelist.remove_date }" /></td>
+									 <td> 
+										 <a href="#" onclick="deleteMember()">삭제</a>
+									 </td>
 									</tr>
+									<input type="hidden" id="deleteId" value="${deletelist.id }"/>
 								
 								</c:forEach>
-								
-								
-								
 									
 								</tbody>
 							</table>
@@ -119,6 +118,17 @@
 
 	</div>
 </div>
-</div>
+<script>
+	function deleteMember() {
+		var id = $("#deleteId").val();
+		var blacklistyn = confirm("삭제 하시겠습니까?");
+		
+		if(blacklistyn == true)
+			location.href="deleteMemberAdmin?id=" + id;
+		else
+			return false;		
+		
+	}
+</script>
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>

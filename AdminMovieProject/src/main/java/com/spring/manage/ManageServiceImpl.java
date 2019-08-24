@@ -7,6 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.board.BoardFreeDAO;
+import com.spring.board.BoardFreeVO;
+import com.spring.board.BoardShareVO;
 import com.spring.paging.Criteria;
 import com.spring.paging.SearchCriteria;
 
@@ -54,11 +57,18 @@ public class ManageServiceImpl implements ManageService {
     public List<MemberVO> listSearch(SearchCriteria searchCriteria) {
 		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
 		List<MemberVO> list = manageDAO.listSearch(searchCriteria);
+		System.out.println("list: " + list.size()); // 10
 		
 		for(int i=0; i<list.size(); i++) {
 			int id = list.get(i).getId();
-			Date black_date = getBlackDate(id);
-			list.get(i).setBlack_date(black_date);
+			System.out.println("id: " + id);
+			BlackListVO blackListVO = getBlackDate(id);
+			System.out.println("확인: " + blackListVO);
+			
+			if(blackListVO != null) 
+				list.get(i).setBlack_date(blackListVO.getBlack_date());
+			else
+				continue;
 		}
 		
 		return list;
@@ -92,9 +102,12 @@ public class ManageServiceImpl implements ManageService {
 	public List<MemberVO> deletelist() {
 		// 탈퇴신청 목록
 		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
-
-		return manageDAO.deletelist();
+		System.out.println("11111: " + manageDAO.deletelist());
+		List<MemberVO> member = manageDAO.deletelist();
+		
+		return member;
 	}
+	
 
 	@Override
 	public String userNickName(int id) {
@@ -103,12 +116,12 @@ public class ManageServiceImpl implements ManageService {
 	}
 
 	@Override
-	public Date getBlackDate(int id) {
+	public BlackListVO getBlackDate(int id) {
 		// 블랙리스트 등록일
 		ManageDAO ManageDAO = sqlSession.getMapper(ManageDAO.class);
-		Date black_date = ManageDAO.getBlackDate(id);
-		
-		return black_date;		
+		BlackListVO blackListVO = ManageDAO.getBlackDate(id);
+		System.out.println("blackListVO: " + blackListVO);
+		return blackListVO;		
 	}
 
 	@Override
@@ -130,6 +143,51 @@ public class ManageServiceImpl implements ManageService {
 		MemberVO vo = manageDAO.getInfo(id); 
 		
 		return vo;
+	}
+
+
+	@Override
+	public List<BoardFreeVO> listFreeAll(int id) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		List<BoardFreeVO> list = manageDAO.listFreeAll(id);
+		
+		return list; 
+	}
+
+
+	@Override
+	public List<BoardShareVO> listShareAll(int id) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		List<BoardShareVO> list = manageDAO.listShareAll(id);
+		
+		return list; 
+	}
+
+
+	@Override
+	public void deleteBlackList(int id) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		manageDAO.deleteBlackList(id);	
+		updateBlackList(id);
+		
+	}
+	
+	@Override
+	public void deleteMemberAdmin(int id) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		manageDAO.deleteMemberAdmin(id);	
+		updatedeleteMember(id);
+		
+	}
+	
+	private void updateBlackList(int id) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		manageDAO.updateBlackList(id);
+	}
+	
+	private void updatedeleteMember(int id) {
+		ManageDAO manageDAO = sqlSession.getMapper(ManageDAO.class);
+		manageDAO.updatedeleteMember(id);
 	}
 
 }

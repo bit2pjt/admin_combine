@@ -112,10 +112,51 @@ public class BoardController {
 	}
 
 	// 댓글 상세보기
-	@RequestMapping(value = "/boardReplyDetail", method = RequestMethod.GET)
-	public String boardReplyDetail() {
-
-		return "board/boardReplyDetail";
+	@RequestMapping(value = "/boardFReplyDetail", method = RequestMethod.GET)
+	public String boardFReplyDetail(@RequestParam("bfr_rno") int bfr_rno, Model model) {
+		BFReplyVO bfReplyVO = boardFreeService.boardFReplyDetail(bfr_rno);
+		System.out.println("zzzz: " + bfReplyVO);
+		model.addAttribute("bfReplyVO", bfReplyVO);
+		
+		return "board/boardFReplyDetail";
 	}
+	
+	@RequestMapping(value = "/boardSReplyDetail", method = RequestMethod.GET)
+	public String boardSReplyDetail(@RequestParam("bsr_rno") int bsr_rno, Model model) {
+		BSReplyVO bsReplyVO = boardShareService.boardSReplyDetail(bsr_rno);
+		System.out.println("zzzz: " + bsReplyVO);
+		model.addAttribute("bsReplyVO", bsReplyVO);
+		
+		return "board/boardSReplyDetail";
+	}
+	
+	@RequestMapping(value = "/deleteSpamFBoard", method = RequestMethod.GET)
+	public String deleteSpamFBoard(@RequestParam("bno") int bno, Model model) {
+
+		boardFreeService.deleteSpamFBoard(bno);
+		return "board/boardSpamPost";
+	}
+	
+	@RequestMapping(value = "/deleteSpamSBoard", method = RequestMethod.GET)
+	public String deleteSpamSBoard(@RequestParam("bno") int bno, Model model) {
+
+		boardShareService.deleteSpamSBoard(bno);
+		return "board/boardSpamPost";
+	}
+	
+	@RequestMapping(value = "/deleteFReply", method = RequestMethod.GET)
+	public String deleteFReply(@RequestParam("rno") int rno, Model model) {
+
+		boardFreeService.deleteFReply(rno);
+		return "redirect:/boardSpamReply";
+	}
+	
+	@RequestMapping(value = "/deleteSReply", method = RequestMethod.GET)
+	public String deleteSReply(@RequestParam("rno") int rno, Model model) {
+
+		boardShareService.deleteSReply(rno);
+		return "redirect:/boardSpamReply";
+	}
+	
 
 }

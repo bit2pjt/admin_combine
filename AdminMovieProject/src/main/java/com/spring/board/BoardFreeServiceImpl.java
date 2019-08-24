@@ -462,4 +462,29 @@ public class BoardFreeServiceImpl implements BoardFreeService {
     	return boardDAO.countSearchedArticles(searchCriteria);
     }
 
+
+	@Override
+	public void deleteSpamFBoard(int bno) {
+		BoardFreeDAO boardDAO = sqlSession.getMapper(BoardFreeDAO.class);
+		boardDAO.deleteSpamFBoard(bno);
+		
+	}
+
+
+	@Override
+	public void deleteFReply(int rno) {
+		BoardFreeDAO boardDAO = sqlSession.getMapper(BoardFreeDAO.class);
+		boardDAO.deleteFReply(rno);
+	}
+
+
+	@Override
+	public BFReplyVO boardFReplyDetail(int bfr_rno) {
+		BoardFreeDAO boardDAO = sqlSession.getMapper(BoardFreeDAO.class);
+		BFReplyVO vo = boardDAO.boardFReplyDetail(bfr_rno);
+		String nickname = userNickName(vo.getId());
+		vo.setNickname(nickname);
+		return vo;
+	}
+
 }
