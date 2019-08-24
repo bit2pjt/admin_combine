@@ -231,4 +231,26 @@ public class BoardShareServiceImpl implements BoardShareService {
 		
 		return vo;
 	}
+
+	@Override
+	public void deleteSpamSBoard(int bno) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		BoardShareDAO.deleteSpamSBoard(bno);
+	}
+
+	@Override
+	public BSReplyVO boardSReplyDetail(int bsr_rno) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		BSReplyVO vo = BoardShareDAO.boardSReplyDetail(bsr_rno);
+		String nickname = userNickName(vo.getId());
+		vo.setNickname(nickname);
+		return vo;
+	}
+
+	@Override
+	public void deleteSReply(int rno) {
+		BoardShareDAO BoardShareDAO = sqlSession.getMapper(BoardShareDAO.class);
+		BoardShareDAO.deleteSReply(rno);
+		
+	}
 }

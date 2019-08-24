@@ -3,6 +3,8 @@ package com.spring.manage;
 import java.sql.Date;
 import java.util.List;
 
+import com.spring.board.BoardFreeVO;
+import com.spring.board.BoardShareVO;
 import com.spring.paging.Criteria;
 import com.spring.paging.SearchCriteria;
 
@@ -30,7 +32,7 @@ public interface ManageDAO {
 	public String userNickName(int id);
 
 	// 블랙리스트 등록일 가져오기
-	Date getBlackDate(int id);
+	BlackListVO getBlackDate(int id);
 	
 	// 탈퇴 신청일 가져오기
 	public Date getDeleteDate(int id);
@@ -40,5 +42,15 @@ public interface ManageDAO {
 	
 	// 멤버 정보 가져오기
 	MemberVO getInfo(int id);
+	
+	List<BoardFreeVO> listFreeAll(int id);
+	
+	List<BoardShareVO> listShareAll(int id);
+	
+	void deleteBlackList(int id);
+	void deleteMemberAdmin(int id);
+	
+	void updateBlackList(int id);
+	void updatedeleteMember(int id);
 	
 }

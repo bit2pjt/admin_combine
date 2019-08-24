@@ -84,4 +84,11 @@ public interface BoardFreeDAO {
 	WarnVO ReplyWarn(WarnVO vo);
 	
 	void ReplyWarnCount(int rno);
+	
+	void deleteSpamFBoard(int bno);
+	
+	void deleteFReply(int bno);
+	
+	BFReplyVO boardFReplyDetail(int bfr_rno);
+	
 }

@@ -30,7 +30,7 @@
 				<h4 class="page-title pull-left">회원정보 상세보기</h4>
 				<ul class="breadcrumbs pull-left">
 					<li><a href="/admin/">Home</a></li>
-					<li><a href="/admin/manageMemberList.do">전체 회원</a></li>
+					<li><a href="/admin/manageMemberList">전체 회원</a></li>
 					<!-- 이전페이지가 블랙리스트회원일경우 전체회원이 아닌 블랙리스트회원으로! 안되면 그냥 없애버려유 -->
 					<li><span>회원정보 상세보기</span></li>
 				</ul>
@@ -134,7 +134,7 @@
 							onclick="location.href='manageMemberModify?id=${memberVO.id}'" style="visibility:hidden">회원정보 수정</button>
 						<br>
 						<button type="button" class="btn btn-dark mb-3"
-							onclick="location.href='manageMemberPost'">게시글 관리</button>
+							onclick="location.href='manageMemberPost?id=${memberVO.id}'">게시글 관리</button>
 						<br>
 						<button type="button" class="btn btn-dark mb-3">블랙리스트 등록</button>
 						<br>

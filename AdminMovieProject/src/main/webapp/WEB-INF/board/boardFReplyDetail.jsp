@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--
 /**
 * @Class Name :  manageReviewGet.jsp
@@ -46,35 +48,30 @@
 						style="width: 100%; position: relative;">
 						<!-- 왼쪽 텍스트 -->
 						<div style="margin-left: 10%;">
-							<div style="padding: 10px; font-weight: bold;">작성자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-								영화 정보(or 영화관 정보)</div>
-							<div style="padding: 10px; font-weight: bold;">작성자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-								닉네임</div>
-							<div style="padding: 10px; font-weight: bold;">작성일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-								작성일</div>
+							<div style="padding: 10px; font-weight: bold;">작성자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+								${bfReplyVO.nickname }</div>
+							<div style="padding: 10px; font-weight: bold;">작성일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+								<fmt:formatDate value="${bfReplyVO.bfr_regdate }" pattern="yyyy-MM-dd" /></div>
 							<div style="padding: 10px; font-weight: bold;">
 								<div>
-									리뷰내용 : <input type="text" name=""
-										style="width: 80%; height: 60px;">
+									리뷰내용 : ${bfReplyVO.bfr_content}
 								</div>
 							</div>
-							<div style="padding: 10px; font-weight: bold;">
-								평점&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-								★★★☆☆ <span><6> / 10</span>
-							</div>
-							<div style="padding: 10px; font-weight: bold;">추천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-								<123></div>
-							<div style="padding: 10px; font-weight: bold;">비추천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-								<12></div>
+							<div style="padding: 10px; font-weight: bold;">추천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+								${bfReplyVO.bfr_like}</div>
+							<div style="padding: 10px; font-weight: bold;">비추천&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+								${bfReplyVO.bfr_dislike}</div>
+							<div style="padding: 10px; font-weight: bold;">신고수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;
+								${bfReplyVO.bfr_alert}</div>
 						</div>
 						<!-- 오른쪽 버튼 -->
 						<div class="admin_review_button">
 							<div style="">
 								<p style="">
-									<a style="color: #fff;" href="/admin/manageMemberPost.do">리뷰 삭제</a>
+									<a style="color: #fff;" href="#" onclick="deleteFReply()">리뷰 삭제</a>
 								</p>
 								<p style="">
-									<a style="color: #fff;" href="/admin/manageMemberPost.do">리뷰 목록으로 돌아가기</a>
+									<a style="color: #fff;" href="/admin/boardSpamReply">리뷰 목록으로 돌아가기</a>
 								</p>
 
 							</div>
@@ -87,10 +84,28 @@
 	</div>
 	<!-- Dark table end -->
 </div>
-</div>
-<!-- Contextual Classes end -->
-</div>
-</div>
-</div>
+<script>
+	function deleteFReply() {
+		var rno = "${bfReplyVO.bfr_rno}";
+		var deleteyn = confirm("삭제 하시겠습니까?");
+		
+		if(deleteyn == true)
+			location.href="deleteFReply?rno=" + rno;
+		else
+			return false;		
+		
+	}
+	
+	function deleteSReply() {
+		var rno = $("#deleteSId").val();
+		var deleteyn = confirm("삭제 하시겠습니까?");
+		
+		if(deleteyn == true)
+			location.href="deleteSReply?rno=" + rno;
+		else
+			return false;		
+		
+	}
+</script>
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>

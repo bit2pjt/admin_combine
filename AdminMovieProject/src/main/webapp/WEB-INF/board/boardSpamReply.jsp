@@ -94,7 +94,7 @@
 													<td><fmt:formatDate value="${board.bfr_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='boardReplyDetail?bf_bno=${board.bfr_rno}'"></i></td>
+														onclick="location.href='boardFReplyDetail?bfr_rno=${board.bfr_rno}'"></i></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -128,8 +128,9 @@
 													<td><fmt:formatDate value="${board.bsr_date}"
 															pattern="yyyy-MM-dd" /></td>
 													<td><i class="ti-search"
-														onclick="location.href='boardReplyDetail?bs_bno=${board.bsr_rno}'"></i></td>
+														onclick="location.href='boardSReplyDetail?bsr_rno=${board.bsr_rno}'"></i></td>
 												</tr>
+												<input type="hidden" id="deleteSId" value="${board.bsr_rno}"/>
 											</c:forEach>
 										</tbody>
 									</table>
@@ -249,6 +250,28 @@
 		<!-- nav tab end -->
 	</div>
 </div>
-</div>
+<script>
+	function deleteFReply() {
+		var rno = $("#deleteFId").val();
+		var deleteyn = confirm("삭제 하시겠습니까?");
+		
+		if(deleteyn == true)
+			location.href="deleteFReply?rno=" + rno;
+		else
+			return false;		
+		
+	}
+	
+	function deleteSReply() {
+		var rno = $("#deleteSId").val();
+		var deleteyn = confirm("삭제 하시겠습니까?");
+		
+		if(deleteyn == true)
+			location.href="deleteSReply?rno=" + rno;
+		else
+			return false;		
+		
+	}
+</script>
 <!-- main content area end -->
 <%@ include file="../footer.jsp"%>

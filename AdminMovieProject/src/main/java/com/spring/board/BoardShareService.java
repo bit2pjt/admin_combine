@@ -48,4 +48,10 @@ interface BoardShareService {
 	int insertReplyWarn(WarnVO vo);
 	
 	BoardShareVO getfContent(int bs_bno);
+	
+	void deleteSpamSBoard(int bno);
+	
+	BSReplyVO boardSReplyDetail(int bsr_rno);
+	
+	void deleteSReply(int rno);
 }
