@@ -1180,7 +1180,7 @@ if ($('#seolinechart1').length) {
                 label: "Likes",
                 backgroundColor: "rgba(104, 124, 247, 0.6)",
                 borderColor: '#8596fe',
-                data: [18, 41, 86, 49, 20, 35, 20, 50, 49, 30, 45, 25],
+                data: [18, 41, 6, 49, 20, 35, 20, 50, 49, 30, 45, 56],
             }]
         },
         // Configuration options go here
@@ -1241,7 +1241,7 @@ if ($('#seolinechart2').length) {
                 label: "Share",
                 backgroundColor: "rgba(96, 241, 205, 0.2)",
                 borderColor: '#3de5bb',
-                data: [18, 41, 86, 49, 20, 35, 20, 50, 49, 30, 45, 25],
+                data: [18, 41, 86, 49, 20, 35, 20, 50, 49, 30, 85, 95],
             }]
         },
         // Configuration options go here
@@ -1302,7 +1302,7 @@ if ($('#seolinechart3').length) {
                 label: "Share",
                 backgroundColor: "rgba(96, 241, 205, 0)",
                 borderColor: '#fff',
-                data: [18, 41, 86, 49, 20, 35, 20, 50, 49, 30, 45, 25],
+                data: [18, 41, 36, 49, 20, 35, 20, 50, 49, 30, 45, 25],
             }]
         },
         // Configuration options go here
@@ -1363,7 +1363,7 @@ if ($('#seolinechart4').length) {
                 label: "New user",
                 backgroundColor: "rgba(96, 241, 205, 0)",
                 borderColor: '#fff',
-                data: [18, 41, 86, 49, 20, 35, 20, 50, 49, 30, 45, 25],
+                data: [18, 41, 16, 49, 20, 35, 20, 50, 49, 30, 45, 25],
             }]
         },
         // Configuration options go here
